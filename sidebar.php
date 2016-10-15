@@ -7,11 +7,14 @@
  * @package Fresh_Start
  */
 
-if ( ! is_active_sidebar( 'Sidebar 1' ) ) {
+// which sidebar do you want to grab?
+$sidebar = 1;
+
+if ( ! is_active_sidebar( $sidebar ) ) {
 	return;
 }
 ?>
 
 <aside class="sidebar">
-	<?php dynamic_sidebar( 'Sidebar 1' ); ?>
+	<?php dynamic_sidebar( $sidebar ); ?>
 </aside><!-- .sidebar -->
