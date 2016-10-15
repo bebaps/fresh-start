@@ -14,15 +14,47 @@
  * @return array
  */
 function fresh_start_body_classes( $classes ) {
-	// Adds a class of group-blog to blogs with more than 1 published author.
-	if ( is_multi_author() ) {
-		$classes[] = 'group-blog';
-	}
+	$classes[] = 'site_body';
 
-	// Adds a class of hfeed to non-singular pages.
-	if ( ! is_singular() ) {
-		$classes[] = 'hfeed';
-	}
+    if ( is_home() ) {
+        $classes[] = '-is-home';
+    }
+
+    if ( is_front_page() ) {
+        $classes[] = '-is-homepage';
+    }
+
+    if ( is_front_page() && is_home() ) {
+        $classes[] = '-is-blogroll';
+    }
+
+    if ( is_single() ) {
+        $classes[] = '-is-single';
+    }
+
+    if ( comments_open() ) {
+        $classes[] = '-has-comments';
+    }
+
+    if ( is_page() ) {
+        $classes[] = '-is-page';
+    }
+
+    if ( is_archive() ) {
+        $classes[] = '-is-archive';
+    }
+
+    if ( is_search() ) {
+        $classes[] = '-is-search-results';
+    }
+
+    if ( is_404() ) {
+        $classes[] = '-is-404';
+    }
+
+    if ( is_child_theme() ) {
+        $classes[] = '-is-child';
+    }
 
 	return $classes;
 }

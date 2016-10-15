@@ -14,40 +14,37 @@
 
 get_header(); ?>
 
+
 <main id="main" class="site_main">
 
     <?php
     if ( have_posts() ) :
 
-      if ( is_home() && ! is_front_page() ) : ?>
-        <header>
-          <h1 class="page_title screen-reader-text"><?php single_post_title(); ?></h1>
-        </header>
+        if ( is_home() && ! is_front_page() ) : ?>
 
-      <?php
-      endif;
+            <header>
+                <h1 class="page_title screen-reader-text"><?php single_post_title(); ?></h1>
+            </header>
 
-      /* Start the Loop */
-      while ( have_posts() ) : the_post();
+        <?php
+        endif;
 
-        /*
-         * Include the Post-Format-specific template for the content.
-         * If you want to override this in a child theme, then include a file
-         * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-         */
-        get_template_part( 'template-parts/content', get_post_format() );
+        while ( have_posts() ) : the_post();
 
-      endwhile;
+            get_template_part( 'template-parts/content', get_post_format() );
 
-      the_posts_pagination();
+        endwhile;
 
-    else :
+        the_posts_pagination();
 
-      get_template_part( 'template-parts/content', 'none' );
+        else :
 
-    endif; ?>
+            get_template_part( 'template-parts/content', 'none' );
+
+        endif; ?>
 
 </main><!-- #main -->
+
 
 <?php
 get_sidebar();

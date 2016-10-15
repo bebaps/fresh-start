@@ -7,11 +7,11 @@
  * @package Fresh_Start
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+if ( ! is_active_sidebar( 'Sidebar 1' ) ) {
 	return;
 }
 ?>
 
-<aside id="secondary" class="widget-area" role="complementary">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</aside><!-- #secondary -->
+<aside class="sidebar">
+	<?php dynamic_sidebar( 'Sidebar 1' ); ?>
+</aside><!-- .sidebar -->
