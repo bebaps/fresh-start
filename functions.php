@@ -59,13 +59,13 @@ function fresh_start_setup() {
 		'comment-form',
 		'comment-list',
 		'gallery',
-		'caption',
+		'caption'
 	) );
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'fresh_start_custom_background_args', array(
 		'default-color' => 'ffffff',
-		'default-image' => '',
+		'default-image' => ''
 	) ) );
 }
 endif;
