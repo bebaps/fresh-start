@@ -7,6 +7,9 @@
  * @package Fresh_Start
  */
 
+// Set to true to put the site into Maintenance Mode
+$under_maintenance = false;
+
 if ( ! function_exists( 'fresh_start_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.

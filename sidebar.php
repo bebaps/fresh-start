@@ -7,7 +7,7 @@
  * @package Fresh_Start
  */
 
-// which sidebar do you want to grab?
+// Which sidebar do you want to grab?
 $sidebar = 1;
 
 if ( ! is_active_sidebar( $sidebar ) ) {
