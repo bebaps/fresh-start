@@ -1,0 +1,35 @@
+// Colors
+// -----------------------------------------------------------------------------
+$color_background-body: #fff;
+$color_background-screen: #f1f1f1;
+$color_background-hr: #ccc;
+$color_background-button: #e6e6e6;
+$color_background-pre: #eee;
+$color_background-ins: #fff9c0;
+
+$color_text-screen: #21759b;
+$color_text-input: #666;
+$color_text-input-focus: #111;
+$color_link: royalblue;
+$color_link-visited: purple;
+$color_link-hover: midnightblue;
+$color_text-main: #404040;
+
+$color_border-button: #ccc #ccc #bbb;
+$color_border-button-hover: #ccc #bbb #aaa;
+$color_border-button-focus: #aaa #bbb #bbb;
+$color_border-input: #ccc;
+$color_border-abbr: #666;
+
+// Structure
+// -----------------------------------------------------------------------------
+$size_site_main: 100%;
+$size_site-sidebar: 25%;
+
+// Typography
+// -----------------------------------------------------------------------------
+$font_main: sans-serif;
+$font_code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font_pre: "Courier 10 Pitch", Courier, monospace;
+$font_line-height-body: 1.5;
+$font_line-height-pre: 1.6;
