@@ -103,14 +103,14 @@ msgstr ""
 msgid "Primary Menu"
 msgstr ""
 
-#: inc/template-tags.php:28
+#: functions/template-tags.php:28
 #, php-format
 #@ _s
 msgctxt "post date"
 msgid "Posted on %s"
 msgstr ""
 
-#: inc/template-tags.php:33
+#: functions/template-tags.php:33
 #, php-format
 #@ _s
 msgctxt "post author"
@@ -118,41 +118,41 @@ msgid "by %s"
 msgstr ""
 
 #. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:50
-#: inc/template-tags.php:56
+#: functions/template-tags.php:50
+#: functions/template-tags.php:56
 #@ _s
 msgid ", "
 msgstr ""
 
-#: inc/template-tags.php:52
+#: functions/template-tags.php:52
 #, php-format
 #@ _s
 msgid "Posted in %1$s"
 msgstr ""
 
-#: inc/template-tags.php:58
+#: functions/template-tags.php:58
 #, php-format
 #@ _s
 msgid "Tagged %1$s"
 msgstr ""
 
-#: inc/template-tags.php:64
+#: functions/template-tags.php:64
 #@ _s
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/template-tags.php:64
+#: functions/template-tags.php:64
 #@ _s
 msgid "1 Comment"
 msgstr ""
 
-#: inc/template-tags.php:64
+#: functions/template-tags.php:64
 #@ _s
 msgid "% Comments"
 msgstr ""
 
 #. translators: %s: Name of current post
-#: inc/template-tags.php:71
+#: functions/template-tags.php:71
 #: template-parts/content-page.php:33
 #, php-format
 #@ _s
@@ -192,7 +192,7 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#. translators: %s: Name of current post. 
+#. translators: %s: Name of current post.
 #: template-parts/content.php:33
 #, php-format
 #@ _s

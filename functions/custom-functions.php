@@ -5,7 +5,7 @@ function debug( $code ) {
 }
 
 // Grab the URL of the Featured Image for the current page/post
-function featured_image( $post_id = NULL, $size = 'Full' ) {
+function featured_image( $post_id = null, $size = 'Full' ) {
 	if ( !has_post_thumbnail( $post_id ) ) {
 		return;
 	}

@@ -7,7 +7,7 @@
  * @package Fresh_Start
  */
 
-if ( ! function_exists( 'fresh_start_posted_on' ) ) :
+if ( !function_exists( 'fresh_start_posted_on' ) ) :
 
 // Prints HTML with meta information for the current post-date/time and author.
 function fresh_start_posted_on() {

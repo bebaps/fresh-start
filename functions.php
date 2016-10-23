@@ -79,22 +79,22 @@ endif;
 add_action( 'after_setup_theme', 'fresh_start_setup' );
 
 // Enqueue CSS and JS
-require_once get_template_directory() . '/inc/enqueues.php';
+require_once get_template_directory() . '/functions/enqueues.php';
 
 // Register Widgets
-require_once get_template_directory() . '/inc/widgets.php';
+require_once get_template_directory() . '/functions/widgets.php';
 
 // Implement the Custom Header feature
-require_once get_template_directory() . '/inc/custom-header.php';
+require_once get_template_directory() . '/functions/custom-header.php';
 
 // Custom template tags for this theme
-require_once get_template_directory() . '/inc/template-tags.php';
+require_once get_template_directory() . '/functions/template-tags.php';
 
 // Customizer additions
-require_once get_template_directory() . '/inc/customizer.php';
+require_once get_template_directory() . '/functions/customizer.php';
 
 // WordPress tweaks specifically for this theme
-require_once get_template_directory() . '/inc/theme-extras.php';
+require_once get_template_directory() . '/functions/theme-extras.php';
 
 // Custom functions that act independently of the theme templates
-require_once get_template_directory() . '/inc/custom-functions.php';
+require_once get_template_directory() . '/functions/custom-functions.php';

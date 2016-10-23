@@ -14,7 +14,7 @@
         "WordPress", "Theme", "Blank", "Starter", "Custom"
     ],
     "author": "Alexander Persky",
-    "license": "MIT",
+    "license": "GPL",
     "bugs": {
         "url": "https://github.com/bebaps/fresh-start/issues"
     },

@@ -7,14 +7,25 @@ A custom build of the [_s](https://github.com/automattic/_s) WordPress starter t
 - It keeps the custom functionality to a minimum, leaving it up to you to add it.
 
 ## But it ships with a bunch of shit I don't need
-Yes, it does. You are meant to really examine the code, understand what it is doing, and hack it to fit your needs. If you are too lazy to do that, then this theme is not meant for you.
+Yes, it does. You are meant to really examine the code, understand what it is doing, and hack it to fit your needs. If you are too lazy to do that, then [_s](https://github.com/automattic/_s), this theme, or really any starter theme is not meant for you.
 
-As the default `_s` is meant to be a very broad starting point, I have already stripped it down to what I need it to be.
+As the default [_s](https://github.com/automattic/_s) theme is meant to be a very broad starting point, I have already stripped this down to what I need it to be.
 
-### TODO:
-- swap out current gallery css for flexbox
-- write some basic theme options via the customizer
-- add px to em conversion mixin
-- add px to rem conversion mixin
+# Getting Started
+## Theme Structure
+## Tools
+### Gulp
+### Babel
+### Editor Config
+### ESLint
+### Stylelint
+## Extras
+
+#### TODO:
 - add color function
 - add breakpoint mixin
+- update Sass to meet the Stylelint rules
+- update JS to meet the ESLint rules
+- write some basic theme options via the customizer
+- update the RTL.css for the new CSS
+- add custom login screen styles
