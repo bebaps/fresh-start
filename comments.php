@@ -5,7 +5,7 @@
  * This is the template that displays the area of the page that contains both the current comments
  * and the comment form.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link    https://codex.wordpress.org/Template_Hierarchy
  *
  * @package Fresh_Start
  */
@@ -16,45 +16,45 @@
  * return early without loading the comments.
  */
 if ( post_password_required() ) {
-	return;
+    return;
 }
 ?>
 
 <section class="comments">
 
-	<?php if ( have_comments() ) : ?>
-		<h2 class="comments_title">
-			<?php
-				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'fresh-start' ) ),
-					number_format_i18n( get_comments_number() ),
-					'<span>' . get_the_title() . '</span>'
-				);
-			?>
-		</h2>
+    <?php if ( have_comments() ) : ?>
+        <h2 class="comments_title">
+            <?php
+            printf( // WPCS: XSS OK.
+                esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'fresh-start' ) ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
+            ?>
+        </h2>
 
-		<ol class="comments_list">
-            <?php wp_list_comments( array('style' => 'ol', 'type' => 'comment') ); ?>
+        <ol class="comments_list">
+            <?php wp_list_comments( array( 'style' => 'ol', 'type' => 'comment' ) ); ?>
         </ol><!-- .comments_list -->
 
         <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 
             <nav class="comments_navigation">
                 <h2 class="screen-reader-text"><?php esc_html_e( 'Comments navigation', 'fresh-start' ); ?></h2>
-                <?php paginate_comments_links( array('prev_text' => 'Older Comments', 'next_text' => 'Newer Comments')); ?>
+                <?php paginate_comments_links( array(
+                    'prev_text' => 'Older Comments',
+                    'next_text' => 'Newer Comments'
+                ) ); ?>
             </nav>
 
         <?php endif; ?>
 
-	<?php endif;
+    <?php endif;
 
-	// If comments are closed and there are comments, let's leave a little note, shall we?
-	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
+    // If comments are closed and there are comments, let's leave a little note, shall we?
+    if ( !comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 
-		<p class="no-comments"><?php esc_html_e( 'Sorry, comments are closed for this post.', 'fresh-start' ); ?></p>
+        <p class="no-comments"><?php esc_html_e( 'Sorry, comments are closed for this post.', 'fresh-start' ); ?></p>
 
     <?php endif; ?>
 
-	<?php comment_form(); ?>
+    <?php comment_form(); ?>
 
 </section><!-- .comments -->

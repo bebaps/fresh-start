@@ -2,7 +2,7 @@
 /**
  * Template part for displaying page content in page.php.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link    https://codex.wordpress.org/Template_Hierarchy
  *
  * @package Fresh_Start
  */
@@ -15,27 +15,20 @@
 
     <div class="post_content">
         <?php
-          the_content();
+        the_content();
 
-          wp_link_pages( array(
+        wp_link_pages( array(
             'before' => '<div class="page_links">' . esc_html__( 'Pages:', 'fresh-start' ),
             'after'  => '</div>',
-          ) );
+        ) );
         ?>
     </div>
 
     <?php if ( get_edit_post_link() ) : ?>
         <footer class="post_footer">
             <?php
-                edit_post_link(
-                  sprintf(
-                    /* translators: %s: Name of current post */
-                    esc_html__( 'Edit %s', 'fresh-start' ),
-                    the_title( '<span class="screen-reader-text">"', '"</span>', false )
-                  ),
-                  '<span class="edit-link">',
-                  '</span>'
-                );
+            edit_post_link( sprintf( /* translators: %s: Name of current post */
+                esc_html__( 'Edit %s', 'fresh-start' ), the_title( '<span class="screen-reader-text">"', '"</span>', false ) ), '<span class="edit-link">', '</span>' );
             ?>
         </footer>
     <?php endif; ?>

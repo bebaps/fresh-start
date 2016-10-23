@@ -7,7 +7,7 @@
  * It is used to display a page when nothing more specific matches a query.
  * E.g., it puts together the home page when no home.php file exists.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link    https://codex.wordpress.org/Template_Hierarchy
  *
  * @package Fresh_Start
  */
@@ -20,13 +20,13 @@ get_header(); ?>
     <?php
     if ( have_posts() ) :
 
-        if ( is_home() && ! is_front_page() ) : ?>
+        if ( is_home() && !is_front_page() ) : ?>
 
             <header>
                 <h1 class="page_title screen-reader-text"><?php single_post_title(); ?></h1>
             </header>
 
-        <?php
+            <?php
         endif;
 
         while ( have_posts() ) : the_post();
@@ -35,13 +35,13 @@ get_header(); ?>
 
         endwhile;
 
-        the_posts_pagination( array('mid_size' => 3) );
+        the_posts_pagination( array( 'mid_size' => 3 ) );
 
-        else :
+    else :
 
-            get_template_part( 'template-parts/content', 'none' );
+        get_template_part( 'template-parts/content', 'none' );
 
-        endif; ?>
+    endif; ?>
 
 </main><!-- #main -->
 

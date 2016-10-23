@@ -2,7 +2,7 @@
 /**
  * The template for displaying archive pages.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link    https://codex.wordpress.org/Template_Hierarchy
  *
  * @package Fresh_Start
  */
@@ -26,11 +26,11 @@ get_header(); ?>
 
         endwhile;
 
-        the_posts_pagination( array('mid_size' => 3) );
+        the_posts_pagination( array( 'mid_size' => 3 ) );
 
-        else :
+    else :
 
-            get_template_part( 'template-parts/content', 'none' );
+        get_template_part( 'template-parts/content', 'none' );
 
     endif; ?>
 
