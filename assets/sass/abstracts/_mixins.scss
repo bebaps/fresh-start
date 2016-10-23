@@ -5,7 +5,7 @@
     font-size: #{$px};
     @if $unit == rem {
         font-size: rem($size);
-    } @elseif $unit == em {
+    } @else if $unit == em {
         font-size: em($size);
     }
 }

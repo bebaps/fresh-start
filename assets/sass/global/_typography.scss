@@ -16,67 +16,67 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  margin-bottom: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 dfn, cite, em, i {
-  font-style: italic;
+    font-style: italic;
 }
 
 blockquote {
-  margin: 0 1.5em;
+    margin: 0 1.5em;
 }
 
 address {
-  margin: 0 0 1.5em;
+    margin: 0 0 1.5em;
 }
 
 pre {
-  background: $color_background-pre;
-  font-family: $font_pre;
-  @include font-size(0.9375, rem);
-  line-height: $font_line-height-pre;
-  margin-bottom: 1.6em;
-  max-width: 100%;
-  overflow: auto;
-  padding: 1.6em;
+    background: $color_background-pre;
+    font-family: $font_pre;
+    @include font-size(0.9375, rem);
+    line-height: $font_line-height-pre;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1.6em;
 }
 
 code, kbd, tt, var {
-  font-family: $font_code;
-  @include font-size(0.9375, rem);
+    font-family: $font_code;
+    @include font-size(0.9375, rem);
 }
 
 abbr, acronym {
-  border-bottom: 1px dotted $color_border-abbr;
-  cursor: help;
+    border-bottom: 1px dotted $color_border-abbr;
+    cursor: help;
 }
 
 mark, ins {
-  background: $color_background-ins;
-  text-decoration: none;
+    background: $color_background-ins;
+    text-decoration: none;
 }
 
 big {
-  font-size: 125%;
+    font-size: 125%;
 }
 
 a {
-  color: $color_link;
+    color: $color_link;
 
-  &:visited {
-    color: $color_link-visited;
-  }
-  &:hover,
-  &:focus,
-  &:active {
-    color: $color_link-hover;
-  }
-  &:focus {
-    outline: thin dotted;
-  }
-  &:hover,
-  &:active {
-    outline: 0;
-  }
+    &:visited {
+        color: $color_link-visited;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+        color: $color_link-hover;
+    }
+    &:focus {
+        outline: thin dotted;
+    }
+    &:hover,
+    &:active {
+        outline: 0;
+    }
 }

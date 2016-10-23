@@ -17,11 +17,13 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-	&:focus {}
+    &:focus {
+    }
 }
 
-select {}
+select {
+}
 
 textarea {
-	width: 100%;
+    width: 100%;
 }

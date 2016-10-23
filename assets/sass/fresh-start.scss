@@ -1,29 +1,40 @@
-/* -------------------------------------------------------------------------------------------------
+/* ---------------------------------------------------------
 > TABLE OF CONTENTS:
-----------------------------------------------------------------
-# Normalize
-# Typography
-# Elements
-# Forms
-# Navigation
-    ## Links
-    ## Menus
-# Accessibility
-# Alignments
-# Clearings
-# Widgets
-# Content
-    ## Posts and pages
-    ## Comments
-# Infinite scroll
-# Media
-    ## Captions
-    ## Galleries
-------------------------------------------------------------------------------------------------- */
+------------------------------------------------------------
+1. Vendor
+    # Normalize
+2. Plug-ins
+3. Global
+    # Accessibility
+    # Alignments
+    # Clearings
+    # Typography
+4. Components
+    # Buttons
+    # Captions
+    # Fields
+    # Galleries
+    # Lists
+    # Media
+    # Tables
+5. Navigation
+    # Primary Menu
+6. Post Types
+    # Posts and Pages
+7. Template Parts
+8. Layouts
+    # No Sidebar
+    # Sidebar Content
+9. Page Templates
+--------------------------------------------------------- */
 
 @import "abstracts/all";
+@import "vendor/all";
+@import "plugins/all";
 @import "global/all";
 @import "components/all";
-@import "layouts/all";
 @import "navigation/all";
 @import "post-types/all";
+@import "template-parts/all";
+@import "layouts/all";
+@import "page-templates/all";

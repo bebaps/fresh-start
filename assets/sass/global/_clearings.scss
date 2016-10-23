@@ -13,7 +13,7 @@
 .site-content:after,
 .site_footer:before,
 .site_footer:after {
-	@include clearfix;
+    @include clearfix;
 }
 
 .clear:after,
@@ -22,5 +22,5 @@
 .site_header:after,
 .site-content:after,
 .site_footer:after {
-	@include clearfix-after;
+    @include clearfix-after;
 }
