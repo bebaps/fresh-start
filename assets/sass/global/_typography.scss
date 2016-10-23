@@ -11,7 +11,12 @@ textarea {
     line-height: $root_line-height;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     clear: both;
 }
 
@@ -19,7 +24,10 @@ p {
     margin-bottom: 1.5em;
 }
 
-dfn, cite, em, i {
+dfn,
+cite,
+em,
+i {
     font-style: italic;
 }
 
@@ -32,9 +40,9 @@ address {
 }
 
 pre {
+    @include font-size(0.9375, rem);
     background: $color_background-pre;
     font-family: $font_pre;
-    @include font-size(0.9375, rem);
     line-height: $font_line-height-pre;
     margin-bottom: 1.6em;
     max-width: 100%;
@@ -42,17 +50,22 @@ pre {
     padding: 1.6em;
 }
 
-code, kbd, tt, var {
-    font-family: $font_code;
+code,
+kbd,
+tt,
+var {
     @include font-size(0.9375, rem);
+    font-family: $font_code;
 }
 
-abbr, acronym {
+abbr,
+acronym {
     border-bottom: 1px dotted $color_border-abbr;
     cursor: help;
 }
 
-mark, ins {
+mark,
+ins {
     background: $color_background-ins;
     text-decoration: none;
 }
@@ -67,14 +80,17 @@ a {
     &:visited {
         color: $color_link-visited;
     }
+
     &:hover,
     &:focus,
     &:active {
         color: $color_link-hover;
     }
+
     &:focus {
         outline: thin dotted;
     }
+
     &:hover,
     &:active {
         outline: 0;

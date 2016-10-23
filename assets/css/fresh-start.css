@@ -19,6 +19,7 @@
     # Tables
 5. Navigation
     # Primary Menu
+    # Post and Comment Navigation
 6. Post Types
     # Posts and Pages
 7. Template Parts
@@ -481,14 +482,14 @@ textarea {
 }
 
 .screen-reader-text:focus {
+  font-size: 0.875px;
   background-color: #f1f1f1;
   border-radius: 3px;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   clip: auto !important;
   color: #21759b;
   display: block;
-  font-size: 0.875px;
-  font-weight: bold;
+  font-weight: 700;
   height: auto;
   left: 5px;
   line-height: normal;
@@ -497,10 +498,8 @@ textarea {
   top: 5px;
   width: auto;
   z-index: 100000;
-  /* Above WP toolbar. */
 }
 
-/* Do not show the outline on the skip link target. */
 #content[tabindex="-1"]:focus {
   outline: 0;
 }
@@ -521,38 +520,38 @@ textarea {
 }
 
 .aligncenter {
-  clear: both;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  clear: both;
 }
 
 /* -------------------------------------------------------------------------------------------------
   # Clearings
 ------------------------------------------------------------------------------------------------- */
-.clear:before,
-.clear:after,
-.post_content:before,
-.post_content:after,
-.comment-content:before,
-.comment-content:after,
-.site_header:before,
-.site_header:after,
-.site-content:before,
-.site-content:after,
-.site_footer:before,
-.site_footer:after {
+.clear::before,
+.clear::after,
+.post_content::before,
+.post_content::after,
+.comment-content::before,
+.comment-content::after,
+.site_header::before,
+.site_header::after,
+.site-content::before,
+.site-content::after,
+.site_footer::before,
+.site_footer::after {
   content: "";
   display: table;
   table-layout: fixed;
 }
 
-.clear:after,
-.post_content:after,
-.comment-content:after,
-.site_header:after,
-.site-content:after,
-.site_footer:after {
+.clear::after,
+.post_content::after,
+.comment-content::after,
+.site_header::after,
+.site-content::after,
+.site_footer::after {
   clear: both;
 }
 
@@ -569,7 +568,12 @@ textarea {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   clear: both;
 }
 
@@ -577,7 +581,10 @@ p {
   margin-bottom: 1.5em;
 }
 
-dfn, cite, em, i {
+dfn,
+cite,
+em,
+i {
   font-style: italic;
 }
 
@@ -590,10 +597,10 @@ address {
 }
 
 pre {
-  background: #eee;
-  font-family: Courier, monospace;
   font-size: 0.9375px;
   font-size: 0.05859rem;
+  background: #eee;
+  font-family: Courier, monospace;
   line-height: 1.6;
   margin-bottom: 1.6em;
   max-width: 100%;
@@ -601,18 +608,23 @@ pre {
   padding: 1.6em;
 }
 
-code, kbd, tt, var {
-  font-family: monospace;
+code,
+kbd,
+tt,
+var {
   font-size: 0.9375px;
   font-size: 0.05859rem;
+  font-family: monospace;
 }
 
-abbr, acronym {
+abbr,
+acronym {
   border-bottom: 1px dotted #666;
   cursor: help;
 }
 
-mark, ins {
+mark,
+ins {
   background: #fff9c0;
   text-decoration: none;
 }
@@ -644,6 +656,23 @@ a:hover, a:active {
 /* -------------------------------------------------------------------------------------------------
   # Buttons
 ------------------------------------------------------------------------------------------------- */
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+  border-color: #ccc #bbb #aaa;
+}
+
+button:active, button:focus,
+input[type="button"]:active,
+input[type="button"]:focus,
+input[type="reset"]:active,
+input[type="reset"]:focus,
+input[type="submit"]:active,
+input[type="submit"]:focus {
+  border-color: #aaa #bbb #bbb;
+}
+
 /* -------------------------------------------------------------------------------------------------
   # Captions
 ------------------------------------------------------------------------------------------------- */
@@ -669,6 +698,48 @@ a:hover, a:active {
 /* -------------------------------------------------------------------------------------------------
   # Forms Fields
 ------------------------------------------------------------------------------------------------- */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+  padding: 3px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+  color: #111;
+}
+
+select {
+  border: 1px solid #ccc;
+}
+
 textarea {
   width: 100%;
 }
@@ -768,7 +839,8 @@ textarea {
 /* -------------------------------------------------------------------------------------------------
   # Lists
 ------------------------------------------------------------------------------------------------- */
-ul, ol {
+ul,
+ol {
   margin: 0 0 1.5em 3em;
 }
 
@@ -787,7 +859,7 @@ li > ol {
 }
 
 dt {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 dd {
@@ -823,73 +895,65 @@ table {
 /* -------------------------------------------------------------------------------------------------
   # Primary Menu
 ------------------------------------------------------------------------------------------------- */
-.main-navigation {
-  clear: both;
-  display: block;
-  float: left;
-  width: 100%;
-}
-
-.main-navigation ul {
-  display: none;
+.menu {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   list-style: none;
   margin: 0;
-  padding-left: 0;
+  padding: 0;
 }
 
-.main-navigation ul ul {
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  float: left;
-  position: absolute;
-  top: 1.5em;
-  left: -999em;
-  z-index: 99999;
-}
-
-.main-navigation ul ul ul {
-  left: -999em;
-  top: 0;
-}
-
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
-  left: 100%;
-}
-
-.main-navigation ul ul a {
-  width: 200px;
-}
-
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
-  left: auto;
-}
-
-.main-navigation li {
-  float: left;
+.menu li {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  margin: 0;
+  padding: 0;
   position: relative;
 }
 
-.main-navigation a {
+.menu li:hover > .sub-menu {
   display: block;
+}
+
+.menu a {
   text-decoration: none;
+  white-space: nowrap;
+  padding: 0.25em;
 }
 
-/* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
+.sub-menu {
+  display: none;
+  position: absolute;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sub-menu a {
   display: block;
+  font-size: 0.75rem;
 }
 
-@media screen and (min-width: 37.5em) {
-  .menu-toggle {
-    display: none;
-  }
-  .main-navigation ul {
-    display: block;
-  }
+.sub-menu .sub-menu {
+  position: absolute;
+  top: 0;
+  left: 100%;
 }
 
+/* -------------------------------------------------------------------------------------------------
+  # Post and Comment Navigation
+------------------------------------------------------------------------------------------------- */
 .site_main .comments_navigation, .site_main
 .posts-navigation, .site_main
 .post-navigation {

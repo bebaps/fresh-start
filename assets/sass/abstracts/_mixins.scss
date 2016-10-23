@@ -3,9 +3,12 @@
     $px: $size * 1px;
 
     font-size: #{$px};
+
     @if $unit == rem {
         font-size: rem($size);
-    } @else if $unit == em {
+    }
+
+    @if $unit == em {
         font-size: em($size);
     }
 }

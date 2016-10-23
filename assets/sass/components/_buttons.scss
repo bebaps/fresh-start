@@ -6,8 +6,11 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
     &:hover {
+        border-color: $color_border-button-hover;
     }
+
     &:active,
     &:focus {
+        border-color: $color_border-button-focus;
     }
 }

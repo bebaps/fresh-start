@@ -5,21 +5,23 @@ html {
     box-sizing: border-box;
 }
 
+// See http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 *,
-*:before,
-*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+*::before,
+*::after {
     box-sizing: inherit;
 }
 
 body {
-    background: $color_background-body; /* Fallback for when there is no custom background color defined. */
+    background: $color_background-body;
 }
 
-blockquote, q {
+blockquote,
+q {
     quotes: "" "";
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         content: "";
     }
 }
@@ -37,6 +39,7 @@ img {
     display: inline-block;
 }
 
+// Extra wide images within figure tags don't overflow the content area.
 figure {
-    margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
+    margin: 1em 0;
 }

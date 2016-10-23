@@ -14,9 +14,11 @@
     display: none;
 }
 
-.single .byline,
-.group-blog .byline {
-    display: inline;
+.single,
+.group-blog {
+    & .byline {
+        display: inline;
+    }
 }
 
 .page_content,

@@ -1,6 +1,6 @@
 // Strip units from a given value
 @function strip-unit($number) {
-    @if type-of($number) == 'number' and not unitless($number) {
+    @if type-of($number) == "number" and not unitless($number) {
         @return $number / ($number * 0 + 1);
     }
 
@@ -10,11 +10,13 @@
 // Convert pixels to rem
 @function rem($pixels) {
     $rem: $pixels / strip-unit($root_font-size);
+
     @return #{$rem}rem;
 }
 
 // Convert pixels to em
 @function em($pixels) {
     $em: $pixels / strip-unit($root_font-size);
+
     @return #{$em}em;
 }

@@ -1,37 +1,29 @@
 // Colors
 // -----------------------------------------------------------------------------
-$color_background-body: #fff;
-$color_background-screen: #f1f1f1;
-$color_background-hr: #ccc;
-$color_background-button: #e6e6e6;
-$color_background-pre: #eee;
-$color_background-ins: #fff9c0;
+$color_background-body: rgb(255, 255, 255);
+$color_background-screen: rgb(241, 241, 241);
+$color_background-hr: rgb(204, 204, 204);
+$color_background-pre: rgb(238, 238, 238);
+$color_background-ins: rgb(255, 249, 192);
 
-$color_text-screen: #21759b;
-$color_text-input: #666;
-$color_text-input-focus: #111;
-$color_link: royalblue;
-$color_link-visited: purple;
-$color_link-hover: midnightblue;
-$color_text-main: #404040;
+$color_text-screen: rgb(33, 117, 155);
+$color_text-input: rgb(102, 102, 102);
+$color_text-input-focus: rgb(17, 17, 17);
+$color_link: rgb(65, 105, 225);
+$color_link-visited: rgb(128, 0, 128);
+$color_link-hover: rgb(25, 25, 112);
 
-$color_border-button: #ccc #ccc #bbb;
-$color_border-button-hover: #ccc #bbb #aaa;
-$color_border-button-focus: #aaa #bbb #bbb;
-$color_border-input: #ccc;
-$color_border-abbr: #666;
-
-// Structure
-// -----------------------------------------------------------------------------
-$size_site_main: 100%;
-$size_site-sidebar: 25%;
+$color_border-button: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187);
+$color_border-button-hover: rgb(204, 204, 204) rgb(187, 187, 187) rgb(170, 170, 170);
+$color_border-button-focus: rgb(170, 170, 170) rgb(187, 187, 187) rgb(187, 187, 187);
+$color_border-input: rgb(204, 204, 204);
+$color_border-abbr: rgb(102, 102, 102);
 
 // Typography
 // -----------------------------------------------------------------------------
 $root_font-size: 16px !default;
 $root_line-height: 1.5 !default;
-$font_main: sans-serif;
-$font_code: monospace;
-$font_pre: Courier, monospace;
-$font_line-height-body: 1.5;
-$font_line-height-pre: 1.6;
+$font_main: sans-serif !default;
+$font_code: monospace !default;
+$font_pre: $font_code !default;
+$font_line-height-pre: 1.6 !default;
