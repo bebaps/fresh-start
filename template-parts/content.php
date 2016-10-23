@@ -8,7 +8,7 @@
  */
 ?>
 
-<article class="post">
+<article <?php post_class(); ?>>
 
 	<header class="post_header">
 		<?php

@@ -70,6 +70,8 @@ function fresh_start_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => ''
 	) ) );
+
+    if ( !isset( $content_width ) ) $content_width = 1200;
 }
 endif;
 add_action( 'after_setup_theme', 'fresh_start_setup' );
@@ -80,14 +82,17 @@ require_once get_template_directory() . '/inc/enqueues.php';
 // Register Widgets
 require_once get_template_directory() . '/inc/widgets.php';
 
-// Implement the Custom Header feature.
+// Implement the Custom Header feature
 require_once get_template_directory() . '/inc/custom-header.php';
 
-// Custom template tags for this theme.
+// Custom template tags for this theme
 require_once get_template_directory() . '/inc/template-tags.php';
 
-// Customizer additions.
+// Customizer additions
 require_once get_template_directory() . '/inc/customizer.php';
 
-// Custom functions that act independently of the theme templates.
-require_once get_template_directory() . '/inc/extras.php';
+// WordPress tweaks specifically for this theme
+require_once get_template_directory() . '/inc/theme-extras.php';
+
+// Custom functions that act independently of the theme templates
+require_once get_template_directory() . '/inc/custom-functions.php';

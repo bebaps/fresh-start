@@ -6,10 +6,9 @@ button,
 input,
 select,
 textarea {
-    color: $color_text-main;
     font-family: $font_main;
-    @include font-size(1);
-    line-height: $font_line-height-body;
+    font-size: $root_font-size;
+    line-height: $root_line-height;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -35,7 +34,7 @@ address {
 pre {
   background: $color_background-pre;
   font-family: $font_pre;
-  @include font-size(0.9375);
+  @include font-size(0.9375, rem);
   line-height: $font_line-height-pre;
   margin-bottom: 1.6em;
   max-width: 100%;
@@ -45,7 +44,7 @@ pre {
 
 code, kbd, tt, var {
   font-family: $font_code;
-  @include font-size(0.9375);
+  @include font-size(0.9375, rem);
 }
 
 abbr, acronym {

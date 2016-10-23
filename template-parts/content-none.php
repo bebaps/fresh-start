@@ -8,7 +8,7 @@
  */
 ?>
 
-<section class="no-results">
+<article class="no-results">
 
     <header class="page_header">
         <h1 class="page_title"><?php esc_html_e( 'Nothing Found', 'fresh-start' ); ?></h1>
@@ -32,4 +32,4 @@
         <?php endif; ?>
     </div>
 
-</section><!-- .no-results -->
+</article><!-- .no-results -->

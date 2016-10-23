@@ -32,10 +32,6 @@ function fresh_start_body_classes( $classes ) {
         $classes[] = '-is-single';
     }
 
-    if ( comments_open() ) {
-        $classes[] = '-has-comments';
-    }
-
     if ( is_page() ) {
         $classes[] = '-is-page';
     }
@@ -77,34 +73,11 @@ function fresh_start_pingback_header() {
 }
 add_action( 'wp_head', 'fresh_start_pingback_header' );
 
-// Grab the URL of the Featured Image for the current page/post
-function featured_image($image_size = 'Full') {
-    $imgage_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), $image_size);
-
-    return $image_src[0];
-}
-
-// Force WordPress to use pretty permalinks
-function set_pretty_permalinks(){
-    global $wp_rewrite;
-    $wp_rewrite->set_permalink_structure('/%postname%/');
-}
-add_action('init', 'set_pretty_permalinks');
-
 // Add custom image sizes for this theme
 if ( function_exists( 'add_image_size' ) ) {
     add_image_size( 'hero', 1500, 9999 ); // 1500 pixels wide and auto height
     add_image_size( 'extra-large', 2500, 2500, true );
 }
-
-// Remove the theme editor
-function remove_editor_menu() {
-  remove_action('admin_menu', '_add_themes_utility_last', 101);
-}
-add_action('_admin_menu', 'remove_editor_menu', 1);
-
-// Set the HTML editor to be the default editor
-add_filter( 'wp_default_editor', create_function('', 'return "html";') );
 
 // Change the length of the excerpt
 function custom_excerpt_length($length) {
@@ -166,14 +139,3 @@ function my_css_attributes_filter($var) {
     return is_array($var) ? array_intersect($var, $whitelist) : '';
 }
 add_filter('nav_menu_item_id', 'my_css_attributes_filter', 100, 1);
-
-// Put the site into a Maintenance Mode.
-// There are multiple ways to do this. This is just ONE bare bones method, but honestly a plug-in would be better
-if ($under_maintenance) {
-    function maintenance_mode() {
-        if ( !current_user_can( 'administrator' ) ) {
-            wp_die('The site is currently undergoing scheduled maintenance and will return shortly.', 'We will be back soon!');
-        }
-    }
-    add_action('get_header', 'maintenance_mode');
-}

@@ -28,8 +28,10 @@ $size_site-sidebar: 25%;
 
 // Typography
 // -----------------------------------------------------------------------------
+$root_font-size: 16px !default;
+$root_line-height: 1.5 !default;
 $font_main: sans-serif;
-$font_code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-$font_pre: "Courier 10 Pitch", Courier, monospace;
+$font_code: monospace;
+$font_pre: Courier, monospace;
 $font_line-height-body: 1.5;
 $font_line-height-pre: 1.6;
