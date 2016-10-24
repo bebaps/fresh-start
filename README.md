@@ -20,12 +20,3 @@ As the default [_s](https://github.com/automattic/_s) theme is meant to be a ver
 ### ESLint
 ### Stylelint
 ## Extras
-
-#### TODO:
-- add color function
-- add breakpoint mixin
-- update Sass to meet the Stylelint rules
-- update JS to meet the ESLint rules
-- write some basic theme options via the customizer
-- update the RTL.css for the new CSS
-- add custom login screen styles

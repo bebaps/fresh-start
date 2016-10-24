@@ -33,7 +33,7 @@ const SOURCES = {
     images: [
         `${PATHS.images}/**/*.{jpg,png,gif,svg}`
     ],
-    concatjs: [ // Set the order for JS concatenation
+    concat: [ // Set the order for JS concatenation
         `${PATHS.js}/vendor/*.js`,
         `${PATHS.js}/plugins/*.js`,
         `${PATHS.js}/custom/skip-link-focus-fix.js`,
@@ -151,7 +151,7 @@ gulp.task('lint:sass', () => {
 });
 
 // Compile Sass
-gulp.task('compile:sass', ['clean:css'], () => {
+gulp.task('sass', ['clean:css'], () => {
     return gulp
         .src(SOURCES.sass)
         .pipe($.sourcemaps.init())
@@ -160,10 +160,10 @@ gulp.task('compile:sass', ['clean:css'], () => {
         .on('error', $.sass.logError))
         .on('error', $.notify.onError('Error compiling Sass!'))
         .pipe($.autoprefixer(OPTIONS.autoprefixer))
-        .pipe($.rename({
-            basename: PROJECT,
-            extname: '.css'
-        }))
+        // .pipe($.rename({
+        //     basename: PROJECT,
+        //     extname: '.css'
+        // }))
         .pipe($.sourcemaps.write('/'))
         .pipe($.plumber.stop())
         .pipe(gulp.dest(PATHS.css))
@@ -191,18 +191,18 @@ gulp.task('minify:css', () => {
 // Lint JavaScript
 gulp.task('lint:js', () => {
     return gulp
-        .src(SOURCES.js)
+        .src('./assets/js/custom/*.js')
         .pipe($.plumber())
-        .pipe($.babel())
+        // .pipe($.babel())
         .pipe($.eslint())
         .pipe($.eslint.format())
         .pipe($.eslint.failAfterError());
 });
 
 // Concatenate JavaScript
-gulp.task('concat:js', () => {
+gulp.task('js', () => {
     return gulp
-        .src(SOURCES.concatjs)
+        .src(SOURCES.concat)
         .pipe($.sourcemaps.init())
         .pipe($.plumber())
         .pipe($.print())
@@ -260,18 +260,18 @@ gulp.task('package', () => {
 });
 
 // Build task to run all tasks and and package for distribution
-gulp.task('zip', ['compile:sass', 'concat:js', 'minify:images', 'package']);
+gulp.task('zip', ['sass', 'js', 'minify:images', 'package']);
 
 /* -------------------------------------------------------------------------------------------------
   # Defaults
 ------------------------------------------------------------------------------------------------- */
 // Default task
-gulp.task('default', ['compile:sass', 'concat:js', 'server', 'watch']);
+gulp.task('default', ['sass', 'js', 'server', 'watch']);
 
 // Watch files for changes
 gulp.task('watch', () => {
-  gulp.watch(SOURCES.sass, ['compile:sass']);
-  gulp.watch(SOURCES.js, ['concat:js']);
+  gulp.watch(SOURCES.sass, ['sass']);
+  gulp.watch(SOURCES.js, ['js']);
   gulp.watch(SOURCES.php, BROWSERSYNC.reload);
   gulp.watch(SOURCES.html, BROWSERSYNC.reload);
 });

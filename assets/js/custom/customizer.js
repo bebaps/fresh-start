@@ -5,9 +5,9 @@
  *
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
  */
+'use strict';
 
 (function( $ ) {
-
     // Site title and description.
     wp.customize( 'blogname', function( value ) {
         value.bind( function( to ) {
@@ -23,18 +23,18 @@
     // Header text color.
     wp.customize( 'header_textcolor', function( value ) {
         value.bind( function( to ) {
-            if ( 'blank' === to ) {
+            if ( to === 'blank' ) {
                 $( '.site_title a, .site_description' ).css( {
-                    'clip' : 'rect(1px, 1px, 1px, 1px)',
-                    'position' : 'absolute'
+                    'clip': 'rect(1px, 1px, 1px, 1px)',
+                    'position': 'absolute'
                 } );
             } else {
                 $( '.site_title a, .site_description' ).css( {
-                    'clip' : 'auto',
-                    'position' : 'relative'
+                    'clip': 'auto',
+                    'position': 'relative'
                 } );
                 $( '.site_title a, .site_description' ).css( {
-                    'color' : to
+                    'color': to
                 } );
             }
         } );

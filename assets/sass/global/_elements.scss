@@ -3,6 +3,7 @@
 ------------------------------------------------------------------------------------------------- */
 html {
     box-sizing: border-box;
+    font-size: $root_font-size;
 }
 
 // See http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
@@ -14,6 +15,14 @@ html {
 
 body {
     background: $color_background-body;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    min-height: 100vh;
+    // http://css-tricks.com/snippets/css/momentum-scrolling-on-ios-overflow-elements
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 blockquote,

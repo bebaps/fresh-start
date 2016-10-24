@@ -40,8 +40,11 @@
         <?php endif; ?>
     </div>
 
-    <nav id="site-navigation" class="main-navigation">
-        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'fresh-start' ); ?></button>
-        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-    </nav>
+    <?php wp_nav_menu( array(
+        'theme_location' => 'primary',
+        'container' => 'nav',
+        'container_class' => 'main-navigation',
+        'container_id' => 'site_navigation',
+        'menu_id' => 'primary-menu'
+    ) ); ?>
 </header><!-- .site_header -->
