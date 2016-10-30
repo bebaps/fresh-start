@@ -572,7 +572,20 @@ textarea {
 
 .site_main {
   font-size: 1.125em;
-  line-height: 1.61111em;
+  line-height: 1.6em;
+  max-width: 75rem;
+}
+
+@media screen and (min-width: 40em) {
+  .site_main {
+    font-size: 1.250em;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .site_main {
+    font-size: 1.375em;
+  }
 }
 
 h1,
@@ -582,36 +595,33 @@ h4,
 h5,
 h6 {
   clear: both;
+  line-height: 1.25em;
+  margin-top: 1.75rem;
+  margin-bottom: 1rem;
 }
 
 h1 {
-  font-size: 3.5em;
-  line-height: 1.15em;
-  margin-top: 0.275em;
-  margin-bottom: 0.425em;
+  font-size: 3.2em;
 }
 
 h2 {
-  font-size: 2.675em;
-  line-height: 1.25em;
-  margin-top: 0.225em;
-  margin-bottom: 0.4em;
+  font-size: 2.8em;
 }
 
 h3 {
-  font-size: 1.85em;
-  line-height: 1.325em;
-  margin-top: 0.15em;
-  margin-bottom: 0.3em;
+  font-size: 2.4em;
 }
 
-h4,
-h5,
+h4 {
+  font-size: 2em;
+}
+
+h5 {
+  font-size: 1.6em;
+}
+
 h6 {
-  font-size: 1em;
-  line-height: 1.6em;
-  margin-top: 0.15em;
-  margin-bottom: 0;
+  font-size: 1.2em;
 }
 
 p:empty {
@@ -626,7 +636,7 @@ blockquote,
 .wp-caption,
 .gallery {
   margin-top: 0;
-  margin-bottom: 1.61111111em;
+  margin-bottom: 1.6em;
 }
 
 dfn,
@@ -642,7 +652,7 @@ pre {
   font-size: 1em;
   background: #eeeeee;
   font-family: monospace;
-  line-height: 1.61111em;
+  line-height: 1.6em;
   max-width: 100%;
   overflow: auto;
   padding: 1.6em;
@@ -753,7 +763,7 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-  padding: 3px;
+  padding: 0.25em;
 }
 
 input[type="text"]:focus,
@@ -879,7 +889,7 @@ textarea {
 ------------------------------------------------------------------------------------------------- */
 ul,
 ol {
-  margin: 0 0 1.61111111em 2em;
+  margin: 0 0 1.6em 2em;
 }
 
 ul ul,
@@ -887,7 +897,7 @@ ol ol,
 ul ol,
 ol ul {
   margin: 0;
-  padding-left: 1.25em;
+  padding-left: 1.5em;
 }
 
 ul {
@@ -903,7 +913,7 @@ dt {
 }
 
 dd {
-  margin: 0 1.5em 1.61111111em;
+  margin: 0 1.5em 1.6em;
 }
 
 /* -------------------------------------------------------------------------------------------------
@@ -945,7 +955,7 @@ video {
   # Tables
 ------------------------------------------------------------------------------------------------- */
 table {
-  margin: 0 0 1.61111111em;
+  margin: 0 0 1.6em;
   width: 100%;
 }
 
@@ -1014,7 +1024,7 @@ table {
 .site_main .comments_navigation, .site_main
 .posts-navigation, .site_main
 .post-navigation {
-  margin: 0 0 1.61111111em;
+  margin: 0 0 1.6em;
   overflow: hidden;
 }
 
@@ -1041,7 +1051,7 @@ table {
 }
 
 .hentry {
-  margin: 0 0 1.61111111em;
+  margin: 0 0 1.6em;
 }
 
 .byline,
@@ -1057,12 +1067,12 @@ table {
 .page_content,
 .post_content,
 .post_summary {
-  margin: 1.61111111em 0 0;
+  margin: 1.6em 0 0;
 }
 
 .page_links {
   clear: both;
-  margin: 0 0 1.61111111em;
+  margin: 0 0 1.6em;
 }
 
 /* -------------------------------------------------------------------------------------------------
