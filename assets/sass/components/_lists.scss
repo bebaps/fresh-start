@@ -3,7 +3,15 @@
 ------------------------------------------------------------------------------------------------- */
 ul,
 ol {
-    margin: 0 0 1.5em 3em;
+    margin: 0 0 1.61111111em 2em;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin: 0;
+  padding-left: 1.25em;
 }
 
 ul {
@@ -14,16 +22,10 @@ ol {
     list-style: decimal;
 }
 
-li > ul,
-li > ol {
-    margin-bottom: 0;
-    margin-left: 1.5em;
-}
-
 dt {
     font-weight: 700;
 }
 
 dd {
-    margin: 0 1.5em 1.5em;
+    margin: 0 1.5em 1.61111111em;
 }

@@ -1,5 +1,5 @@
 // Rem/em output with px fallback
-@mixin font-size($size: 16, $unit: px) {
+@mixin font-size($size: 18, $unit: px) {
     $px: $size * 1px;
 
     font-size: #{$px};

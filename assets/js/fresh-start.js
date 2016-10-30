@@ -5,10 +5,12 @@
  *
  * Learn more: https://git.io/vWdr2
  */
+'use strict';
+
 (function() {
     var isWebkit = navigator.userAgent.toLowerCase().indexOf( 'webkit' ) > -1,
-        isOpera  = navigator.userAgent.toLowerCase().indexOf( 'opera' ) > -1,
-        isIe     = navigator.userAgent.toLowerCase().indexOf( 'msie' ) > -1;
+        isOpera = navigator.userAgent.toLowerCase().indexOf( 'opera' ) > -1,
+        isIe = navigator.userAgent.toLowerCase().indexOf( 'msie' ) > -1;
 
     if ( ( isWebkit || isOpera || isIe ) && document.getElementById && window.addEventListener ) {
         window.addEventListener( 'hashchange', function() {
@@ -38,6 +40,8 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
+'use strict';
+
 (function() {
     var container, button, menu, links, subMenus, i, len;
 
@@ -47,25 +51,25 @@
     }
 
     button = container.getElementsByTagName( 'button' )[ 0 ];
-    if ( 'undefined' === typeof button ) {
+    if ( typeof button === 'undefined' ) {
         return;
     }
 
     menu = container.getElementsByTagName( 'ul' )[ 0 ];
 
     // Hide menu toggle button if menu is empty and return early.
-    if ( 'undefined' === typeof menu ) {
+    if ( typeof menu === 'undefined' ) {
         button.style.display = 'none';
         return;
     }
 
     menu.setAttribute( 'aria-expanded', 'false' );
-    if ( -1 === menu.className.indexOf( 'nav-menu' ) ) {
+    if ( menu.className.indexOf( 'nav-menu' ) === -1 ) {
         menu.className += ' nav-menu';
     }
 
     button.onclick = function() {
-        if ( -1 !== container.className.indexOf( 'toggled' ) ) {
+        if ( container.className.indexOf( 'toggled' ) !== -1 ) {
             container.className = container.className.replace( ' toggled', '' );
             button.setAttribute( 'aria-expanded', 'false' );
             menu.setAttribute( 'aria-expanded', 'false' );
@@ -77,7 +81,7 @@
     };
 
     // Get all the link elements within the menu.
-    links    = menu.getElementsByTagName( 'a' );
+    links = menu.getElementsByTagName( 'a' );
     subMenus = menu.getElementsByTagName( 'ul' );
 
     // Set menu items with submenus to aria-haspopup="true".
@@ -98,11 +102,10 @@
         var self = this;
 
         // Move up through the ancestors of the current link until we hit .nav-menu.
-        while ( -1 === self.className.indexOf( 'nav-menu' ) ) {
-
+        while ( self.className.indexOf( 'nav-menu' ) === -1 ) {
             // On li elements toggle the class .focus.
-            if ( 'li' === self.tagName.toLowerCase() ) {
-                if ( -1 !== self.className.indexOf( 'focus' ) ) {
+            if ( self.tagName.toLowerCase() === 'li' ) {
+                if ( self.className.indexOf( 'focus' ) !== -1 ) {
                     self.className = self.className.replace( ' focus', '' );
                 } else {
                     self.className += ' focus';
@@ -152,9 +155,9 @@
  *
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
  */
+'use strict';
 
 (function( $ ) {
-
     // Site title and description.
     wp.customize( 'blogname', function( value ) {
         value.bind( function( to ) {
@@ -170,23 +173,24 @@
     // Header text color.
     wp.customize( 'header_textcolor', function( value ) {
         value.bind( function( to ) {
-            if ( 'blank' === to ) {
+            if ( to === 'blank' ) {
                 $( '.site_title a, .site_description' ).css( {
-                    'clip' : 'rect(1px, 1px, 1px, 1px)',
-                    'position' : 'absolute'
+                    'clip': 'rect(1px, 1px, 1px, 1px)',
+                    'position': 'absolute'
                 } );
             } else {
                 $( '.site_title a, .site_description' ).css( {
-                    'clip' : 'auto',
-                    'position' : 'relative'
+                    'clip': 'auto',
+                    'position': 'relative'
                 } );
                 $( '.site_title a, .site_description' ).css( {
-                    'color' : to
+                    'color': to
                 } );
             }
         } );
     } );
 })( jQuery );
 
+'use strict';
 
 //# sourceMappingURL=fresh-start.js.map

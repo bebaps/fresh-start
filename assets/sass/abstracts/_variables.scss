@@ -23,7 +23,37 @@ $color_border-abbr: rgb(102, 102, 102);
 // -----------------------------------------------------------------------------
 $root_font-size: 16px !default;
 $root_line-height: 1.5 !default;
+$body_font-size: 1.125em !default;
+$body_line-height: 1.61111111em !default;
+
 $font_main: sans-serif !default;
 $font_code: monospace !default;
 $font_pre: $font_code !default;
-$font_line-height-pre: 1.6 !default;
+$font_line-height-pre: $body_line-height !default;
+
+$headings: (
+    h1: (
+        font-size: 3.5em,
+        line-height: 1.15em,
+        margin-top: 0.275em,
+        margin-bottom: 0.425em
+    ),
+    h2: (
+        font-size: 2.675em,
+        line-height: 1.25em,
+        margin-top: 0.225em,
+        margin-bottom: 0.4em
+    ),
+    h3: (
+        font-size: 1.85em,
+        line-height: 1.325em,
+        margin-top: 0.15em,
+        margin-bottom: 0.3em
+    ),
+    h4: (
+        font-size: 1em,
+        line-height: 1.6em,
+        margin-top: 0.15em,
+        margin-bottom: 0
+    )
+);

@@ -20,3 +20,8 @@
 
     @return #{$em}em;
 }
+
+// Grab the proper values out of the $headings nested map
+@function get-heading($heading, $property) {
+    @return map-get(map-get($headings, $heading), $property);
+}

@@ -1,6 +1,6 @@
 'use strict';
 
-const LOCALURL = 'fresh-start:8888'; // See https://browsersync.io/docs/options/#option-proxy
+const LOCALURL = 'freshstart:8888'; // See https://browsersync.io/docs/options/#option-proxy
 const PROJECT = 'fresh-start'; // Give this project a name
 const PATHS = new function() {
     this.root = './',
