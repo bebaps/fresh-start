@@ -34,7 +34,7 @@ function fresh_start_custom_header_setup() {
 
 add_action( 'after_setup_theme', 'fresh_start_custom_header_setup' );
 
-if ( !function_exists( 'fresh_start_header_style' ) ) :
+if ( ! function_exists( 'fresh_start_header_style' ) ) :
     /**
      * Styles the header image and text displayed on the blog.
      *

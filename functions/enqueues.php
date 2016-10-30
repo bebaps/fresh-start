@@ -16,7 +16,7 @@ add_action( 'wp_enqueue_scripts', 'fresh_start_scripts' );
 
 // Enqueue styles for custom login screen
 function custom_login_stylesheet() {
-    wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/assets/css/wp-login.css' );
+	wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/assets/css/wp-login.css' );
 }
 
 add_action( 'login_enqueue_scripts', 'custom_login_stylesheet' );

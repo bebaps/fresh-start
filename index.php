@@ -15,35 +15,35 @@
 get_header(); ?>
 
 
-<main id="main" class="site_main">
+    <main id="main" class="site_main">
 
-    <?php
-    if ( have_posts() ) :
+        <?php
+        if ( have_posts() ) :
 
-        if ( is_home() && !is_front_page() ) : ?>
+            if ( is_home() && ! is_front_page() ) : ?>
 
-            <header>
-                <h1 class="page_title screen-reader-text"><?php single_post_title(); ?></h1>
-            </header>
+                <header>
+                    <h1 class="page_title screen-reader-text"><?php single_post_title(); ?></h1>
+                </header>
 
-            <?php
-        endif;
+                <?php
+            endif;
 
-        while ( have_posts() ) : the_post();
+            while ( have_posts() ) : the_post();
 
-            get_template_part( 'template-parts/content', get_post_format() );
+                get_template_part( 'template-parts/content', get_post_format() );
 
-        endwhile;
+            endwhile;
 
-        the_posts_pagination( array( 'mid_size' => 3 ) );
+            the_posts_pagination( array( 'mid_size' => 3 ) );
 
-    else :
+        else :
 
-        get_template_part( 'template-parts/content', 'none' );
+            get_template_part( 'template-parts/content', 'none' );
 
-    endif; ?>
+        endif; ?>
 
-</main><!-- #main -->
+    </main><!-- #main -->
 
 
 <?php

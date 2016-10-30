@@ -7,7 +7,7 @@
  * @package Fresh_Start
  */
 
-if ( !function_exists( 'fresh_start_setup' ) ) :
+if ( ! function_exists( 'fresh_start_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -68,7 +68,7 @@ if ( !function_exists( 'fresh_start_setup' ) ) :
 			'default-image' => ''
 		) ) );
 
-		if ( !isset( $content_width ) ) {
+		if ( ! isset( $content_width ) ) {
 			$content_width = 1200;
 		}
 	}

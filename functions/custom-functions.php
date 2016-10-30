@@ -5,8 +5,8 @@ function debug( $code ) {
 }
 
 // Grab the URL of the Featured Image for the current page/post
-function featured_image( $post_id = null, $size = 'Full' ) {
-	if ( !has_post_thumbnail( $post_id ) ) {
+function featured_image( $post_id = NULL, $size = 'Full' ) {
+	if ( ! has_post_thumbnail( $post_id ) ) {
 		return;
 	}
 
@@ -21,7 +21,7 @@ $under_maintenance = false;
 
 if ( $under_maintenance ) {
 	function maintenance_mode() {
-		if ( !current_user_can( 'administrator' ) ) {
+		if ( ! current_user_can( 'administrator' ) ) {
 			wp_die( 'The site is currently undergoing scheduled maintenance and will return shortly.', 'We will be back soon!' );
 		}
 	}
