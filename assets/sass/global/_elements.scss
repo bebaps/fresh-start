@@ -40,7 +40,7 @@ hr {
     // border: 0;
     // height: 1px;
     border: 1px solid;
-      margin: -1px 0;
+    margin: -1px 0;
 }
 
 img {
@@ -61,20 +61,20 @@ strong,
 em,
 small,
 code {
-  line-height: 0;
+    line-height: 0;
 }
 
 sub,
 sup {
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
 }
 
 sup {
-  top: -0.5em;
+    top: -0.5em;
 }
 
 sub {
-  bottom: -0.25em;
+    bottom: -0.25em;
 }

@@ -67,8 +67,8 @@ address,
 blockquote,
 .wp-caption,
 .gallery {
-  margin-top: 0;
-  margin-bottom: 1.61111111em;
+    margin-top: 0;
+    margin-bottom: 1.61111111em;
 }
 
 dfn,
@@ -76,6 +76,7 @@ cite,
 em,
 i {
     font-style: italic;
+    font-weight: lighter;
 }
 
 pre {

@@ -57,3 +57,11 @@ $headings: (
         margin-bottom: 0
     )
 );
+
+// Breakpoints
+// -----------------------------------------------------------------------------
+$breakpoints: (
+    small: 0em,
+    medium: 40em,
+    large: 64em
+);

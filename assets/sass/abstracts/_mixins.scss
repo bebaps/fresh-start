@@ -13,6 +13,17 @@
     }
 }
 
+// set breakpoints
+@mixin breakpoint($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media screen and (min-width: #{map-get($breakpoints, $breakpoint)}) {
+            @content;
+        }
+    } @else {
+        @warn "No value found for `#{$breakpoint}`. " + "Make sure it is defined in `$breakpoints` map.";
+    }
+}
+
 // Center block
 @mixin center-block {
     display: block;
