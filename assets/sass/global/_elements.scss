@@ -3,6 +3,7 @@
 ------------------------------------------------------------------------------------------------- */
 html {
     box-sizing: border-box;
+    font-size: $root_font-size;
 }
 
 // See http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
@@ -14,6 +15,14 @@ html {
 
 body {
     background: $color_background-body;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    min-height: 100vh;
+    // http://css-tricks.com/snippets/css/momentum-scrolling-on-ios-overflow-elements
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 blockquote,
@@ -28,9 +37,10 @@ q {
 
 hr {
     background-color: $color_background-hr;
-    border: 0;
-    height: 1px;
-    margin-bottom: 1.5em;
+    // border: 0;
+    // height: 1px;
+    border: 1px solid;
+    margin: -1px 0;
 }
 
 img {
@@ -42,4 +52,29 @@ img {
 // Extra wide images within figure tags don't overflow the content area.
 figure {
     margin: 1em 0;
+}
+
+a,
+b,
+i,
+strong,
+em,
+small,
+code {
+    line-height: 0;
+}
+
+sub,
+sup {
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
 }

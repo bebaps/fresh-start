@@ -1,7 +1,7 @@
 {
     "ignoreFiles": [
         "assets/sass/abstracts/**/*",
-        "assets/sass/plugins/**/*",
+        "assets/sass/plugins/**/*"
     ],
     "rules": {
         "at-rule-empty-line-before": ["always", {

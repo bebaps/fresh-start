@@ -17,7 +17,7 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-    padding: 3px;
+    padding: 0.25em;
 
     &:focus {
         color: $color_text-input-focus;

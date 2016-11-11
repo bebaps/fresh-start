@@ -8,7 +8,14 @@ select,
 textarea {
     font-family: $font_main;
     font-size: $root_font-size;
+    font-size: 1rem;
     line-height: $root_line-height;
+}
+
+.site_main {
+    font-size: $body_font-size;
+    line-height: $body_line-height;
+    max-width: $site_max-width;
 }
 
 h1,
@@ -18,10 +25,48 @@ h4,
 h5,
 h6 {
     clear: both;
+    line-height: 1.25em;
+    margin-top: 1.75rem;
+    margin-bottom: 1rem;
 }
 
-p {
-    margin-bottom: 1.5em;
+h1 {
+    font-size: get-heading(h1, font-size);
+}
+
+h2 {
+    font-size: get-heading(h2, font-size);
+}
+
+h3 {
+    font-size: get-heading(h3, font-size);
+}
+
+h4 {
+    font-size: get-heading(h4, font-size);
+}
+
+h5 {
+    font-size: get-heading(h5, font-size);
+}
+
+h6 {
+    font-size: get-heading(h6, font-size);
+}
+
+p:empty {
+    display: none;
+}
+
+p,
+hr,
+pre,
+address,
+blockquote,
+.wp-caption,
+.gallery {
+    margin-top: 0;
+    margin-bottom: 1.6em;
 }
 
 dfn,
@@ -29,22 +74,14 @@ cite,
 em,
 i {
     font-style: italic;
-}
-
-blockquote {
-    margin: 0 1.5em;
-}
-
-address {
-    margin: 0 0 1.5em;
+    font-weight: lighter;
 }
 
 pre {
-    @include font-size(0.9375, rem);
+    @include font-size(16, em);
     background: $color_background-pre;
     font-family: $font_pre;
     line-height: $font_line-height-pre;
-    margin-bottom: 1.6em;
     max-width: 100%;
     overflow: auto;
     padding: 1.6em;
@@ -54,7 +91,7 @@ code,
 kbd,
 tt,
 var {
-    @include font-size(0.9375, rem);
+    @include font-size(16, em);
     font-family: $font_code;
 }
 

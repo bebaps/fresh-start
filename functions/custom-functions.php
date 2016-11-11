@@ -2,11 +2,12 @@
 // Debug some code
 function debug( $code ) {
 	printf( '<pre>%s</pre>', print_r( $code, true ) );
+    die;
 }
 
 // Grab the URL of the Featured Image for the current page/post
-function featured_image( $post_id = null, $size = 'Full' ) {
-	if ( !has_post_thumbnail( $post_id ) ) {
+function featured_image( $post_id = NULL, $size = 'Full' ) {
+	if ( ! has_post_thumbnail( $post_id ) ) {
 		return;
 	}
 
@@ -15,11 +16,13 @@ function featured_image( $post_id = null, $size = 'Full' ) {
 	return $image[ 0 ];
 }
 
-// Put the site into a Maintenance Mode.
-// There are multiple ways to do this. This is just ONE bare bones method, but honestly a plug-in would be better
+// Force the site into a Maintenance Mode
+// This is just ONE bare bones method of doing this, but honestly a plug-in would be better
+$under_maintenance = false;
+
 if ( $under_maintenance ) {
 	function maintenance_mode() {
-		if ( !current_user_can( 'administrator' ) ) {
+		if ( ! current_user_can( 'administrator' ) ) {
 			wp_die( 'The site is currently undergoing scheduled maintenance and will return shortly.', 'We will be back soon!' );
 		}
 	}

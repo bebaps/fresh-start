@@ -26,7 +26,6 @@
         "comma-dangle": [2, "never"],
         "comma-spacing": [2, {"before": false, "after": true}],
         "comma-style": [2, "last"],
-        "computed-property-spacing": 2,
         "constructor-super": 2,
         "curly": [2, "multi-line"],
         "dot-location": [2, "property"],
@@ -41,11 +40,10 @@
         "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
         "keyword-spacing": [2, {"before": true, "after": true}],
         "max-depth": [2, 4],
-        "max-len": [1, 80, 2, {"ignoreComments": true}],
+        "max-len": [1, 100, 2, {"ignoreComments": true}],
         "max-params": [2, 5],
         "new-cap": [2, {"newIsCap": true, "capIsNew": false}],
         "newline-after-var": [2, "always"],
-        "newline-before-return": 2,
         "new-parens": 2,
         "no-array-constructor": 2,
         "no-bitwise": 1,
@@ -139,7 +137,7 @@
         "no-unused-expressions": 1,
         "no-unused-labels": 1,
         "no-unused-vars": [2, {"vars": "all", "args": "none"}],
-        "no-use-before-define": 2,
+        "no-use-before-define": 1,
         "no-useless-call": 2,
         "no-useless-concat": 2,
         "no-useless-computed-key": 2,
@@ -167,7 +165,6 @@
         "semi-spacing": [2, {"before": false, "after": true}],
         "space-before-blocks": [2, "always"],
         "space-before-function-paren": [2, "never"],
-        "space-in-parens": [2, "never"],
         "space-infix-ops": 2,
         "space-unary-ops": [2, {"words": true, "nonwords": false}],
         "spaced-comment": [
@@ -184,6 +181,6 @@
         "wrap-iife": [2, "any"],
         "wrap-regex": 1,
         "yield-star-spacing": [2, "both"],
-        "yoda": [2, "never"]
+        "yoda": [1, "never"]
     }
 }

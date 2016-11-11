@@ -4,6 +4,8 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
+'use strict';
+
 (function() {
     var container, button, menu, links, subMenus, i, len;
 
@@ -13,25 +15,25 @@
     }
 
     button = container.getElementsByTagName( 'button' )[ 0 ];
-    if ( 'undefined' === typeof button ) {
+    if ( typeof button === 'undefined' ) {
         return;
     }
 
     menu = container.getElementsByTagName( 'ul' )[ 0 ];
 
     // Hide menu toggle button if menu is empty and return early.
-    if ( 'undefined' === typeof menu ) {
+    if ( typeof menu === 'undefined' ) {
         button.style.display = 'none';
         return;
     }
 
     menu.setAttribute( 'aria-expanded', 'false' );
-    if ( -1 === menu.className.indexOf( 'nav-menu' ) ) {
+    if ( menu.className.indexOf( 'nav-menu' ) === -1 ) {
         menu.className += ' nav-menu';
     }
 
     button.onclick = function() {
-        if ( -1 !== container.className.indexOf( 'toggled' ) ) {
+        if ( container.className.indexOf( 'toggled' ) !== -1 ) {
             container.className = container.className.replace( ' toggled', '' );
             button.setAttribute( 'aria-expanded', 'false' );
             menu.setAttribute( 'aria-expanded', 'false' );
@@ -43,7 +45,7 @@
     };
 
     // Get all the link elements within the menu.
-    links    = menu.getElementsByTagName( 'a' );
+    links = menu.getElementsByTagName( 'a' );
     subMenus = menu.getElementsByTagName( 'ul' );
 
     // Set menu items with submenus to aria-haspopup="true".
@@ -64,11 +66,10 @@
         var self = this;
 
         // Move up through the ancestors of the current link until we hit .nav-menu.
-        while ( -1 === self.className.indexOf( 'nav-menu' ) ) {
-
+        while ( self.className.indexOf( 'nav-menu' ) === -1 ) {
             // On li elements toggle the class .focus.
-            if ( 'li' === self.tagName.toLowerCase() ) {
-                if ( -1 !== self.className.indexOf( 'focus' ) ) {
+            if ( self.tagName.toLowerCase() === 'li' ) {
+                if ( self.className.indexOf( 'focus' ) !== -1 ) {
                     self.className = self.className.replace( ' focus', '' );
                 } else {
                     self.className += ' focus';
