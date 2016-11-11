@@ -1,22 +1,45 @@
 # Fresh Start
-A custom build of the [_s](https://github.com/automattic/_s) WordPress starter theme.
+A custom build of the [_s](https://github.com/automattic/_s) WordPress starter theme. This theme assumes this is not your first time building a WordPress theme, and that you are familiar with Node, NPM, Gulp, Sass, Babel, etc.
+
+## Why create yet another starter theme?
+I created this for my own personal use, and if you happen to find value in it and want to use it yourself then awesome. If not, trust me I won't notice. I looked at every starter theme I could find and there are a lot of good ones, but nothing that was exactly what I needed it to be. And lets be honest, if you are reading this then you know exactly what I am talking about. I somehow tended to always come back around to [_s](https://github.com/automattic/_s) or [Sage](https://roots.io/sage/), and finally decided to just pick the one that would be easier to tweak for my own needs. Frankly, you should probably do the same.
 
 ## Why use _s?
-- Because it is created by the same people that manage WordPress, so the base theme already adheres to the Theme Review guidelines and agreed upon best practices.
-- It is regularly updated in parallel with WordPress core.
+- Because it is created by the same people that manage WordPress.com and heavily contribute to WordPress core, so the base theme already adheres to the Theme Review guidelines and agreed upon best practices.
+- It is developed in parallel with WordPress core. This is important because it means that the theme will always make use of the newest and most appropriate theme functions for functionality.
 - It keeps the custom functionality to a minimum, leaving it up to you to add it.
 
 ## But it ships with a bunch of shit I don't need
-Yes, it does. You are meant to really examine the code, understand what it is doing, and hack it to fit your needs. If you are too lazy to do that, then [_s](https://github.com/automattic/_s), this theme, or really any starter theme is not meant for you.
+Probably. But that really just depends on you as a developer. You are meant to really examine the code, understand what it is doing, and hack it to fit your needs. If you are too lazy to do that, then [_s](https://github.com/automattic/_s), this theme, or really any starter theme is not meant for you.
 
-As the default [_s](https://github.com/automattic/_s) theme is meant to be a very broad starting point, I have already stripped this down to what I need it to be.
+As the default [_s](https://github.com/automattic/_s) theme is meant to be a very broad starting point, I have already stripped this down to what I need it to be. If you agree with my changes, cool, the sooner you can get to work. If not, that's cool too. Change it!
 
 # Getting Started
-## Theme Structure
+If you haven't done so already, download [Node](https://nodejs.org/en/) or [read this](https://docs.npmjs.com/getting-started/installing-node). Then clone the repo or download a zip, run `npm install`, and get to work.
+
 ## Tools
+A few of the core tools used to put this theme together are listed below. If you have never heard of them or just don't know how to use them, take the time to review the documentation for each. There uses expand far beyond WordPress development and can surely benefit you in all areas of web development.
+
 ### Gulp
+This theme uses [Gulp](http://gulpjs.com/). Be sure to actually review this to understand what the tasks are doing. Use my tasks or create your own.
+
 ### Babel
+[Babel](https://babeljs.io/) is included for those that what to use it.
+
 ### Editor Config
+The [Editor Config](http://editorconfig.org/) is really just for portability. Be sure to configure this how you like so that regardless of what editor you use (or computer), it is always the same.
+
 ### ESLint
+[ESLint](http://eslint.org/) offers a ton of settings to check the style and quality of your JavaScript code. If you don't use it, take the time to review it because it really will force you to write better code. Use my default settings or create your own.
+
 ### Stylelint
+[Stylelint](http://stylelint.io/) is the same idea as ESLint, but for your CSS.
+
 ## Extras
+Take note of two files in the `functions/` directory: `custom-functions.php` and `theme-extras.php`. Be sure to review these files to understand what they are doing.
+
+### Custom-functions.php
+This file holds custom functions I use frequently. Add your own to this file. If you don't like mine, then don't use them or don't include this file in the `functions.php`.
+
+### Theme-tweaks.php
+This file contains a small amount of tweaks I find useful in for themes. As these are purely my opinion, modify this as you see fit.

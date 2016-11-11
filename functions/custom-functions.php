@@ -2,6 +2,7 @@
 // Debug some code
 function debug( $code ) {
 	printf( '<pre>%s</pre>', print_r( $code, true ) );
+    die;
 }
 
 // Grab the URL of the Featured Image for the current page/post

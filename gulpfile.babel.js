@@ -170,7 +170,7 @@ gulp.task('sass', ['clean:css'], () => {
         .pipe(BROWSERSYNC.stream());
 });
 
-// Minify CSS - Not needed if you use a plug-in that will minify CSS
+// Minify CSS - Not needed if you will use a plug-in that will minify CSS
 gulp.task('minify:css', () => {
     return gulp
         .src(`${PATHS.css}/${PROJECT}.css`)
@@ -212,7 +212,7 @@ gulp.task('js', () => {
         .pipe(gulp.dest(PATHS.js));
 });
 
-// Minify JavaScript - Not needed if you use a plug-in that will minify JS
+// Minify JavaScript - Not needed if you will use a plug-in that will minify JS
 gulp.task('minify:js', () => {
     return gulp
         .src(`${PATHS.js}/${PROJECT}.js`)

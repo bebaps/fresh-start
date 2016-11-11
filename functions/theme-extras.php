@@ -18,39 +18,39 @@ function fresh_start_body_classes( $classes ) {
 	$classes[] = 'site_body';
 
 	if ( is_home() ) {
-		$classes[] = '-is-home';
+		$classes[] = 'is-home';
 	}
 
 	if ( is_front_page() ) {
-		$classes[] = '-is-homepage';
+		$classes[] = 'is-homepage';
 	}
 
 	if ( is_front_page() && is_home() ) {
-		$classes[] = '-is-blogroll';
+		$classes[] = 'is-blogroll';
 	}
 
 	if ( is_single() ) {
-		$classes[] = '-is-single';
+		$classes[] = 'is-single';
 	}
 
 	if ( is_page() ) {
-		$classes[] = '-is-page';
+		$classes[] = 'is-page';
 	}
 
 	if ( is_archive() ) {
-		$classes[] = '-is-archive';
+		$classes[] = 'is-archive';
 	}
 
 	if ( is_search() ) {
-		$classes[] = '-is-search-results';
+		$classes[] = 'is-search-results';
 	}
 
 	if ( is_404() ) {
-		$classes[] = '-is-404';
+		$classes[] = 'is-404';
 	}
 
 	if ( is_child_theme() ) {
-		$classes[] = '-is-child';
+		$classes[] = 'is-child';
 	}
 
 	return $classes;
