@@ -16,14 +16,6 @@ textarea {
     font-size: $body_font-size;
     line-height: $body_line-height;
     max-width: $site_max-width;
-
-    @include breakpoint(medium) {
-        font-size: 1.250em;
-    }
-
-    @include breakpoint(medium) {
-        font-size: 1.375em;
-    }
 }
 
 h1,

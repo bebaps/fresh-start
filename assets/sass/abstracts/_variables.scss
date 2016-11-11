@@ -33,19 +33,19 @@ $font_line-height-pre: $body_line-height !default;
 
 $headings: (
     h1: (
-        font-size: 3.2em
-    ),
-    h2: (
-        font-size: 2.8em
-    ),
-    h3: (
         font-size: 2.4em
     ),
-    h4: (
+    h2: (
         font-size: 2em
     ),
-    h5: (
+    h3: (
+        font-size: 1.8em
+    ),
+    h4: (
         font-size: 1.6em
+    ),
+    h5: (
+        font-size: 1.4em
     ),
     h6: (
         font-size: 1.2em

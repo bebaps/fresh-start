@@ -576,18 +576,6 @@ textarea {
   max-width: 75rem;
 }
 
-@media screen and (min-width: 40em) {
-  .site_main {
-    font-size: 1.250em;
-  }
-}
-
-@media screen and (min-width: 40em) {
-  .site_main {
-    font-size: 1.375em;
-  }
-}
-
 h1,
 h2,
 h3,
@@ -601,23 +589,23 @@ h6 {
 }
 
 h1 {
-  font-size: 3.2em;
-}
-
-h2 {
-  font-size: 2.8em;
-}
-
-h3 {
   font-size: 2.4em;
 }
 
-h4 {
+h2 {
   font-size: 2em;
 }
 
-h5 {
+h3 {
+  font-size: 1.8em;
+}
+
+h4 {
   font-size: 1.6em;
+}
+
+h5 {
+  font-size: 1.4em;
 }
 
 h6 {
