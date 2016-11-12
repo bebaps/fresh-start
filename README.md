@@ -15,31 +15,40 @@ Probably. But that really just depends on you as a developer. You are meant to r
 As the default [_s](https://github.com/automattic/_s) theme is meant to be a very broad starting point, I have already stripped this down to what I need it to be. If you agree with my changes, cool, the sooner you can get to work. If not, that's cool too. Change it!
 
 # Getting Started
-If you haven't done so already, download [Node](https://nodejs.org/en/) or [read this](https://docs.npmjs.com/getting-started/installing-node). Then clone the repo or download a zip, run `npm install`, and get to work.
+If you haven't done so already, download [Node](https://nodejs.org/en/) or [read this](https://docs.npmjs.com/getting-started/installing-node). Then clone the repo or download the latest release, run `npm install`, and get to work.
 
 ## Tools
-A few of the core tools used to put this theme together are listed below. If you have never heard of them or just don't know how to use them, take the time to review the documentation for each. There uses expand far beyond WordPress development and can surely benefit you in all areas of web development.
+A few of the core tools used to put this theme together are listed below. If you have never heard of them or just don't know how to use them, take the time to review the documentation for each. The uses of each expand far beyond WordPress development and can surely benefit you in all areas of web development.
 
 ### Gulp
-This theme uses [Gulp](http://gulpjs.com/). Be sure to actually review this to understand what the tasks are doing. Use my tasks or create your own.
+This theme uses [Gulp](http://gulpjs.com/). Be sure to actually review this themes `gulpfile.babel.js` to understand what the tasks are doing and in what order. Use my tasks or create your own.
+
+#### gulp-load-plugins
+This Gulp package makes it really easy to include the Gulp packages for use. If you look through this themes `gulpfile.babel.js` and stuff like `$.plumber()` doesn't make sense to you, read [this](https://www.npmjs.com/package/gulp-load-plugins).
 
 ### Babel
-[Babel](https://babeljs.io/) is included for those that what to use it.
+[Babel](https://babeljs.io/) is included for those that what to use it, but you will need to write your own compile task for it.
+
+### CoffeeScript
+[CoffeeScript](http://coffeescript.org/) is also included for those that use it. I use it here and there, so I have not included any default tasks to compile it. It you use it, you will need to write your own tasks to compile it using [gulp-coffee](https://www.npmjs.com/package/gulp-coffee).
+
+### Sass
+[Sass](http://sass-lang.com/guide) is my CSS preprocessor of choice. If you use Less or Stylus then you will need to write your own tasks to compile them.
 
 ### Editor Config
 The [Editor Config](http://editorconfig.org/) is really just for portability. Be sure to configure this how you like so that regardless of what editor you use (or computer), it is always the same.
 
 ### ESLint
-[ESLint](http://eslint.org/) offers a ton of settings to check the style and quality of your JavaScript code. If you don't use it, take the time to review it because it really will force you to write better code. Use my default settings or create your own.
+[ESLint](http://eslint.org/) offers a ton of settings to check the style and quality of your JavaScript code. If you don't use it, take the time to review it because it really will force you to write better code. Use my default settings found in `.eslintrc.json` or create your own.
 
 ### Stylelint
-[Stylelint](http://stylelint.io/) is the same idea as ESLint, but for your CSS.
+[Stylelint](http://stylelint.io/) is the same idea as ESLint, but for your CSS. Use my default settings found in `.stylelintrc` or create your own.
 
 ## Extras
 Take note of two files in the `functions/` directory: `custom-functions.php` and `theme-extras.php`. Be sure to review these files to understand what they are doing.
 
 ### Custom-functions.php
-This file holds custom functions I use frequently. Add your own to this file. If you don't like mine, then don't use them or don't include this file in the `functions.php`.
+This file holds custom functions I use frequently. Add your own to this file. If you don't like mine, then don't use them or don't include this file into `functions.php`.
 
 ### Theme-tweaks.php
-This file contains a small amount of tweaks I find useful in for themes. As these are purely my opinion, modify this as you see fit.
+This file contains a small amount of tweaks I find useful for themes. As these are purely my opinion, modify this as you see fit or don't include this file into `functions.php`.
