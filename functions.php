@@ -42,7 +42,7 @@ if ( ! function_exists( 'fresh_start_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
+		// Register the navigational menus.
 		register_nav_menus( array(
 			'primary' => esc_html__( 'Primary Menu', 'fresh-start' ),
 			'footer'  => esc_html__( 'Footer Menu', 'fresh-start' ),
@@ -67,6 +67,14 @@ if ( ! function_exists( 'fresh_start_setup' ) ) :
 			'default-color' => 'ffffff',
 			'default-image' => ''
 		) ) );
+
+		// Add support for the WordPress custom logo feature.
+		add_theme_support( 'custom-logo', array(
+			'width'       => 100,
+			'height'      => 100,
+			'flex-width'  => false,
+			'flex-height' => false,
+		) );
 
 		if ( ! isset( $content_width ) ) {
 			$content_width = 1200;

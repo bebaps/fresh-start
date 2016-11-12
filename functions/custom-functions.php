@@ -1,14 +1,25 @@
 <?php
-// Debug some code
+/**
+ * Debug some piece of code.
+ *
+ * @param $code The code that you want to check.
+ */
 function debug( $code ) {
 	printf( '<pre>%s</pre>', print_r( $code, true ) );
-    die;
+	die;
 }
 
-// Grab the URL of the Featured Image for the current page/post
+/**
+ * Grab the URL of the Featured Image for the current page/post.
+ *
+ * @param null   $post_id The ID of the page/post to check for a Featured Image.
+ * @param string $size    The defined image size to return.
+ *
+ * @return bool | URL Return false if there is no Featured Image, or the URL if there is one.
+ */
 function featured_image( $post_id = NULL, $size = 'Full' ) {
 	if ( ! has_post_thumbnail( $post_id ) ) {
-		return;
+		return false;
 	}
 
 	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), $size );
@@ -16,8 +27,10 @@ function featured_image( $post_id = NULL, $size = 'Full' ) {
 	return $image[ 0 ];
 }
 
-// Force the site into a Maintenance Mode
-// This is just ONE bare bones method of doing this, but honestly a plug-in would be better
+/**
+ * Force the site into a basic Maintenance Mode.
+ * This is just ONE bare bones method of doing this, but honestly a plug-in would be better.
+ */
 $under_maintenance = false;
 
 if ( $under_maintenance ) {
