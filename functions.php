@@ -68,6 +68,14 @@ if ( ! function_exists( 'fresh_start_setup' ) ) :
 			'default-image' => ''
 		) ) );
 
+        // Add support for a custom logo
+        add_theme_support( 'custom-logo', array(
+            'width' => 100,
+            'height' => 100,
+            'flex-width' => false,
+            'flex-height' => false,
+        ) );
+
 		if ( ! isset( $content_width ) ) {
 			$content_width = 1200;
 		}
