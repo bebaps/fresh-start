@@ -30,7 +30,7 @@
                     <h1 class="site_title">
                         <?php the_custom_logo(); ?>
                     </h1>
-                <?php else :  ?>
+                <?php else : ?>
                     <h1 class="site_title">
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
                     </h1>
@@ -38,13 +38,13 @@
             <?php else : ?>
                 <?php if ( has_custom_logo() ) : ?>
                     <p class="site_title">
-                       <?php the_custom_logo(); ?>
+                        <?php the_custom_logo(); ?>
                     </p>
-                <?php else :  ?>
+                <?php else : ?>
                     <p class="site_title">
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
                     </p>
-                <?php
+                    <?php
                 endif;
             endif;
 
