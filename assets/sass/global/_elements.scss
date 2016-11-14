@@ -61,7 +61,7 @@ strong,
 em,
 small,
 code {
-    line-height: 0;
+    line-height: normal;
 }
 
 sub,
@@ -77,4 +77,8 @@ sup {
 
 sub {
     bottom: -0.25em;
+}
+
+header {
+    position: relative;
 }

@@ -34,11 +34,12 @@ const SOURCES = {
         `${PATHS.images}/**/*.{jpg,png,gif,svg}`
     ],
     concat: [ // Set the order for JS concatenation
+        './node_modules/jquery/dist/jquery.js',
         `${PATHS.js}/vendor/*.js`,
         `${PATHS.js}/plugins/*.js`,
         `${PATHS.js}/custom/skip-link-focus-fix.js`,
         `${PATHS.js}/custom/navigation.js`,
-        `${PATHS.js}/custom/customizer.js`,
+        // `${PATHS.js}/custom/customizer.js`,
         `${PATHS.js}/custom/custom.js`,
         `!${PATHS.js}/${PROJECT}.js`
     ]
@@ -205,6 +206,7 @@ gulp.task('js', () => {
         .src(SOURCES.concat)
         .pipe($.sourcemaps.init())
         .pipe($.plumber())
+        // .pipe($.babel())
         .pipe($.print())
         .pipe($.concat(`${PROJECT}.js`))
         .pipe($.sourcemaps.write('/'))

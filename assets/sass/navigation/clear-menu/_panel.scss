@@ -1,0 +1,62 @@
+/* -------------------------------------------------------------------------------------------------
+  # Panel
+------------------------------------------------------------------------------------------------- */
+.cm-panel {
+    position: $cm_panel-position;
+    z-index: 99;
+
+    width: $cm_panel-width;
+    max-width: 100%;
+    height: $cm_panel-height;
+    max-height: 100%;
+
+    background: $cm_color-panel;
+    opacity: 1;
+    visibility: hidden;
+    transition: all $cm_panel-speed $cm_panel-transition;
+
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+
+    // Reveal from the top
+    &-top {
+        transform: translateY(-100%);
+        top: $cm_panel-top;
+        left: 0;
+    }
+
+    // Reveal from the bottom
+    &-bottom {
+        transform: translateY(100%);
+        bottom: 0;
+        left: 0;
+    }
+
+    // Reveal from the left
+    &-left {
+        transform: translateX(-100%);
+        top: $cm_panel-top;
+        left: 0;
+    }
+
+    // Reveal from the right
+    &-right {
+        transform: translateX(100%);
+        top: $cm_panel-top;
+        right: 0;
+    }
+
+    // Fade in reveal
+    &-fade {
+        opacity: 0;
+    }
+
+    // For when the panel is visible
+    &-open {
+        visibility: visible;
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+// TODO: for the auto width/height bug, try making the panel always be 100% width and height, and apply the reveal classes to the menu itself instead of the panel. That way the panel is always the size of the viewport and the menu can be positioned off-screen, and revealed on screen as needed.
