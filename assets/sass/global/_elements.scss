@@ -28,6 +28,7 @@ body {
 blockquote,
 q {
     quotes: "" "";
+    font-style: italic;
 
     &::before,
     &::after {
@@ -61,7 +62,7 @@ strong,
 em,
 small,
 code {
-    line-height: 0;
+    line-height: normal;
 }
 
 sub,

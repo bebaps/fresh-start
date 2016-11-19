@@ -17,7 +17,7 @@ function debug( $code ) {
  *
  * @return bool | URL Return false if there is no Featured Image, or the URL if there is one.
  */
-function featured_image( $post_id = NULL, $size = 'Full' ) {
+function get_featured_image( $post_id = null, $size = 'Full' ) {
 	if ( ! has_post_thumbnail( $post_id ) ) {
 		return false;
 	}

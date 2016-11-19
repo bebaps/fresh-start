@@ -2,12 +2,17 @@
   # Primary Menu
 ------------------------------------------------------------------------------------------------- */
 .menu {
-    display: flex;
+    // display: none;
     flex-wrap: wrap;
     justify-content: flex-start;
     list-style: none;
     margin: 0;
     padding: 0;
+    background: $color_background-body;
+
+    @include breakpoint(large) {
+        display: flex;
+    }
 
     li {
         flex: 0 1 auto;
@@ -16,7 +21,9 @@
         position: relative;
 
         &:hover > .sub-menu {
-            display: block;
+            @include breakpoint(large) {
+                display: block;
+            }
         }
     }
 
@@ -35,10 +42,10 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+    background: $color_background-body;
 
     a {
         display: block;
-        font-size: 0.75rem;
     }
 
     // Third Level Menu

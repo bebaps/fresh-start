@@ -4,6 +4,7 @@ const LOCALURL = 'freshstart:8888'; // See https://browsersync.io/docs/options/#
 const PROJECT = 'fresh-start'; // Give this project a name
 const PATHS = new function() {
     this.root = './',
+    this.dist = `${this.root}_dist/`,
     this.assets = `${this.root}assets`,
     this.css = `${this.assets}/css`,
     this.js = `${this.assets}/js`,
@@ -34,11 +35,12 @@ const SOURCES = {
         `${PATHS.images}/**/*.{jpg,png,gif,svg}`
     ],
     concat: [ // Set the order for JS concatenation
+        './node_modules/jquery/dist/jquery.js',
         `${PATHS.js}/vendor/*.js`,
         `${PATHS.js}/plugins/*.js`,
         `${PATHS.js}/custom/skip-link-focus-fix.js`,
         `${PATHS.js}/custom/navigation.js`,
-        `${PATHS.js}/custom/customizer.js`,
+        // `${PATHS.js}/custom/customizer.js`,
         `${PATHS.js}/custom/custom.js`,
         `!${PATHS.js}/${PROJECT}.js`
     ]
@@ -90,6 +92,10 @@ const OPTIONS = { // Set options for the Gulp plugins
         },
         zindex: false
     },
+    imagemin : {
+        interlaced: true,
+        progressive: true
+    },
     loadplugins: {
         lazy: true
     },
@@ -101,7 +107,7 @@ const OPTIONS = { // Set options for the Gulp plugins
     }
 };
 
-// Include gulp and plugins
+// Include gulp and plugins not targeted by gulp-load-plugins
 import gulp from 'gulp';
 import del from 'del';
 import postscss from 'postcss-scss';
@@ -113,7 +119,7 @@ const $ = require('gulp-load-plugins')(OPTIONS.loadplugins);
 /* -------------------------------------------------------------------------------------------------
   # Utility Tasks
 ------------------------------------------------------------------------------------------------- */
-// Delete the contents of the CSS folder, except any prior minified files
+// Delete the generated CSS folder
 gulp.task('clean:css', () => {
     del([
         `${PATHS.css}/${PROJECT}.css`,
@@ -127,6 +133,11 @@ gulp.task('clean:js', () => {
         `${PATHS.js}/${PROJECT}.*.*`,
         `${PATHS.js}/${PROJECT}.*`
     ]);
+});
+
+// Delete the generated project distribution folder
+gulp.task('clean:dist', () => {
+    del(`${PATHS.dist}`);
 });
 
 /* -------------------------------------------------------------------------------------------------
@@ -143,124 +154,144 @@ gulp.task('server', () => {
   # Sass/CSS Tasks
 ------------------------------------------------------------------------------------------------- */
 // Lint Sass/CSS
-gulp.task('lint:sass', () => {
+gulp.task('sass:lint', () => {
     return gulp
-        .src(SOURCES.sass)
-        .pipe($.plumber())
-        .pipe($.stylelint(OPTIONS.stylelint));
+    .src(SOURCES.sass)
+    .pipe($.plumber())
+    .pipe($.stylelint(OPTIONS.stylelint));
 });
 
 // Compile Sass
 gulp.task('sass', ['clean:css'], () => {
     return gulp
-        .src(SOURCES.sass)
-        .pipe($.sourcemaps.init())
-        .pipe($.plumber())
-        .pipe($.sass(OPTIONS.sass)
-        .on('error', $.sass.logError))
-        .on('error', $.notify.onError('Error compiling Sass!'))
-        .pipe($.autoprefixer(OPTIONS.autoprefixer))
-        // .pipe($.rename({
-        //     basename: PROJECT,
-        //     extname: '.css'
-        // }))
-        .pipe($.sourcemaps.write('/'))
-        .pipe($.plumber.stop())
-        .pipe(gulp.dest(PATHS.css))
-        .pipe(BROWSERSYNC.stream());
+    .src(SOURCES.sass)
+    .pipe($.sourcemaps.init())
+    .pipe($.plumber())
+    .pipe($.sass(OPTIONS.sass)
+    .on('error', $.sass.logError))
+    .on('error', $.notify.onError('Error compiling Sass!'))
+    .pipe($.autoprefixer(OPTIONS.autoprefixer))
+    // .pipe($.rename({
+    //     basename: PROJECT,
+    //     extname: '.css'
+    // }))
+    .pipe($.sourcemaps.write('/'))
+    .pipe($.plumber.stop())
+    .pipe(gulp.dest(PATHS.css))
+    .pipe(BROWSERSYNC.stream());
 });
 
-// Minify CSS - Not needed if you will use a plug-in that will minify CSS
-gulp.task('minify:css', () => {
+// Minify the compiled CSS - Not needed if you will use a plug-in that will minify CSS
+gulp.task('sass:minify', () => {
     return gulp
-        .src(`${PATHS.css}/${PROJECT}.css`)
-        .pipe($.plumber())
-        .pipe($.cssnano(OPTIONS.cssnano))
-        .pipe($.rename({
-            basename: PROJECT,
-            suffix: '.min',
-            extname: '.css'
-        }))
-        .pipe(gulp.dest(PATHS.css))
-        .pipe(BROWSERSYNC.stream());
+    .src(`${PATHS.css}/${PROJECT}.css`)
+    .pipe($.plumber())
+    .pipe($.cssnano(OPTIONS.cssnano))
+    .pipe($.rename({
+        basename: PROJECT,
+        suffix: '.min',
+        extname: '.css'
+    }))
+    .pipe(gulp.dest(PATHS.css))
+    .pipe(BROWSERSYNC.stream());
 });
 
 /* -------------------------------------------------------------------------------------------------
   # JS Tasks
 ------------------------------------------------------------------------------------------------- */
 // Lint JavaScript
-gulp.task('lint:js', () => {
+gulp.task('js:lint', () => {
     return gulp
-        .src('./assets/js/custom/*.js')
-        .pipe($.plumber())
-        // .pipe($.babel())
-        .pipe($.eslint())
-        .pipe($.eslint.format())
-        .pipe($.eslint.failAfterError());
+    .src('./assets/js/custom/*.js')
+    .pipe($.plumber())
+    // .pipe($.babel())
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.eslint.failAfterError());
 });
 
 // Concatenate JavaScript
 gulp.task('js', () => {
     return gulp
-        .src(SOURCES.concat)
-        .pipe($.sourcemaps.init())
-        .pipe($.plumber())
-        .pipe($.print())
-        .pipe($.concat(`${PROJECT}.js`))
-        .pipe($.sourcemaps.write('/'))
-        .pipe($.plumber.stop())
-        .pipe(gulp.dest(PATHS.js));
+    .src(SOURCES.concat)
+    .pipe($.sourcemaps.init())
+    .pipe($.plumber())
+    // .pipe($.babel())
+    .pipe($.print())
+    .pipe($.concat(`${PROJECT}.js`))
+    .pipe($.sourcemaps.write('/'))
+    .pipe($.plumber.stop())
+    .pipe(gulp.dest(PATHS.js));
 });
 
-// Minify JavaScript - Not needed if you will use a plug-in that will minify JS
-gulp.task('minify:js', () => {
+// Minify the generated JavaScript - Not needed if you will use a plug-in that will minify JS
+gulp.task('js:minify', () => {
     return gulp
-        .src(`${PATHS.js}/${PROJECT}.js`)
-        .pipe($.plumber())
-        .pipe($.uglify())
-        .pipe($.rename({
-            basename: PROJECT,
-            suffix: '.min',
-            extname: '.js'
-        }))
-        .pipe($.plumber.stop())
-        .pipe(gulp.dest(PATHS.js))
-        .pipe(BROWSERSYNC.stream());
+    .src(`${PATHS.js}/${PROJECT}.js`)
+    .pipe($.plumber())
+    .pipe($.uglify())
+    .pipe($.rename({
+        basename: PROJECT,
+        suffix: '.min',
+        extname: '.js'
+    }))
+    .pipe($.plumber.stop())
+    .pipe(gulp.dest(PATHS.js))
+    .pipe(BROWSERSYNC.stream());
 });
 
 /* -------------------------------------------------------------------------------------------------
   # Image Tasks
 ------------------------------------------------------------------------------------------------- */
 // Optimize images
-gulp.task('minify:images', () => {
+gulp.task('images', () => {
     return gulp
-        .src(SOURCES.images)
-        .pipe($.plumber())
-        .pipe($.imagemin({
-            interlaced: true,
-            progressive: true
-        }))
-        .pipe($.print())
-        .pipe(gulp.dest(PATHS.images));
+    .src(SOURCES.images)
+    .pipe($.plumber())
+    .pipe($.imagemin(OPTIONS.imagemin))
+    .pipe($.print())
+    .pipe(gulp.dest(PATHS.images));
 });
 
 /* -------------------------------------------------------------------------------------------------
   # Packaging Tasks
 ------------------------------------------------------------------------------------------------- */
-// Package a zip for theme upload
-gulp.task('package', () => {
-  return gulp
+// Copy all files except the development files to a distribution folder
+gulp.task('package', ['clean:dist', 'sass', 'js', 'images'], () => {
+    return gulp
     .src([
         `${PATHS.root}**/*`,
         `!${PATHS.root}node_modules`,
         `!${PATHS.root}node_modules/**/*`,
+        `!${PATHS.dist}`,
+        `!${PATHS.dist}/**/*`,
+        `!${PATHS.sass}`,
+        `!${PATHS.sass}/**/*`,
+        `!${PATHS.css}/**/*.css.map`,
+        `!${PATHS.js}/**/*.js.map`,
+        `!${PATHS.js}/custom`,
+        `!${PATHS.js}/custom/**/*`,
+        `!${PATHS.js}/plugins`,
+        `!${PATHS.js}/plugins/**/*`,
+        `!${PATHS.root}.babelrc`,
+        `!${PATHS.root}.editorconfig`,
+        `!${PATHS.root}.eslintrc.json`,
+        `!${PATHS.root}.gitignore`,
+        `!${PATHS.root}.stylelintrc`,
+        `!${PATHS.root}gulpfile.babel.js`,
+        `!${PATHS.root}package.json`,
+        `!${PATHS.root}README.md`
     ])
-    .pipe($.zip(`${PROJECT}.zip`))
-    .pipe(gulp.dest(PATHS.root));
+    .pipe(gulp.dest(PATHS.dist + `${PROJECT}`));
 });
 
-// Build task to run all tasks and and package for distribution
-gulp.task('zip', ['sass', 'js', 'minify:images', 'package']);
+// Zip up the packaged folder into a .zip file
+gulp.task('zip', ['package'], () => {
+    return gulp
+    .src(PATHS.dist + `${PROJECT}`)
+    .pipe($.zip(`${PROJECT}.zip`))
+    .pipe(gulp.dest(PATHS.dist));
+});
 
 /* -------------------------------------------------------------------------------------------------
   # Defaults
@@ -270,8 +301,8 @@ gulp.task('default', ['sass', 'js', 'server', 'watch']);
 
 // Watch files for changes
 gulp.task('watch', () => {
-  gulp.watch(SOURCES.sass, ['sass']);
-  gulp.watch(SOURCES.js, ['js']);
-  gulp.watch(SOURCES.php, BROWSERSYNC.reload);
-  gulp.watch(SOURCES.html, BROWSERSYNC.reload);
+    gulp.watch(SOURCES.sass, ['sass']);
+    gulp.watch(SOURCES.js, ['js']);
+    gulp.watch(SOURCES.php, BROWSERSYNC.reload);
+    gulp.watch(SOURCES.html, BROWSERSYNC.reload);
 });
