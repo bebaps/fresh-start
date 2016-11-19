@@ -119,6 +119,22 @@ const $ = require('gulp-load-plugins')(OPTIONS.loadplugins);
 /* -------------------------------------------------------------------------------------------------
   # Utility Tasks
 ------------------------------------------------------------------------------------------------- */
+// Store a copy of the theme as is before any changes are made
+gulp.task('set-up', () => {
+    return gulp
+    .src([
+        './**/*',
+        './.babelrc',
+        './.editorconfig',
+        './.eslintrc.json',
+        './.stylelintrc',
+        './.gitignore',
+        '!./node_modules',
+        '!./node_modules/**/*'
+    ])
+    .pipe(gulp.dest('./.tmp'));
+});
+
 // Delete the generated CSS folder
 gulp.task('clean:css', () => {
     del([
@@ -261,6 +277,8 @@ gulp.task('package', ['clean:dist', 'sass', 'js', 'images'], () => {
     return gulp
     .src([
         `${PATHS.root}**/*`,
+        `!${PATHS.root}.tmp`,
+        `!${PATHS.root}.tmp/**/*`,
         `!${PATHS.root}node_modules`,
         `!${PATHS.root}node_modules/**/*`,
         `!${PATHS.dist}`,
@@ -297,7 +315,7 @@ gulp.task('zip', ['package'], () => {
   # Defaults
 ------------------------------------------------------------------------------------------------- */
 // Default task
-gulp.task('default', ['sass', 'js', 'server', 'watch']);
+gulp.task('default', ['set-up', 'sass', 'js', 'server', 'watch']);
 
 // Watch files for changes
 gulp.task('watch', () => {
