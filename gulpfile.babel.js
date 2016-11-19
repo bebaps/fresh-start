@@ -119,6 +119,34 @@ const $ = require('gulp-load-plugins')(OPTIONS.loadplugins);
 /* -------------------------------------------------------------------------------------------------
   # Utility Tasks
 ------------------------------------------------------------------------------------------------- */
+// Store a copy of the theme as is before any changes are made
+gulp.task('set-up', () => {
+    return gulp
+    .src([
+        './**/*',
+        './.babelrc',
+        './.editorconfig',
+        './.eslintrc.json',
+        './.stylelintrc',
+        './.gitignore',
+        '!./node_modules',
+        '!./node_modules/**/*'
+    ])
+    .pipe(gulp.dest('./.tmp'));
+});
+
+// Reset the theme as if this is the first time ever using it
+gulp.task('startover', () => {
+    del([
+        './**/*',
+        '!./.tmp',
+    ]);
+    return gulp
+    .src('./.tmp/**/*')
+    .pipe(gulp.dest('./'));
+
+});
+
 // Delete the generated CSS folder
 gulp.task('clean:css', () => {
     del([
