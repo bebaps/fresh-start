@@ -23,12 +23,6 @@
 
     <a class="screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fresh-start' ); ?></a>
 
-    <?php wp_nav_menu( array(
-        'theme_location'  => 'mobile',
-        'container_class' => 'cm-panel',
-        'container_id'    => 'mobile-nav'
-    ) ); ?>
-
     <header class="site_header">
         <div class="site_branding">
             <?php if ( is_front_page() && is_home() ) : ?>
@@ -67,10 +61,4 @@
             'container_id'    => 'site_navigation',
             'menu_id'         => 'primary-menu'
         ) ); ?>
-
-        <button class="cm-hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </header><!-- .site_header -->

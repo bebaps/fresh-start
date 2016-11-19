@@ -15,6 +15,6 @@ if ( ! is_active_sidebar( $sidebar ) ) {
 }
 ?>
 
-<aside class="sidebar">
+<aside class="site_sidebar">
     <?php dynamic_sidebar( $sidebar ); ?>
 </aside><!-- .sidebar -->
