@@ -28,6 +28,7 @@ body {
 blockquote,
 q {
     quotes: "" "";
+    font-style: italic;
 
     &::before,
     &::after {
@@ -77,8 +78,4 @@ sup {
 
 sub {
     bottom: -0.25em;
-}
-
-header {
-    position: relative;
 }
