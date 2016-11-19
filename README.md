@@ -15,7 +15,17 @@ Probably. But that really just depends on you as a developer. You are meant to r
 As the default [_s](https://github.com/automattic/_s) theme is meant to be a very broad starting point, I have already stripped this down to what I need it to be. If you agree with my changes, cool, the sooner you can get to work. If not, that's cool too. Change it.
 
 # Getting Started
-If you haven't done so already, download [Node](https://nodejs.org/en/) or [read this](https://docs.npmjs.com/getting-started/installing-node). Then clone the repo or download the latest release, and run `npm install` (you may need to run `sudo npm install` depending on your set up). Once that is complete run `gulp` to run all the default tasks, and get to work.
+If you haven't done so already, download [Node](https://nodejs.org/en/) or [read this](https://docs.npmjs.com/getting-started/installing-node). Then download the latest release, renaming the directory from `fresh-start` to whatever the name of your theme will be. Then follwo these steps:
+
+* Search for: `'fresh-start'` and replace with: `'your-theme'`
+* Search for: `fresh-start_` and replace with: `your-theme_`
+* Search for: `Text Domain: fresh-start` and replace with: `Text Domain: your-theme` in style.css.
+* Search for: <code>&nbsp;fresh-start</code> and replace with: <code>&nbsp;your-theme</code>
+* Search for: `fresh-start-` and replace with: `your-theme-`
+
+Then, update the stylesheet header in `style.css` and the links in `footer.php` with your own information.
+
+Run `npm install` (you may need to run `sudo npm install` depending on your set up) to install all the dependencies for the theme. While that is running, you should change both the `LOCALURL` and `PROJECT` constants found in `gulpfile.babel.js` on lines 3 and 4. Once that is complete run `gulp` to run all the default tasks, and get to work.
 
 ## Tools
 A few of the core tools used to put this theme together are listed below. If you have never heard of them or just don't know how to use them, take the time to review the documentation for each. The uses of each expand far beyond WordPress development and can surely benefit you in all areas of web development.
