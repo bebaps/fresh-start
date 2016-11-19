@@ -135,18 +135,6 @@ gulp.task('set-up', () => {
     .pipe(gulp.dest('./.tmp'));
 });
 
-// Reset the theme as if this is the first time ever using it
-gulp.task('startover', () => {
-    del([
-        './**/*',
-        '!./.tmp',
-    ]);
-    return gulp
-    .src('./.tmp/**/*')
-    .pipe(gulp.dest('./'));
-
-});
-
 // Delete the generated CSS folder
 gulp.task('clean:css', () => {
     del([
@@ -289,6 +277,8 @@ gulp.task('package', ['clean:dist', 'sass', 'js', 'images'], () => {
     return gulp
     .src([
         `${PATHS.root}**/*`,
+        `!${PATHS.root}.tmp`,
+        `!${PATHS.root}.tmp/**/*`,
         `!${PATHS.root}node_modules`,
         `!${PATHS.root}node_modules/**/*`,
         `!${PATHS.dist}`,
@@ -325,7 +315,7 @@ gulp.task('zip', ['package'], () => {
   # Defaults
 ------------------------------------------------------------------------------------------------- */
 // Default task
-gulp.task('default', ['sass', 'js', 'server', 'watch']);
+gulp.task('default', ['set-up', 'sass', 'js', 'server', 'watch']);
 
 // Watch files for changes
 gulp.task('watch', () => {
