@@ -1,7 +1,7 @@
 'use strict';
 
 const LOCALURL = 'freshstart:8888'; // See https://browsersync.io/docs/options/#option-proxy
-const PROJECT = 'fresh-start'; // Give this project a name
+const PROJECT = 'fresh-start'; // Give this project a name, used for the build folder
 const PATHS = new function() {
     this.root = './',
     this.dist = `${this.root}_dist/`,
@@ -42,7 +42,7 @@ const SOURCES = {
         `${PATHS.js}/custom/navigation.js`,
         // `${PATHS.js}/custom/customizer.js`,
         `${PATHS.js}/custom/custom.js`,
-        `!${PATHS.js}/${PROJECT}.js`
+        `!${PATHS.js}/theme-scripts.js`
     ]
 };
 const OPTIONS = { // Set options for the Gulp plugins
@@ -137,17 +137,14 @@ gulp.task('set-up', () => {
 
 // Delete the generated CSS folder
 gulp.task('clean:css', () => {
-    del([
-        `${PATHS.css}/${PROJECT}.css`,
-        `${PATHS.css}/${PROJECT}.css.map`
-    ]);
+    del(`${PATHS.css}`);
 });
 
-// Delete the generated project JS file
+// Delete the generated project JS file and sourcemap
 gulp.task('clean:js', () => {
     del([
-        `${PATHS.js}/${PROJECT}.*.*`,
-        `${PATHS.js}/${PROJECT}.*`
+        `${PATHS.js}/theme-scripts.js`,
+        `${PATHS.js}/theme-scripts.js.map`
     ]);
 });
 
@@ -187,10 +184,6 @@ gulp.task('sass', ['clean:css'], () => {
     .on('error', $.sass.logError))
     .on('error', $.notify.onError('Error compiling Sass!'))
     .pipe($.autoprefixer(OPTIONS.autoprefixer))
-    // .pipe($.rename({
-    //     basename: PROJECT,
-    //     extname: '.css'
-    // }))
     .pipe($.sourcemaps.write('/'))
     .pipe($.plumber.stop())
     .pipe(gulp.dest(PATHS.css))
@@ -200,14 +193,14 @@ gulp.task('sass', ['clean:css'], () => {
 // Minify the compiled CSS - Not needed if you will use a plug-in that will minify CSS
 gulp.task('sass:minify', () => {
     return gulp
-    .src(`${PATHS.css}/${PROJECT}.css`)
+    .src(`${PATHS.css}/theme-styles.css`)
     .pipe($.plumber())
     .pipe($.cssnano(OPTIONS.cssnano))
-    .pipe($.rename({
-        basename: PROJECT,
-        suffix: '.min',
-        extname: '.css'
-    }))
+    // .pipe($.rename({
+    //     basename: 'theme-styles',
+    //     suffix: '.min',
+    //     extname: '.css'
+    // }))
     .pipe(gulp.dest(PATHS.css))
     .pipe(BROWSERSYNC.stream());
 });
@@ -234,7 +227,7 @@ gulp.task('js', () => {
     .pipe($.plumber())
     // .pipe($.babel())
     .pipe($.print())
-    .pipe($.concat(`${PROJECT}.js`))
+    .pipe($.concat('theme-scripts.js'))
     .pipe($.sourcemaps.write('/'))
     .pipe($.plumber.stop())
     .pipe(gulp.dest(PATHS.js));
@@ -243,14 +236,14 @@ gulp.task('js', () => {
 // Minify the generated JavaScript - Not needed if you will use a plug-in that will minify JS
 gulp.task('js:minify', () => {
     return gulp
-    .src(`${PATHS.js}/${PROJECT}.js`)
+    .src(`${PATHS.js}/theme-scripts.js`)
     .pipe($.plumber())
     .pipe($.uglify())
-    .pipe($.rename({
-        basename: PROJECT,
-        suffix: '.min',
-        extname: '.js'
-    }))
+    // .pipe($.rename({
+    //     basename: 'theme-scripts',
+    //     suffix: '.min',
+    //     extname: '.js'
+    // }))
     .pipe($.plumber.stop())
     .pipe(gulp.dest(PATHS.js))
     .pipe(BROWSERSYNC.stream());
@@ -315,7 +308,7 @@ gulp.task('zip', ['package'], () => {
   # Defaults
 ------------------------------------------------------------------------------------------------- */
 // Default task
-gulp.task('default', ['set-up', 'sass', 'js', 'server', 'watch']);
+gulp.task('default', ['set-up', 'server', 'sass', 'js', 'watch']);
 
 // Watch files for changes
 gulp.task('watch', () => {

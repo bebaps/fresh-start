@@ -15,10 +15,11 @@ Probably. But that really just depends on you as a developer. You are meant to r
 As the default [_s](https://github.com/automattic/_s) theme is meant to be a very broad starting point, I have already stripped this down to what I need it to be. If you agree with my changes, cool, the sooner you can get to work. If not, that's cool too. Change it.
 
 # Getting Started
-If you haven't done so already, download [Node](https://nodejs.org/en/) or [read this](https://docs.npmjs.com/getting-started/installing-node). Then download the latest release, renaming the directory from `fresh-start` to whatever the name of your theme will be. Then follwo these steps:
+If you haven't done so already, download [Node](https://nodejs.org/en/) or [read this](https://docs.npmjs.com/getting-started/installing-node). Then download the latest release, renaming the directory from `fresh-start` to whatever the name of your theme will be. Then follow these steps:
 
 * Search for: `'fresh-start'` and replace with: `'your-theme'`
 * Search for: `fresh-start_` and replace with: `your-theme_`
+* Search for: `fresh_start_` and replace with: `your_theme_`
 * Search for: `Text Domain: fresh-start` and replace with: `Text Domain: your-theme` in style.css.
 * Search for: <code>&nbsp;fresh-start</code> and replace with: <code>&nbsp;your-theme</code>
 * Search for: `fresh-start-` and replace with: `your-theme-`
