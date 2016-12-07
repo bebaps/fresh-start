@@ -31,7 +31,7 @@ get_header(); ?>
 
             while ( have_posts() ) : the_post();
 
-                get_template_part( 'template-parts/content', get_post_format() );
+                get_template_part( 'templates/content/content', get_post_format() );
 
             endwhile;
 
@@ -39,7 +39,7 @@ get_header(); ?>
 
         else :
 
-            get_template_part( 'template-parts/content', 'none' );
+            get_template_part( 'templates/content/content', 'none' );
 
         endif; ?>
 
