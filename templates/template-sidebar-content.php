@@ -1,13 +1,15 @@
 <?php
 /**
- * Template Name: Layout - No Sidebar
+ * Template Name: Layout - Sidebar/Content
+ * Template Post Type: page, post
  *
- * The template for displaying content with no sidebar.
+ * The template for displaying the sidebar on the left, and the content on the right.
  *
  * @package Fresh_Start
  */
 
-get_header(); ?>
+get_header();
+get_sidebar(); ?>
 
 
     <main id="main" class="site_main">
@@ -15,7 +17,7 @@ get_header(); ?>
         <?php
         while ( have_posts() ) : the_post();
 
-            get_template_part( 'template-parts/content', 'page' );
+            get_template_part( 'templates/content/content', 'page' );
 
             // If comments are open or we have at least one comment, load up the comment template.
             if ( comments_open() || get_comments_number() ) :
