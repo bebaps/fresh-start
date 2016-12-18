@@ -76,30 +76,35 @@ if ( ! function_exists( 'fresh_start_setup' ) ) :
 			'flex-height' => false,
 		) );
 
-		if ( ! isset( $content_width ) ) {
-			$content_width = 1200;
-		}
+        /**
+         * Set the content width in pixels, based on the theme's design and stylesheet.
+         */
+        function fresh_start_content_width() {
+            $content_width = 1200;
+            $GLOBALS['content_width'] = apply_filters( 'fresh_start_content_width', $content_width );
+        }
+        add_action( 'after_setup_theme', 'fresh_start_content_width', 0 );
 	}
 endif;
 add_action( 'after_setup_theme', 'fresh_start_setup' );
 
 // Enqueue CSS and JS
-require_once get_template_directory() . '/functions/enqueues.php';
+require_once get_parent_theme_file_path('/functions/enqueues.php');
 
 // Register Widgets
-require_once get_template_directory() . '/functions/widgets.php';
+require_once get_parent_theme_file_path('/functions/widgets.php');
 
 // Implement the Custom Header feature
-require_once get_template_directory() . '/functions/custom-header.php';
+require_once get_parent_theme_file_path('/functions/custom-header.php');
 
 // Custom template tags for this theme
-require_once get_template_directory() . '/functions/template-tags.php';
+require_once get_parent_theme_file_path('/functions/template-tags.php');
 
 // Customizer additions
-require_once get_template_directory() . '/functions/customizer.php';
+require_once get_parent_theme_file_path('/functions/customizer.php');
 
 // WordPress tweaks specifically for this theme
-require_once get_template_directory() . '/functions/theme-extras.php';
+require_once get_parent_theme_file_path('/functions/theme-extras.php');
 
 // Custom functions that act independently of the theme templates
-require_once get_template_directory() . '/functions/custom-functions.php';
+require_once get_parent_theme_file_path('/functions/custom-functions.php');

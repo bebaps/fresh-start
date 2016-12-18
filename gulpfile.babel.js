@@ -47,16 +47,17 @@ const SOURCES = {
 };
 const OPTIONS = { // Set options for the Gulp plugins
     sass: {
-        outputStyle: 'expanded',
+        outputStyle: 'compact',
         includePaths: [
             './node_modules/normalize-scss/sass/'
         ]
     },
     autoprefixer: {
         browsers: [
-            '> 1%',
+            '> 5%',
             'last 3 versions',
-            'Safari > 7'
+            'Safari > 7',
+            'IE > 9'
         ]
     },
     browsersync: {
