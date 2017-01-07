@@ -1,6 +1,8 @@
 /* -------------------------------------------------------------------------------------------------
-  # Accessibility
+  # WordPress Specific Styles
 ------------------------------------------------------------------------------------------------- */
+// Accessibility
+// -----------------------------------------------------------------------------
 .screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
@@ -9,8 +11,8 @@
   overflow: hidden;
 
   &:focus {
-    @include font-size(0.875);
-    background-color: $color_background-screen;
+    font-size: rem(0.875);
+    background-color: $color_off-white;
     border-radius: 3px;
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
     clip: auto !important;
@@ -31,4 +33,23 @@
 // Do not show the outline on the skip link target
 #content[tabindex="-1"]:focus {
   outline: 0;
+}
+
+// Alignments
+// -----------------------------------------------------------------------------
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+}
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em;
+}
+
+.aligncenter {
+  @include center-block;
+  clear: both;
 }

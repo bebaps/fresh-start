@@ -26,7 +26,7 @@ if ( !function_exists('fresh_start_posted_on')) :
     $post_author = sprintf(esc_html_x('by %s', 'post author', 'fresh-start'),
       '<span class="post_author"><a class="author-url" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>');
 
-    echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $post_author . '</span>'; // WPCS: XSS OK.
+    echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $post_author . '</span>';
 
   }
 endif;
@@ -42,14 +42,14 @@ if ( !function_exists('fresh_start_entry_footer')) :
       $categories_list = get_the_category_list(esc_html__(', ', 'fresh-start'));
       if ($categories_list && fresh_start_categorized_blog()) {
         printf('<span class="category-links">' . esc_html__('Posted in %1$s', 'fresh-start') . '</span>',
-          $categories_list); // WPCS: XSS OK.
+          $categories_list);
       }
 
       /* translators: used between list items, there is a space after the comma */
       $tags_list = get_the_tag_list('', esc_html__(', ', 'fresh-start'));
       if ($tags_list) {
         printf('<span class="tag-links">' . esc_html__('Tagged %1$s', 'fresh-start') . '</span>',
-          $tags_list); // WPCS: XSS OK.
+          $tags_list);
       }
     }
 

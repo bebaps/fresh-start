@@ -50,12 +50,12 @@
 
       $description = get_bloginfo('description', 'display');
       if ($description || is_customize_preview()) : ?>
-        <p class="site_description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+        <p class="site_description"><?php echo $description; ?></p>
       <?php endif; ?>
     </div>
 
     <?php wp_nav_menu([
-      'theme_location'  => 'primary',
+      'theme_location'  => 'menu-1',
       'container'       => 'nav',
       'container_class' => 'main-navigation',
       'container_id'    => 'site_navigation',

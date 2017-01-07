@@ -45,10 +45,9 @@ if ( !function_exists('fresh_start_setup')) :
 
     // Register the navigational menus.
     register_nav_menus([
-      'primary' => esc_html__('Primary Menu', 'fresh-start'),
-      'footer'  => esc_html__('Footer Menu', 'fresh-start'),
-      'social'  => esc_html__('Social Menu', 'fresh-start'),
-      'mobile'  => esc_html__('Mobile Menu', 'fresh-start')
+      'menu-1'  => esc_html__('Primary Menu', 'fresh-start'),
+      'menu-2'  => esc_html__('Footer Menu', 'fresh-start'),
+      'menu-3'  => esc_html__('Social Menu', 'fresh-start')
     ]);
 
     /*

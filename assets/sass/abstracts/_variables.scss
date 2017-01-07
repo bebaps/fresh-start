@@ -1,10 +1,9 @@
 // Colors
 // -----------------------------------------------------------------------------
-$color_background-body: rgb(255, 255, 255);
-$color_background-screen: rgb(241, 241, 241);
-$color_background-hr: rgb(204, 204, 204);
-$color_background-pre: rgb(238, 238, 238);
-$color_background-ins: rgb(255, 249, 192);
+$color_white: rgb(255, 255, 255);
+$color_off-white: rgb(241, 241, 241);
+$color_black: rgb(0, 0, 0);
+$color_yellow: rgb(255, 249, 192);
 
 $color_text-screen: rgb(33, 117, 155);
 $color_text-input: rgb(102, 102, 102);
@@ -21,34 +20,26 @@ $color_border-abbr: rgb(102, 102, 102);
 
 // Typography
 // -----------------------------------------------------------------------------
-$root_font-size: 16px !default;
-$root_line-height: 1.5 !default;
-$body_font-size: 1.125em !default;
-$body_line-height: 1.6em !default;
-
-$font_main: sans-serif !default;
 $font_code: monospace !default;
-$font_pre: $font_code !default;
-$font_line-height-pre: $body_line-height !default;
 
 $headings: (
   h1: (
-    font-size: 2.4em
+    font-size: 2.4rem
   ),
   h2: (
-    font-size: 2em
+    font-size: 2rem
   ),
   h3: (
-    font-size: 1.8em
+    font-size: 1.8rem
   ),
   h4: (
-    font-size: 1.6em
+    font-size: 1.6rem
   ),
   h5: (
-    font-size: 1.4em
+    font-size: 1.4rem
   ),
   h6: (
-    font-size: 1.2em
+    font-size: 1.2rem
   )
 );
 

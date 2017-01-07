@@ -14,7 +14,7 @@
     "at-rule-name-space-after": "always-single-line",
     "at-rule-no-unknown": [
       true, {
-        ignoreAtRules: ["extend", "function", "if", "return", "warn", "mixin", "content", "else", "include"]
+        ignoreAtRules: ["extend", "function", "if", "return", "warn", "mixin", "content", "else", "include", "at-root"]
       }
     ],
     "at-rule-semicolon-newline-after": "always",

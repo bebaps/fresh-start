@@ -1,23 +1,6 @@
 /* -------------------------------------------------------------------------------------------------
   # Typography
 ------------------------------------------------------------------------------------------------- */
-body,
-button,
-input,
-select,
-textarea {
-  font-family: $font_main;
-  font-size: $root_font-size;
-  font-size: 1rem;
-  line-height: $root_line-height;
-}
-
-.site_main {
-  font-size: $body_font-size;
-  line-height: $body_line-height;
-  max-width: $site_max-width;
-}
-
 h1,
 h2,
 h3,
@@ -74,24 +57,20 @@ cite,
 em,
 i {
   font-style: italic;
-  font-weight: lighter;
+  font-weight: 300;
 }
 
 pre {
-  @include font-size(16, em);
-  background: $color_background-pre;
-  font-family: $font_pre;
-  line-height: $font_line-height-pre;
+  background: $color_off-white;
   max-width: 100%;
   overflow: auto;
-  padding: 1.6em;
+  padding: 1.6rem;
 }
 
 code,
 kbd,
 tt,
 var {
-  @include font-size(16, em);
   font-family: $font_code;
 }
 
@@ -103,7 +82,7 @@ acronym {
 
 mark,
 ins {
-  background: $color_background-ins;
+  background: $color_yellow;
   text-decoration: none;
 }
 

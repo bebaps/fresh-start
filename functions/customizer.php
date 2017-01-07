@@ -24,7 +24,7 @@ add_action('customize_register', 'fresh_start_customize_register');
  */
 function fresh_start_customize_preview_js()
 {
-  wp_enqueue_script('fresh_start_customizer', get_theme_file_uri('/assets/js/customizer.js'), ['customize-preview'],
+  wp_enqueue_script('fresh_start_customizer', get_theme_file_uri('/assets/js/theme/customizer.js'), ['customize-preview'],
     '20151215', true);
 }
 

@@ -9,13 +9,17 @@
 
 // Convert pixels to rem
 @function rem($pixels) {
+  $root_font-size: 16px;
   $rem: $pixels / strip-unit($root_font-size);
+
   @return #{$rem}rem;
 }
 
 // Convert pixels to em
 @function em($pixels) {
+  $root_font-size: 16px;
   $em: $pixels / strip-unit($root_font-size);
+
   @return #{$em}em;
 }
 

@@ -1,7 +1,7 @@
 'use strict';
 
 const LOCALURL = 'freshstart:8888'; // See https://browsersync.io/docs/options/#option-proxy
-const PROJECT = 'fresh-start'; // Give this project a name, used for the build folder
+const PROJECT = 'freshstart'; // Give this project a name, used for the build folder
 const PATHS = new function() {
   this.root = './',
   this.dist = `${this.root}_dist/`,
@@ -29,25 +29,21 @@ const SOURCES = {
     `${PATHS.sass}/**/*.scss`
   ],
   js: [
-    `${PATHS.js}/custom/custom.js`
+    `${PATHS.js}/theme/custom.js`
   ],
   images: [
     `${PATHS.images}/**/*.{jpg,png,gif,svg}`
   ],
   concat: [ // Set the order for JS concatenation
-    // './node_modules/jquery/dist/jquery.js',
+    './node_modules/jquery/dist/jquery.js',
     `${PATHS.js}/vendor/*.js`,
-    `${PATHS.js}/plugins/*.js`,
-    `${PATHS.js}/custom/skip-link-focus-fix.js`,
-    `${PATHS.js}/custom/navigation.js`,
-    `${PATHS.js}/custom/customizer.js`,
-    `${PATHS.js}/custom/custom.js`,
-    `!${PATHS.js}/theme-scripts.js`
+    `${PATHS.js}/theme/skip-link-focus-fix.js`,
+    `${PATHS.js}/theme/custom.js`
   ]
 };
 const OPTIONS = { // Set options for the Gulp plugins
   sass: {
-    outputStyle: 'compact'
+    outputStyle: 'expanded'
   },
   autoprefixer: {
     browsers: [
@@ -132,14 +128,17 @@ gulp.task('set-up', () => {
 
 // Delete the generated CSS folder
 gulp.task('clean:css', () => {
-  del(`${PATHS.css}`);
+  del([
+    `${PATHS.css}/*.css`,
+    `${PATHS.css}/sourcemaps`
+    ]);
 });
 
 // Delete the generated project JS file and sourcemap
 gulp.task('clean:js', () => {
   del([
-    `${PATHS.js}/theme-scripts.js`,
-    `${PATHS.js}/theme-scripts.js.map`
+    `${PATHS.js}/*.js`,
+    `${PATHS.js}/sourcemaps`
   ]);
 });
 
@@ -179,7 +178,7 @@ gulp.task('sass', ['clean:css'], () => {
       .on('error', $.sass.logError))
     .on('error', $.notify.onError('Error compiling Sass!'))
     .pipe($.autoprefixer(OPTIONS.autoprefixer))
-    .pipe($.sourcemaps.write('/'))
+    .pipe($.sourcemaps.write('/sourcemaps'))
     .pipe($.plumber.stop())
     .pipe(gulp.dest(PATHS.css))
     .pipe(BROWSERSYNC.stream());
@@ -188,14 +187,13 @@ gulp.task('sass', ['clean:css'], () => {
 // Minify the compiled CSS - Not needed if you will use a plug-in that will minify CSS
 gulp.task('sass:minify', () => {
   return gulp
-    .src(`${PATHS.css}/theme-styles.css`)
+    .src(SOURCES.css)
     .pipe($.plumber())
     .pipe($.cssnano(OPTIONS.cssnano))
-    // .pipe($.rename({
-    //   basename: 'theme-styles',
-    //   suffix: '.min',
-    //   extname: '.css'
-    // }))
+    .pipe($.rename({
+      suffix: '.min',
+      extname: '.css'
+    }))
     .pipe(gulp.dest(PATHS.css))
     .pipe(BROWSERSYNC.stream());
 });
@@ -206,7 +204,7 @@ gulp.task('sass:minify', () => {
 // Lint JavaScript
 gulp.task('js:lint', () => {
   return gulp
-    .src('./assets/js/custom/*.js')
+    .src('./assets/js/theme/*.js')
     .pipe($.plumber())
     // .pipe($.babel())
     .pipe($.eslint())
@@ -222,8 +220,8 @@ gulp.task('js', () => {
     .pipe($.plumber())
     // .pipe($.babel())
     .pipe($.print())
-    .pipe($.concat('theme-scripts.js'))
-    .pipe($.sourcemaps.write('/'))
+    .pipe($.concat('theme.js'))
+    .pipe($.sourcemaps.write('/sourcemaps'))
     .pipe($.plumber.stop())
     .pipe(gulp.dest(PATHS.js));
 });
@@ -231,14 +229,13 @@ gulp.task('js', () => {
 // Minify the generated JavaScript - Not needed if you will use a plug-in that will minify JS
 gulp.task('js:minify', () => {
   return gulp
-    .src(`${PATHS.js}/theme-scripts.js`)
+    .src(`${PATHS.js}/theme.js`)
     .pipe($.plumber())
     .pipe($.uglify())
-    // .pipe($.rename({
-    //   basename: 'theme-scripts',
-    //   suffix: '.min',
-    //   extname: '.js'
-    // }))
+    .pipe($.rename({
+      suffix: '.min',
+      extname: '.js'
+    }))
     .pipe($.plumber.stop())
     .pipe(gulp.dest(PATHS.js))
     .pipe(BROWSERSYNC.stream());
@@ -273,12 +270,10 @@ gulp.task('package', ['clean:dist', 'sass', 'js', 'images'], () => {
       `!${PATHS.dist}/**/*`,
       `!${PATHS.sass}`,
       `!${PATHS.sass}/**/*`,
-      `!${PATHS.css}/**/*.css.map`,
-      `!${PATHS.js}/**/*.js.map`,
-      `!${PATHS.js}/custom`,
-      `!${PATHS.js}/custom/**/*`,
-      `!${PATHS.js}/plugins`,
-      `!${PATHS.js}/plugins/**/*`,
+      `!${PATHS.css}/sourcemaps`,
+      `!${PATHS.js}/sourcemaps`,
+      `!${PATHS.js}/theme`,
+      `!${PATHS.js}/theme/**/*`,
       `!${PATHS.root}.babelrc`,
       `!${PATHS.root}.editorconfig`,
       `!${PATHS.root}.eslintrc.json`,
@@ -303,10 +298,10 @@ gulp.task('zip', ['package'], () => {
  # Defaults
  ------------------------------------------------------------------------------------------------- */
 // Default task
-gulp.task('default', ['set-up', 'server', 'sass', 'js', 'watch']);
+gulp.task('default', ['set-up', 'sass', 'js', 'watch', 'server']);
 
 // Watch files for changes
-gulp.task('watch', () = > {
+gulp.task('watch', () => {
   gulp.watch(SOURCES.sass, ['sass']);
   gulp.watch(SOURCES.js, ['js']);
   gulp.watch(SOURCES.php, BROWSERSYNC.reload);

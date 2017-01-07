@@ -20,7 +20,7 @@ add_action('wp_enqueue_scripts', 'fresh_start_scripts');
  */
 function custom_login_stylesheet()
 {
-  wp_enqueue_style('custom-login', get_theme_file_uri('/assets/css/login.css'));
+  wp_enqueue_style('custom-login', get_theme_file_uri('/assets/css/theme-login.css'));
 }
 
 add_action('login_enqueue_scripts', 'custom_login_stylesheet');
