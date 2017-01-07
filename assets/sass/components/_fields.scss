@@ -17,17 +17,17 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-    padding: 0.25em;
+  padding: 0.25em;
 
-    &:focus {
-        color: $color_text-input-focus;
-    }
+  &:focus {
+    color: $color_text-input-focus;
+  }
 }
 
 select {
-    border: 1px solid $color_border-input;
+  border: 1px solid $color_border-input;
 }
 
 textarea {
-    width: 100%;
+  width: 100%;
 }

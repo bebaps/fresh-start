@@ -6,16 +6,16 @@ button,
 input,
 select,
 textarea {
-    font-family: $font_main;
-    font-size: $root_font-size;
-    font-size: 1rem;
-    line-height: $root_line-height;
+  font-family: $font_main;
+  font-size: $root_font-size;
+  font-size: 1rem;
+  line-height: $root_line-height;
 }
 
 .site_main {
-    font-size: $body_font-size;
-    line-height: $body_line-height;
-    max-width: $site_max-width;
+  font-size: $body_font-size;
+  line-height: $body_line-height;
+  max-width: $site_max-width;
 }
 
 h1,
@@ -24,38 +24,38 @@ h3,
 h4,
 h5,
 h6 {
-    clear: both;
-    line-height: 1.25em;
-    margin-top: 1.75rem;
-    margin-bottom: 1rem;
+  clear: both;
+  line-height: 1.25em;
+  margin-top: 1.75rem;
+  margin-bottom: 1rem;
 }
 
 h1 {
-    font-size: get-heading(h1, font-size);
+  font-size: get-heading(h1, font-size);
 }
 
 h2 {
-    font-size: get-heading(h2, font-size);
+  font-size: get-heading(h2, font-size);
 }
 
 h3 {
-    font-size: get-heading(h3, font-size);
+  font-size: get-heading(h3, font-size);
 }
 
 h4 {
-    font-size: get-heading(h4, font-size);
+  font-size: get-heading(h4, font-size);
 }
 
 h5 {
-    font-size: get-heading(h5, font-size);
+  font-size: get-heading(h5, font-size);
 }
 
 h6 {
-    font-size: get-heading(h6, font-size);
+  font-size: get-heading(h6, font-size);
 }
 
 p:empty {
-    display: none;
+  display: none;
 }
 
 p,
@@ -65,71 +65,71 @@ address,
 blockquote,
 .wp-caption,
 .gallery {
-    margin-top: 0;
-    margin-bottom: 1.6em;
+  margin-top: 0;
+  margin-bottom: 1.6em;
 }
 
 dfn,
 cite,
 em,
 i {
-    font-style: italic;
-    font-weight: lighter;
+  font-style: italic;
+  font-weight: lighter;
 }
 
 pre {
-    @include font-size(16, em);
-    background: $color_background-pre;
-    font-family: $font_pre;
-    line-height: $font_line-height-pre;
-    max-width: 100%;
-    overflow: auto;
-    padding: 1.6em;
+  @include font-size(16, em);
+  background: $color_background-pre;
+  font-family: $font_pre;
+  line-height: $font_line-height-pre;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1.6em;
 }
 
 code,
 kbd,
 tt,
 var {
-    @include font-size(16, em);
-    font-family: $font_code;
+  @include font-size(16, em);
+  font-family: $font_code;
 }
 
 abbr,
 acronym {
-    border-bottom: 1px dotted $color_border-abbr;
-    cursor: help;
+  border-bottom: 1px dotted $color_border-abbr;
+  cursor: help;
 }
 
 mark,
 ins {
-    background: $color_background-ins;
-    text-decoration: none;
+  background: $color_background-ins;
+  text-decoration: none;
 }
 
 big {
-    font-size: 125%;
+  font-size: 125%;
 }
 
 a {
-    color: $color_link;
+  color: $color_link;
 
-    &:visited {
-        color: $color_link-visited;
-    }
+  &:visited {
+    color: $color_link-visited;
+  }
 
-    &:hover,
-    &:focus,
-    &:active {
-        color: $color_link-hover;
-    }
+  &:hover,
+  &:focus,
+  &:active {
+    color: $color_link-hover;
+  }
 
-    &:focus {
-        outline: thin dotted;
-    }
+  &:focus {
+    outline: thin dotted;
+  }
 
-    &:hover,
-    &:active {
-        outline: 0;
-    }
+  &:hover,
+  &:active {
+    outline: 0;
+  }
 }

@@ -9,33 +9,31 @@
 
 get_header(); ?>
 
+  <main id="main" class="site_main">
 
-    <main id="main" class="site_main">
+    <?php
+    if (have_posts()) : ?>
 
-        <?php
-        if ( have_posts() ) : ?>
+      <header class="page_header">
+        <h1 class="page_title"><?php printf(esc_html__('Search Results for: %s', 'fresh-start'), '<span>' . get_search_query() . '</span>'); ?></h1>
+      </header>
 
-            <header class="page_header">
-                <h1 class="page_title"><?php printf( esc_html__( 'Search Results for: %s', 'fresh-start' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-            </header>
+      <?php
+      while (have_posts()) : the_post();
 
-            <?php
-            while ( have_posts() ) : the_post();
+        get_template_part('templates/content/content', 'search');
 
-                get_template_part( 'templates/content/content', 'search' );
+      endwhile;
 
-            endwhile;
+      the_posts_pagination(['mid_size' => 3]);
 
-            the_posts_pagination( array( 'mid_size' => 3 ) );
+    else :
 
-        else :
+      get_template_part('templates/content/content', 'none');
 
-            get_template_part( 'templates/content/content', 'none' );
+    endif; ?>
 
-        endif; ?>
-
-    </main><!-- #main -->
-
+  </main><!-- #main -->
 
 <?php
 get_sidebar();

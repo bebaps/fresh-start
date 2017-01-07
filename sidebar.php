@@ -10,11 +10,11 @@
 // Which sidebar do you want to grab?
 $sidebar = 1;
 
-if ( ! is_active_sidebar( $sidebar ) ) {
-    return;
+if ( !is_active_sidebar($sidebar)) {
+  return;
 }
 ?>
 
 <aside class="site_sidebar">
-    <?php dynamic_sidebar( $sidebar ); ?>
+  <?php dynamic_sidebar($sidebar); ?>
 </aside><!-- .sidebar -->

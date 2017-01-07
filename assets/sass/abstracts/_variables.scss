@@ -32,34 +32,32 @@ $font_pre: $font_code !default;
 $font_line-height-pre: $body_line-height !default;
 
 $headings: (
-    h1: (
-        font-size: 2.4em
-    ),
-    h2: (
-        font-size: 2em
-    ),
-    h3: (
-        font-size: 1.8em
-    ),
-    h4: (
-        font-size: 1.6em
-    ),
-    h5: (
-        font-size: 1.4em
-    ),
-    h6: (
-        font-size: 1.2em
-    )
+  h1: (
+    font-size: 2.4em
+  ),
+  h2: (
+    font-size: 2em
+  ),
+  h3: (
+    font-size: 1.8em
+  ),
+  h4: (
+    font-size: 1.6em
+  ),
+  h5: (
+    font-size: 1.4em
+  ),
+  h6: (
+    font-size: 1.2em
+  )
 );
 
 // Breakpoints
 // -----------------------------------------------------------------------------
 $breakpoints: (
-    small: 0em,
-    medium: 40em, // 640px
-    large: 64em, // 1024px
-    xlarge: 75em, // 1200px
-    xxlarge: 90em // 1440px
+  small: 0em,
+  medium: 40em, // 640px
+  large: 64em // 1024px
 );
 
 $site_max-width: 75rem !default;

@@ -9,33 +9,31 @@
 
 get_header(); ?>
 
+  <main id="main" class="site_main">
 
-    <main id="main" class="site_main">
+    <?php if (have_posts()) : ?>
 
-        <?php if ( have_posts() ) : ?>
+      <header class="page_header">
+        <?php the_archive_title('<h1 class="page_title">', '</h1>'); ?>
+        <?php the_archive_description('<div class="archive-description">', '</div>'); ?>
+      </header>
 
-            <header class="page_header">
-                <?php the_archive_title( '<h1 class="page_title">', '</h1>' ); ?>
-                <?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
-            </header>
+      <?php
+      while (have_posts()) : the_post();
 
-            <?php
-            while ( have_posts() ) : the_post();
+        get_template_part('templates/content/content', get_post_format());
 
-                get_template_part( 'templates/content/content', get_post_format() );
+      endwhile;
 
-            endwhile;
+      the_posts_pagination(['mid_size' => 3]);
 
-            the_posts_pagination( array( 'mid_size' => 3 ) );
+    else :
 
-        else :
+      get_template_part('templates/content/content', 'none');
 
-            get_template_part( 'templates/content/content', 'none' );
+    endif; ?>
 
-        endif; ?>
-
-    </main><!-- #main -->
-
+  </main><!-- #main -->
 
 <?php
 get_sidebar();

@@ -4,9 +4,10 @@
  *
  * @param $code The code that you want to check.
  */
-function debug( $code ) {
-	printf( '<pre>%s</pre>', print_r( $code, true ) );
-	die;
+function debug($code)
+{
+  printf('<pre>%s</pre>', print_r($code, true));
+  die;
 }
 
 /**
@@ -17,14 +18,15 @@ function debug( $code ) {
  *
  * @return bool | URL Return false if there is no Featured Image, or the URL if there is one.
  */
-function get_featured_image( $post_id = null, $size = 'Full' ) {
-	if ( ! has_post_thumbnail( $post_id ) ) {
-		return false;
-	}
+function get_featured_image($post_id = null, $size = 'Full')
+{
+  if ( !has_post_thumbnail($post_id)) {
+    return false;
+  }
 
-	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), $size );
+  $image = wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $size);
 
-	return $image[ 0 ];
+  return $image[ 0 ];
 }
 
 /**
@@ -33,12 +35,14 @@ function get_featured_image( $post_id = null, $size = 'Full' ) {
  */
 $under_maintenance = false;
 
-if ( $under_maintenance ) {
-	function maintenance_mode() {
-		if ( ! current_user_can( 'administrator' ) ) {
-			wp_die( 'The site is currently undergoing scheduled maintenance and will return shortly.', 'We will be back soon!' );
-		}
-	}
+if ($under_maintenance) {
+  function maintenance_mode()
+  {
+    if ( !current_user_can('administrator')) {
+      wp_die('The site is currently undergoing scheduled maintenance and will return shortly.',
+        'We will be back soon!');
+    }
+  }
 
-	add_action( 'get_header', 'maintenance_mode' );
+  add_action('get_header', 'maintenance_mode');
 }

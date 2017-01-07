@@ -2,38 +2,38 @@
   # Posts and Pages
 ------------------------------------------------------------------------------------------------- */
 .sticky {
-    display: block;
+  display: block;
 }
 
 .hentry {
-    margin: 0 0 1.6em;
+  margin: 0 0 1.6em;
 }
 
 .byline,
 .updated:not(.published) {
-    display: none;
+  display: none;
 }
 
 .single,
 .group-blog {
-    & .byline {
-        display: inline;
-    }
+  & .byline {
+    display: inline;
+  }
 }
 
 .page_content,
 .post_content,
 .post_summary {
-    margin: 1.6em 0 0;
+  margin: 1.6em 0 0;
 }
 
 .page_links {
-    clear: both;
-    margin: 0 0 1.6em;
+  clear: both;
+  margin: 0 0 1.6em;
 }
 
 .category-links,
 .tag-links,
 .comment-link {
-    display: block;
+  display: block;
 }

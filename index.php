@@ -14,37 +14,35 @@
 
 get_header(); ?>
 
+  <main id="main" class="site_main">
 
-    <main id="main" class="site_main">
+    <?php
+    if (have_posts()) :
+
+      if (is_home() && !is_front_page()) : ?>
+
+        <header>
+          <h1 class="page_title screen-reader-text"><?php single_post_title(); ?></h1>
+        </header>
 
         <?php
-        if ( have_posts() ) :
+      endif;
 
-            if ( is_home() && ! is_front_page() ) : ?>
+      while (have_posts()) : the_post();
 
-                <header>
-                    <h1 class="page_title screen-reader-text"><?php single_post_title(); ?></h1>
-                </header>
+        get_template_part('templates/content/content', get_post_format());
 
-                <?php
-            endif;
+      endwhile;
 
-            while ( have_posts() ) : the_post();
+      the_posts_pagination(['mid_size' => 3]);
 
-                get_template_part( 'templates/content/content', get_post_format() );
+    else :
 
-            endwhile;
+      get_template_part('templates/content/content', 'none');
 
-            the_posts_pagination( array( 'mid_size' => 3 ) );
+    endif; ?>
 
-        else :
-
-            get_template_part( 'templates/content/content', 'none' );
-
-        endif; ?>
-
-    </main><!-- #main -->
-
+  </main><!-- #main -->
 
 <?php
 get_sidebar();

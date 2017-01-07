@@ -4,19 +4,19 @@
 .comments_navigation,
 .posts-navigation,
 .post-navigation {
-    .site_main & {
-        margin: 0 0 1.6em;
-        overflow: hidden;
-    }
+  .site_main & {
+    margin: 0 0 1.6em;
+    overflow: hidden;
+  }
 
-    .nav-previous {
-        float: left;
-        width: 50%;
-    }
+  .nav-previous {
+    float: left;
+    width: 50%;
+  }
 
-    .nav-next {
-        float: right;
-        text-align: right;
-        width: 50%;
-    }
+  .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%;
+  }
 }
