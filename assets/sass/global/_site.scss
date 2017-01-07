@@ -27,7 +27,7 @@ img {
 
 // Extra wide images within figure tags don't overflow the content area.
 figure {
-  margin: 1em 0;
+  margin: 1rem 0;
 }
 
 a,
@@ -48,11 +48,11 @@ sup {
 }
 
 sup {
-  top: -0.5em;
+  top: rem(-8);
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: rem(-4);
 }
 
 // Site Layout

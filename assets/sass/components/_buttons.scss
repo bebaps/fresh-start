@@ -6,11 +6,11 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   &:hover {
-    border-color: $color_border-button-hover;
+    border-color: $color_gray;
   }
 
   &:active,
   &:focus {
-    border-color: $color_border-button-focus;
+    border-color: lighten($color_gray, 3%);
   }
 }

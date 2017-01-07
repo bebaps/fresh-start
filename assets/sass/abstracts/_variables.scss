@@ -3,45 +3,16 @@
 $color_white: rgb(255, 255, 255);
 $color_off-white: rgb(241, 241, 241);
 $color_black: rgb(0, 0, 0);
+$color_off-black: rgb(17, 17, 17);
 $color_yellow: rgb(255, 249, 192);
-
-$color_text-screen: rgb(33, 117, 155);
-$color_text-input: rgb(102, 102, 102);
-$color_text-input-focus: rgb(17, 17, 17);
-$color_link: rgb(65, 105, 225);
-$color_link-visited: rgb(128, 0, 128);
-$color_link-hover: rgb(25, 25, 112);
-
-$color_border-button: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187);
-$color_border-button-hover: rgb(204, 204, 204) rgb(187, 187, 187) rgb(170, 170, 170);
-$color_border-button-focus: rgb(170, 170, 170) rgb(187, 187, 187) rgb(187, 187, 187);
-$color_border-input: rgb(204, 204, 204);
-$color_border-abbr: rgb(102, 102, 102);
+$color_blue: rgb(33, 117, 155);
+$color_gray: rgb(102, 102, 102);
+$color_purple: rgb(128, 0, 128);
 
 // Typography
 // -----------------------------------------------------------------------------
 $font_code: monospace !default;
-
-$headings: (
-  h1: (
-    font-size: 2.4rem
-  ),
-  h2: (
-    font-size: 2rem
-  ),
-  h3: (
-    font-size: 1.8rem
-  ),
-  h4: (
-    font-size: 1.6rem
-  ),
-  h5: (
-    font-size: 1.4rem
-  ),
-  h6: (
-    font-size: 1.2rem
-  )
-);
+$font_heading-weight: 700 !default;
 
 // Breakpoints
 // -----------------------------------------------------------------------------

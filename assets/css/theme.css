@@ -366,7 +366,7 @@ q::after {
 }
 
 hr {
-  background-color: #cccccc;
+  background-color: rgba(0, 0, 0, 0.3);
   border: 0;
   height: 1px;
 }
@@ -378,7 +378,7 @@ img {
 }
 
 figure {
-  margin: 1em 0;
+  margin: 1rem 0;
 }
 
 a,
@@ -399,11 +399,11 @@ sup {
 }
 
 sup {
-  top: -0.5em;
+  top: -0.5rem;
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: -0.25rem;
 }
 
 .site_body {
@@ -425,7 +425,7 @@ sub {
 .site_footer,
 .site_sidebar {
   position: relative;
-  background: white;
+  background-color: white;
 }
 
 .site_main {
@@ -439,30 +439,30 @@ sub {
   # WordPress Specific Styles
 ------------------------------------------------------------------------------------------------- */
 .screen-reader-text {
-  clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
-  height: 1px;
   width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
   overflow: hidden;
 }
 
 .screen-reader-text:focus {
-  font-size: 0.05469rem;
-  background-color: #f1f1f1;
+  z-index: 100000;
+  top: 5px;
+  left: 5px;
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 0.875rem 1.5rem;
   border-radius: 3px;
+  background-color: #f1f1f1;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   clip: auto !important;
+  font-size: 0.75rem;
   color: #21759b;
-  display: block;
   font-weight: 700;
-  height: auto;
-  left: 5px;
   line-height: normal;
-  padding: 15px 23px 14px;
   text-decoration: none;
-  top: 5px;
-  width: auto;
-  z-index: 100000;
 }
 
 #content[tabindex="-1"]:focus {
@@ -472,13 +472,13 @@ sub {
 .alignleft {
   display: inline;
   float: left;
-  margin-right: 1.5em;
+  margin-right: 1rem;
 }
 
 .alignright {
   display: inline;
   float: right;
-  margin-left: 1.5em;
+  margin-left: 1rem;
 }
 
 .aligncenter {
@@ -497,49 +497,48 @@ h3,
 h4,
 h5,
 h6 {
-  clear: both;
-  line-height: 1.25em;
-  margin-top: 1.75rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  line-height: 1.25;
+  font-weight: 700;
 }
 
 h1 {
-  font-size: 2.4em;
+  margin-top: 0;
+  font-size: 2.375rem;
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 2rem;
 }
 
 h3 {
-  font-size: 1.8em;
+  font-size: 1.75rem;
 }
 
 h4 {
-  font-size: 1.6em;
+  font-size: 1.5rem;
 }
 
 h5 {
-  font-size: 1.4em;
+  font-size: 1.375rem;
 }
 
 h6 {
-  font-size: 1.2em;
+  font-size: 1.25rem;
 }
 
 p:empty {
   display: none;
 }
 
-p,
-hr,
-pre,
-address,
-blockquote,
-.wp-caption,
-.gallery {
-  margin-top: 0;
-  margin-bottom: 1.6em;
+p:not(:first-child),
+hr:not(:first-child),
+pre:not(:first-child),
+address:not(:first-child),
+blockquote:not(:first-child),
+.wp-caption:not(:first-child),
+.gallery:not(:first-child) {
+  margin-top: 1rem;
 }
 
 dfn,
@@ -551,10 +550,10 @@ i {
 }
 
 pre {
-  background: #eeeeee;
+  background-color: #f1f1f1;
   max-width: 100%;
   overflow: auto;
-  padding: 1.6rem;
+  padding: 1.25rem;
 }
 
 code,
@@ -566,13 +565,13 @@ var {
 
 abbr,
 acronym {
-  border-bottom: 1px dotted #666666;
+  border-bottom: 1px dotted rgba(102, 102, 102, 0.5);
   cursor: help;
 }
 
 mark,
 ins {
-  background: #fff9c0;
+  background-color: #fff9c0;
   text-decoration: none;
 }
 
@@ -581,7 +580,7 @@ big {
 }
 
 a {
-  color: royalblue;
+  color: #21759b;
 }
 
 a:visited {
@@ -589,7 +588,7 @@ a:visited {
 }
 
 a:hover, a:focus, a:active {
-  color: midnightblue;
+  color: #2585b0;
 }
 
 a:focus {
@@ -607,7 +606,7 @@ button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-  border-color: #cccccc #bbbbbb #aaaaaa;
+  border-color: #666666;
 }
 
 button:active, button:focus,
@@ -617,7 +616,7 @@ input[type="reset"]:active,
 input[type="reset"]:focus,
 input[type="submit"]:active,
 input[type="submit"]:focus {
-  border-color: #aaaaaa #bbbbbb #bbbbbb;
+  border-color: #6e6e6e;
 }
 
 /* -------------------------------------------------------------------------------------------------
@@ -634,10 +633,11 @@ input[type="submit"]:focus {
 }
 
 .wp-caption .wp-caption-text {
-  margin: 0.8075em 0;
+  margin: 0.75rem 0;
 }
 
 .wp-caption-text {
+  font-size: 0.75rem;
   text-align: center;
 }
 
@@ -653,7 +653,7 @@ input[type="submit"]:focus {
 }
 
 /* -------------------------------------------------------------------------------------------------
-  # Forms Fields
+  # Forms
 ------------------------------------------------------------------------------------------------- */
 input[type="text"],
 input[type="email"],
@@ -671,7 +671,7 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-  padding: 0.25em;
+  padding: 0.375rem;
 }
 
 input[type="text"]:focus,
@@ -694,7 +694,7 @@ textarea:focus {
 }
 
 select {
-  border: 1px solid #cccccc;
+  border: 1px solid rgba(102, 102, 102, 0.5);
 }
 
 textarea {
@@ -797,15 +797,17 @@ textarea {
 ------------------------------------------------------------------------------------------------- */
 ul,
 ol {
-  margin: 0 0 1.6em 2em;
+  margin-bottom: 1.5rem;
+  margin-left: 1rem;
 }
 
 ul ul,
 ol ol,
 ul ol,
 ol ul {
-  margin: 0;
-  padding-left: 1.5em;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding-left: 1.5rem;
 }
 
 ul {
@@ -821,7 +823,7 @@ dt {
 }
 
 dd {
-  margin: 0 1.5em 1.6em;
+  margin: 0 1rem 1.5rem;
 }
 
 /* -------------------------------------------------------------------------------------------------
@@ -831,9 +833,6 @@ dd {
 .post_content .wp-smiley,
 .comment-content .wp-smiley {
   border: none;
-  margin-bottom: 0;
-  margin-top: 0;
-  padding: 0;
 }
 
 iframe,
@@ -863,15 +862,16 @@ video {
   # Tables
 ------------------------------------------------------------------------------------------------- */
 table {
-  margin: 0 0 1.6em;
+  margin-bottom: 1rem;
   width: 100%;
+  text-align: left;
 }
 
 /* -------------------------------------------------------------------------------------------------
   # Widgets
 ------------------------------------------------------------------------------------------------- */
 .widget {
-  margin: 0 0 1.6em;
+  margin-bottom: 1rem;
 }
 
 .widget select {
@@ -892,7 +892,7 @@ table {
   list-style: none;
   margin: 0;
   padding: 0;
-  background: white;
+  background-color: white;
 }
 
 @media screen and (min-width: 64em) {
@@ -923,7 +923,7 @@ table {
 .menu a {
   text-decoration: none;
   white-space: nowrap;
-  padding: 0.25em;
+  padding: 0.25rem;
 }
 
 .sub-menu {
@@ -932,7 +932,7 @@ table {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background: white;
+  background-color: white;
 }
 
 .sub-menu a {
@@ -951,7 +951,7 @@ table {
 .site_main .comments_navigation, .site_main
 .posts-navigation, .site_main
 .post-navigation {
-  margin: 0 0 1.6em;
+  margin-bottom: 1rem;
   overflow: hidden;
 }
 
@@ -978,7 +978,7 @@ table {
 }
 
 .hentry {
-  margin: 0 0 1.6em;
+  margin-bottom: 1rem;
 }
 
 .byline,
@@ -994,12 +994,12 @@ table {
 .page_content,
 .post_content,
 .post_summary {
-  margin: 1.6em 0 0;
+  margin-top: 1rem;
 }
 
 .page_links {
   clear: both;
-  margin: 0 0 1.6em;
+  margin-bottom: 1rem;
 }
 
 .category-links,

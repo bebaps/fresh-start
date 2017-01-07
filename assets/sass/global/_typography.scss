@@ -7,34 +7,34 @@ h3,
 h4,
 h5,
 h6 {
-  clear: both;
-  line-height: 1.25em;
-  margin-top: 1.75rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  line-height: 1.25;
+  font-weight: $font_heading-weight;
 }
 
 h1 {
-  font-size: get-heading(h1, font-size);
+  margin-top: 0;
+  font-size: rem(38);
 }
 
 h2 {
-  font-size: get-heading(h2, font-size);
+  font-size: rem(32);
 }
 
 h3 {
-  font-size: get-heading(h3, font-size);
+  font-size: rem(28);
 }
 
 h4 {
-  font-size: get-heading(h4, font-size);
+  font-size: rem(24);
 }
 
 h5 {
-  font-size: get-heading(h5, font-size);
+  font-size: rem(22);
 }
 
 h6 {
-  font-size: get-heading(h6, font-size);
+  font-size: rem(20);
 }
 
 p:empty {
@@ -48,8 +48,9 @@ address,
 blockquote,
 .wp-caption,
 .gallery {
-  margin-top: 0;
-  margin-bottom: 1.6em;
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
 }
 
 dfn,
@@ -61,10 +62,10 @@ i {
 }
 
 pre {
-  background: $color_off-white;
+  background-color: $color_off-white;
   max-width: 100%;
   overflow: auto;
-  padding: 1.6rem;
+  padding: rem(20);
 }
 
 code,
@@ -76,13 +77,13 @@ var {
 
 abbr,
 acronym {
-  border-bottom: 1px dotted $color_border-abbr;
+  border-bottom: 1px dotted rgba($color_gray, 0.5);
   cursor: help;
 }
 
 mark,
 ins {
-  background: $color_yellow;
+  background-color: $color_yellow;
   text-decoration: none;
 }
 
@@ -91,16 +92,16 @@ big {
 }
 
 a {
-  color: $color_link;
+  color: $color_blue;
 
   &:visited {
-    color: $color_link-visited;
+    color: $color_purple;
   }
 
   &:hover,
   &:focus,
   &:active {
-    color: $color_link-hover;
+    color: lighten($color_blue, 5%);
   }
 
   &:focus {

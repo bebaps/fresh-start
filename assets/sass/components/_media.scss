@@ -1,13 +1,12 @@
 /* -------------------------------------------------------------------------------------------------
   # Media
 ------------------------------------------------------------------------------------------------- */
-.page_content .wp-smiley,
-.post_content .wp-smiley,
-.comment-content .wp-smiley {
-  border: none;
-  margin-bottom: 0;
-  margin-top: 0;
-  padding: 0;
+.page_content,
+.post_content,
+.comment-content {
+  .wp-smiley {
+    border: none;
+  }
 }
 
 iframe,

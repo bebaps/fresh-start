@@ -4,29 +4,29 @@
 // Accessibility
 // -----------------------------------------------------------------------------
 .screen-reader-text {
-  clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
-  height: 1px;
   width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
   overflow: hidden;
 
   &:focus {
-    font-size: rem(0.875);
-    background-color: $color_off-white;
-    border-radius: 3px;
-    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-    clip: auto !important;
-    color: $color_text-screen;
-    display: block;
-    font-weight: 700;
-    height: auto;
-    left: 5px;
-    line-height: normal;
-    padding: 15px 23px 14px;
-    text-decoration: none;
-    top: 5px;
-    width: auto;
     z-index: 100000; // Stay above WP tool bar
+    top: 5px;
+    left: 5px;
+    display: block;
+    width: auto;
+    height: auto;
+    padding: rem(14) rem(24);
+    border-radius: 3px;
+    background-color: $color_off-white;
+    box-shadow: 0 0 2px 2px rgba($color_black, 0.6);
+    clip: auto !important;
+    font-size: rem(12);
+    color: $color_blue;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none;
   }
 }
 
@@ -40,13 +40,13 @@
 .alignleft {
   display: inline;
   float: left;
-  margin-right: 1.5em;
+  margin-right: 1rem;
 }
 
 .alignright {
   display: inline;
   float: right;
-  margin-left: 1.5em;
+  margin-left: 1rem;
 }
 
 .aligncenter {
