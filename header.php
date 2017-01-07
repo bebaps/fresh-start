@@ -57,8 +57,7 @@
     <?php wp_nav_menu([
       'theme_location'  => 'menu-1',
       'container'       => 'nav',
-      'container_class' => 'main-navigation',
-      'container_id'    => 'site_navigation',
-      'menu_id'         => 'primary-menu'
+      'container_class' => 'site_navigation',
+      'menu_id'         => 'menu-1'
     ]); ?>
   </header><!-- .site_header -->

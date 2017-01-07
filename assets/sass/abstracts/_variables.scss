@@ -19,7 +19,13 @@ $font_heading-weight: 700 !default;
 $breakpoints: (
   small: 0em,
   medium: 40em, // 640px
-  large: 64em // 1024px
+  large: 64em, // 1024px
+  xlarge: 75em // 1200px
 );
+
+$small: map-get($breakpoints, small);
+$medium: map-get($breakpoints, medium);
+$large: map-get($breakpoints, large);
+$xlarge: map-get($breakpoints, xlarge);
 
 $site_max-width: 75rem !default;

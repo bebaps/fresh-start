@@ -1,3 +1,5 @@
+// Custom functions
+// -----------------------------------------------------------------------------
 // Strip units from a given value
 @function strip-unit($number) {
   @if type-of($number) == "number" and not unitless($number) {

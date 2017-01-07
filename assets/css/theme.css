@@ -29,6 +29,20 @@
 9. Page Templates
 --------------------------------------------------------- */
 /* stylelint-disable */
+/*!
+* Device Queries: v1.0.0
+* Author: Alexander Persky
+*
+* A variation of Rafal Bromirski's Sass Media Queries that adds mixins to target specific devices.
+* Sass does not support the creation of dynamic mixins, so each device needs to manually be added.
+* This is a primer. Decided what you want to support, and add/remove mixins as needed.
+*
+* Make sure this in in the head of your website: <meta name="viewport" content="initial-scale=1.0">
+*
+* Original Repo and Documentation: http://github.com/paranoida/sass-mediaqueries
+*
+* Device sources: http://mydevice.io/, https://deviceatlas.com/device-data/devices
+*/
 /* -----------------------------------------------------------------------------
   # Custom Implementation of Normalize.css and Sanitize.css
 ----------------------------------------------------------------------------- */
@@ -881,7 +895,16 @@ table {
 /* -------------------------------------------------------------------------------------------------
   # Primary Menu
 ------------------------------------------------------------------------------------------------- */
+.site_navigation {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .menu {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
@@ -895,15 +918,6 @@ table {
   background-color: white;
 }
 
-@media screen and (min-width: 64em) {
-  .menu {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
-
 .menu li {
   -webkit-box-flex: 0;
   -webkit-flex: 0 1 auto;
@@ -914,7 +928,7 @@ table {
   position: relative;
 }
 
-@media screen and (min-width: 64em) {
+@media only screen and (min-width: 64em) {
   .menu li:hover > .sub-menu {
     display: block;
   }

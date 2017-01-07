@@ -1,18 +1,19 @@
 /* -------------------------------------------------------------------------------------------------
   # Primary Menu
 ------------------------------------------------------------------------------------------------- */
-.menu {
-  // display: none;
+.site_navigation {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.menu { // No mobile menu provided, so you can add the one you prefer
+  display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   list-style: none;
   margin: 0;
   padding: 0;
   background-color: $color_white;
-
-  @include breakpoint(large) {
-    display: flex;
-  }
 
   li {
     flex: 0 1 auto;
@@ -21,7 +22,7 @@
     position: relative;
 
     &:hover > .sub-menu {
-      @include breakpoint(large) {
+      @include min-screen($large) {
         display: block;
       }
     }
