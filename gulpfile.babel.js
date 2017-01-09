@@ -1,7 +1,13 @@
 'use strict';
 
-const LOCALURL = 'freshstart:8888'; // See https://browsersync.io/docs/options/#option-proxy
-const PROJECT = 'freshstart'; // Give this project a name, used for the build folder
+// Define the local URL used for development
+// See https://browsersync.io/docs/options/#option-proxy
+const LOCALURL = 'freshstart:8888';
+
+// Give this project a name, used for the build folder
+const PROJECT = 'freshstart';
+
+// Define the paths to be used
 const PATHS = new function() {
   this.root = './',
   this.dist = `${this.root}_dist/`,
@@ -12,6 +18,8 @@ const PATHS = new function() {
   this.images = `${this.assets}/images`,
   this.sass = `${this.assets}/sass`;
 };
+
+// Define the source locations to be used
 const SOURCES = {
   php: [
     `${PATHS.root}*.php`,
@@ -41,7 +49,9 @@ const SOURCES = {
     `${PATHS.js}/theme/custom.js`
   ]
 };
-const OPTIONS = { // Set options for the Gulp plugins
+
+// Set options for the Gulp plugins
+const OPTIONS = {
   sass: {
     outputStyle: 'expanded'
   },
@@ -107,10 +117,9 @@ import reporter from 'postcss-reporter';
 const BROWSERSYNC = require('browser-sync').create();
 const $ = require('gulp-load-plugins')(OPTIONS.loadplugins);
 
-/* -------------------------------------------------------------------------------------------------
- # Utility Tasks
- ------------------------------------------------------------------------------------------------- */
-// Store a copy of the theme as is before any changes are made
+// Utility Tasks
+// -----------------------------------------------------------------------------
+// Store a copy of the theme as is before any changes are made into  a .tmp folder
 gulp.task('set-up', () => {
   return gulp
     .src([
@@ -126,7 +135,7 @@ gulp.task('set-up', () => {
     .pipe(gulp.dest('./.tmp'));
 });
 
-// Delete the generated CSS folder
+// Delete compiled CSS files and sourcemap(s)
 gulp.task('clean:css', () => {
   del([
     `${PATHS.css}/*.css`,
@@ -134,7 +143,7 @@ gulp.task('clean:css', () => {
     ]);
 });
 
-// Delete the generated project JS file and sourcemap
+// Delete the generated project JS file and sourcemap(s)
 gulp.task('clean:js', () => {
   del([
     `${PATHS.js}/*.js`,
@@ -147,9 +156,8 @@ gulp.task('clean:dist', () => {
   del(`${PATHS.dist}`);
 });
 
-/* -------------------------------------------------------------------------------------------------
- # Server Tasks
- ------------------------------------------------------------------------------------------------- */
+// Server Tasks
+// -----------------------------------------------------------------------------
 // Launch a development server
 gulp.task('server', () => {
   if (!BROWSERSYNC.active) {
@@ -157,10 +165,9 @@ gulp.task('server', () => {
   }
 });
 
-/* -------------------------------------------------------------------------------------------------
- # Sass/CSS Tasks
- ------------------------------------------------------------------------------------------------- */
-// Lint Sass/CSS
+// Sass/CSS Tasks
+// -----------------------------------------------------------------------------
+// Lint Sass/CSS via Stylelint
 gulp.task('sass:lint', () => {
   return gulp
     .src(SOURCES.sass)
@@ -168,7 +175,7 @@ gulp.task('sass:lint', () => {
     .pipe($.stylelint(OPTIONS.stylelint));
 });
 
-// Compile Sass
+// Compile Sass to CSS, and create a sourcemap
 gulp.task('sass', ['clean:css'], () => {
   return gulp
     .src(SOURCES.sass)
@@ -184,8 +191,9 @@ gulp.task('sass', ['clean:css'], () => {
     .pipe(BROWSERSYNC.stream());
 });
 
-// Minify the compiled CSS - Not needed if you will use a plug-in that will minify CSS
-gulp.task('sass:minify', () => {
+// Optimize the compiled CSS via CSSNano
+// Not needed if you will use a plug-in that will do this
+gulp.task('sass:minify', ['sass'], () => {
   return gulp
     .src(SOURCES.css)
     .pipe($.plumber())
@@ -198,10 +206,9 @@ gulp.task('sass:minify', () => {
     .pipe(BROWSERSYNC.stream());
 });
 
-/* -------------------------------------------------------------------------------------------------
- # JS Tasks
- ------------------------------------------------------------------------------------------------- */
-// Lint JavaScript
+// JS Tasks
+// -----------------------------------------------------------------------------
+// Lint JavaScript via ESLint
 gulp.task('js:lint', () => {
   return gulp
     .src('./assets/js/theme/*.js')
@@ -212,8 +219,8 @@ gulp.task('js:lint', () => {
     .pipe($.eslint.failAfterError());
 });
 
-// Concatenate JavaScript
-gulp.task('js', () => {
+// Concatenate JavaScript into one file, and create a sourcemap
+gulp.task('js', ['clean:js'], () => {
   return gulp
     .src(SOURCES.concat)
     .pipe($.sourcemaps.init())
@@ -226,8 +233,9 @@ gulp.task('js', () => {
     .pipe(gulp.dest(PATHS.js));
 });
 
-// Minify the generated JavaScript - Not needed if you will use a plug-in that will minify JS
-gulp.task('js:minify', () => {
+// Minify the concatenated JavaScript file
+// Not needed if you will use a plug-in that will do this
+gulp.task('js:minify', ['js'], () => {
   return gulp
     .src(`${PATHS.js}/theme.js`)
     .pipe($.plumber())
@@ -241,10 +249,10 @@ gulp.task('js:minify', () => {
     .pipe(BROWSERSYNC.stream());
 });
 
-/* -------------------------------------------------------------------------------------------------
- # Image Tasks
- ------------------------------------------------------------------------------------------------- */
-// Optimize images
+// Image Tasks
+// -----------------------------------------------------------------------------
+// Optimize images via Imagemin
+// Best to do this only once
 gulp.task('images', () => {
   return gulp
     .src(SOURCES.images)
@@ -254,16 +262,17 @@ gulp.task('images', () => {
     .pipe(gulp.dest(PATHS.images));
 });
 
-/* -------------------------------------------------------------------------------------------------
- # Packaging Tasks
- ------------------------------------------------------------------------------------------------- */
-// Copy all files except the development files to a distribution folder
-gulp.task('package', ['clean:dist', 'sass', 'js', 'images'], () => {
+// Packaging Tasks
+// -----------------------------------------------------------------------------
+// Copy all files (except the development files) to a distribution folder
+gulp.task('package', ['clean:dist', 'sass:minify', 'js:minify', 'images'], () => {
   return gulp
     .src([
       `${PATHS.root}**/*`,
       `!${PATHS.root}.tmp`,
       `!${PATHS.root}.tmp/**/*`,
+      `!${PATHS.root}.git`,
+      `!${PATHS.root}.git/**/*`,
       `!${PATHS.root}node_modules`,
       `!${PATHS.root}node_modules/**/*`,
       `!${PATHS.dist}`,
@@ -271,9 +280,13 @@ gulp.task('package', ['clean:dist', 'sass', 'js', 'images'], () => {
       `!${PATHS.sass}`,
       `!${PATHS.sass}/**/*`,
       `!${PATHS.css}/sourcemaps`,
+      `!${PATHS.css}/sourcemaps/*`,
       `!${PATHS.js}/sourcemaps`,
+      `!${PATHS.js}/sourcemaps/*`,
       `!${PATHS.js}/theme`,
       `!${PATHS.js}/theme/**/*`,
+      `!${PATHS.js}/vendor`,
+      `!${PATHS.js}/vendor/**/*`,
       `!${PATHS.root}.babelrc`,
       `!${PATHS.root}.editorconfig`,
       `!${PATHS.root}.eslintrc.json`,
@@ -286,20 +299,16 @@ gulp.task('package', ['clean:dist', 'sass', 'js', 'images'], () => {
     .pipe(gulp.dest(PATHS.dist + `${PROJECT}`));
 });
 
-// Zip up the packaged folder into a .zip file
-gulp.task('zip', ['package'], () => {
+// Zip up the packaged folder
+gulp.task('zip', () => {
   return gulp
-    .src(PATHS.dist + `${PROJECT}`)
+    .src(`${PATHS.dist}/${PROJECT}/**/*`)
     .pipe($.zip(`${PROJECT}.zip`))
     .pipe(gulp.dest(PATHS.dist));
 });
 
-/* -------------------------------------------------------------------------------------------------
- # Defaults
- ------------------------------------------------------------------------------------------------- */
-// Default task
-gulp.task('default', ['set-up', 'sass', 'js', 'watch', 'server']);
-
+// Defaults
+// -----------------------------------------------------------------------------
 // Watch files for changes
 gulp.task('watch', () => {
   gulp.watch(SOURCES.sass, ['sass']);
@@ -307,3 +316,6 @@ gulp.task('watch', () => {
   gulp.watch(SOURCES.php, BROWSERSYNC.reload);
   gulp.watch(SOURCES.html, BROWSERSYNC.reload);
 });
+
+// Default task
+gulp.task('default', ['set-up', 'sass', 'js', 'watch', 'server']);
