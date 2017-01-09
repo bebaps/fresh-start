@@ -1,9 +1,4 @@
 .DS_Store
 node_modules
 bower_components
-./**/*/*.map
-./assets/js/*.js.map
-./assets/css/*.css.map
 .idea
-/assets/js/fresh-start.js.map
-/assets/css/fresh-start.css.map

@@ -1,27 +1,26 @@
+// Custom functions
+// -----------------------------------------------------------------------------
 // Strip units from a given value
 @function strip-unit($number) {
-    @if type-of($number) == "number" and not unitless($number) {
-        @return $number / ($number * 0 + 1);
-    }
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
 
-    @return $number;
+  @return $number;
 }
 
 // Convert pixels to rem
 @function rem($pixels) {
-    $rem: $pixels / strip-unit($root_font-size);
+  $root_font-size: 16px;
+  $rem: $pixels / strip-unit($root_font-size);
 
-    @return #{$rem}rem;
+  @return #{$rem}rem;
 }
 
 // Convert pixels to em
 @function em($pixels) {
-    $em: $pixels / strip-unit($root_font-size);
+  $root_font-size: 16px;
+  $em: $pixels / strip-unit($root_font-size);
 
-    @return #{$em}em;
-}
-
-// Grab the proper values out of the $headings nested map
-@function get-heading($heading, $property) {
-    @return map-get(map-get($headings, $heading), $property);
+  @return #{$em}em;
 }

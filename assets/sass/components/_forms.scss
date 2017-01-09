@@ -1,0 +1,33 @@
+/* -------------------------------------------------------------------------------------------------
+  # Forms
+------------------------------------------------------------------------------------------------- */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+  padding: rem(6);
+
+  &:focus {
+    color: $color_off-black;
+  }
+}
+
+select {
+  border: 1px solid rgba($color_gray, 0.5);
+}
+
+textarea {
+  width: 100%;
+}

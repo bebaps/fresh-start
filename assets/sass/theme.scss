@@ -1,0 +1,43 @@
+/* ---------------------------------------------------------
+> TABLE OF CONTENTS:
+------------------------------------------------------------
+1. Vendor
+    # Normalize
+2. Plug-ins
+3. Global
+    # Accessibility
+    # Alignments
+    # Clearings
+    # Typography
+4. Components
+    # Buttons
+    # Captions
+    # Fields
+    # Galleries
+    # Lists
+    # Media
+    # Tables
+5. Navigation
+    # Primary Menu
+    # Post and Comment Navigation
+6. Post Types
+    # Posts and Pages
+7. Template Parts
+8. Layouts
+    # No Sidebar
+    # Sidebar Content
+9. Page Templates
+--------------------------------------------------------- */
+/* stylelint-disable */
+// Load the variables, functions, mixins, etc.
+@import "abstracts/all";
+
+// Load any 3rd party resources now so they don't inherit theme styles
+// But after variables so their defaults may be overridden
+@import "vendor/all";
+
+// Load theme styles
+@import "global/all";
+@import "components/all";
+@import "navigation/all";
+@import "templates/all";

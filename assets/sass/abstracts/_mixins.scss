@@ -1,44 +1,20 @@
-// Rem/em output with px fallback
-@mixin font-size($size: 18, $unit: px) {
-    $px: $size * 1px;
-
-    font-size: #{$px};
-
-    @if $unit == rem {
-        font-size: rem($size);
-    }
-
-    @if $unit == em {
-        font-size: em($size);
-    }
-}
-
-// Set breakpoints
-@mixin breakpoint($breakpoint) {
-    @if map-has-key($breakpoints, $breakpoint) {
-        @media screen and (min-width: #{map-get($breakpoints, $breakpoint)}) {
-            @content;
-        }
-    } @else {
-        @warn "No value found for `#{$breakpoint}`. " + "Make sure it is defined in `$breakpoints` map.";
-    }
-}
-
+// Custom mixins
+// -----------------------------------------------------------------------------
 // Center block
 @mixin center-block {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Clearfix
-@mixin clearfix() {
-    content: "";
-    display: table;
-    table-layout: fixed;
+@mixin clearfix {
+  content: "";
+  display: table;
+  table-layout: fixed;
 }
 
-// Clear after (not all clearfix need this also)
-@mixin clearfix-after() {
-    clear: both;
+// Clear after
+@mixin clearfix-after {
+  clear: both;
 }
