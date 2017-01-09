@@ -1,65 +1,31 @@
 // Colors
 // -----------------------------------------------------------------------------
-$color_background-body: rgb(255, 255, 255);
-$color_background-screen: rgb(241, 241, 241);
-$color_background-hr: rgb(204, 204, 204);
-$color_background-pre: rgb(238, 238, 238);
-$color_background-ins: rgb(255, 249, 192);
-
-$color_text-screen: rgb(33, 117, 155);
-$color_text-input: rgb(102, 102, 102);
-$color_text-input-focus: rgb(17, 17, 17);
-$color_link: rgb(65, 105, 225);
-$color_link-visited: rgb(128, 0, 128);
-$color_link-hover: rgb(25, 25, 112);
-
-$color_border-button: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187);
-$color_border-button-hover: rgb(204, 204, 204) rgb(187, 187, 187) rgb(170, 170, 170);
-$color_border-button-focus: rgb(170, 170, 170) rgb(187, 187, 187) rgb(187, 187, 187);
-$color_border-input: rgb(204, 204, 204);
-$color_border-abbr: rgb(102, 102, 102);
+$color_white: rgb(255, 255, 255);
+$color_off-white: rgb(241, 241, 241);
+$color_black: rgb(0, 0, 0);
+$color_off-black: rgb(17, 17, 17);
+$color_yellow: rgb(255, 249, 192);
+$color_blue: rgb(33, 117, 155);
+$color_gray: rgb(102, 102, 102);
+$color_purple: rgb(128, 0, 128);
 
 // Typography
 // -----------------------------------------------------------------------------
-$root_font-size: 16px !default;
-$root_line-height: 1.5 !default;
-$body_font-size: 1.125em !default;
-$body_line-height: 1.6em !default;
-
-$font_main: sans-serif !default;
 $font_code: monospace !default;
-$font_pre: $font_code !default;
-$font_line-height-pre: $body_line-height !default;
-
-$headings: (
-    h1: (
-        font-size: 2.4em
-    ),
-    h2: (
-        font-size: 2em
-    ),
-    h3: (
-        font-size: 1.8em
-    ),
-    h4: (
-        font-size: 1.6em
-    ),
-    h5: (
-        font-size: 1.4em
-    ),
-    h6: (
-        font-size: 1.2em
-    )
-);
+$font_heading-weight: 700 !default;
 
 // Breakpoints
 // -----------------------------------------------------------------------------
 $breakpoints: (
-    small: 0em,
-    medium: 40em, // 640px
-    large: 64em, // 1024px
-    xlarge: 75em, // 1200px
-    xxlarge: 90em // 1440px
+  small: 0em,
+  medium: 40em, // 640px
+  large: 64em, // 1024px
+  xlarge: 75em // 1200px
 );
+
+$small: map-get($breakpoints, small);
+$medium: map-get($breakpoints, medium);
+$large: map-get($breakpoints, large);
+$xlarge: map-get($breakpoints, xlarge);
 
 $site_max-width: 75rem !default;

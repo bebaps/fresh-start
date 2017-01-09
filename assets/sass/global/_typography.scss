@@ -1,61 +1,44 @@
 /* -------------------------------------------------------------------------------------------------
   # Typography
 ------------------------------------------------------------------------------------------------- */
-body,
-button,
-input,
-select,
-textarea {
-    font-family: $font_main;
-    font-size: $root_font-size;
-    font-size: 1rem;
-    line-height: $root_line-height;
-}
-
-.site_main {
-    font-size: $body_font-size;
-    line-height: $body_line-height;
-    max-width: $site_max-width;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    clear: both;
-    line-height: 1.25em;
-    margin-top: 1.75rem;
-    margin-bottom: 1rem;
+  margin-top: 1rem;
+  line-height: 1.25;
+  font-weight: $font_heading-weight;
 }
 
 h1 {
-    font-size: get-heading(h1, font-size);
+  margin-top: 0;
+  font-size: rem(38);
 }
 
 h2 {
-    font-size: get-heading(h2, font-size);
+  font-size: rem(32);
 }
 
 h3 {
-    font-size: get-heading(h3, font-size);
+  font-size: rem(28);
 }
 
 h4 {
-    font-size: get-heading(h4, font-size);
+  font-size: rem(24);
 }
 
 h5 {
-    font-size: get-heading(h5, font-size);
+  font-size: rem(22);
 }
 
 h6 {
-    font-size: get-heading(h6, font-size);
+  font-size: rem(20);
 }
 
 p:empty {
-    display: none;
+  display: none;
 }
 
 p,
@@ -65,71 +48,68 @@ address,
 blockquote,
 .wp-caption,
 .gallery {
-    margin-top: 0;
-    margin-bottom: 1.6em;
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
 }
 
 dfn,
 cite,
 em,
 i {
-    font-style: italic;
-    font-weight: lighter;
+  font-style: italic;
+  font-weight: 300;
 }
 
 pre {
-    @include font-size(16, em);
-    background: $color_background-pre;
-    font-family: $font_pre;
-    line-height: $font_line-height-pre;
-    max-width: 100%;
-    overflow: auto;
-    padding: 1.6em;
+  background-color: $color_off-white;
+  max-width: 100%;
+  overflow: auto;
+  padding: rem(20);
 }
 
 code,
 kbd,
 tt,
 var {
-    @include font-size(16, em);
-    font-family: $font_code;
+  font-family: $font_code;
 }
 
 abbr,
 acronym {
-    border-bottom: 1px dotted $color_border-abbr;
-    cursor: help;
+  border-bottom: 1px dotted rgba($color_gray, 0.5);
+  cursor: help;
 }
 
 mark,
 ins {
-    background: $color_background-ins;
-    text-decoration: none;
+  background-color: $color_yellow;
+  text-decoration: none;
 }
 
 big {
-    font-size: 125%;
+  font-size: 125%;
 }
 
 a {
-    color: $color_link;
+  color: $color_blue;
 
-    &:visited {
-        color: $color_link-visited;
-    }
+  &:visited {
+    color: $color_purple;
+  }
 
-    &:hover,
-    &:focus,
-    &:active {
-        color: $color_link-hover;
-    }
+  &:hover,
+  &:focus,
+  &:active {
+    color: lighten($color_blue, 5%);
+  }
 
-    &:focus {
-        outline: thin dotted;
-    }
+  &:focus {
+    outline: thin dotted;
+  }
 
-    &:hover,
-    &:active {
-        outline: 0;
-    }
+  &:hover,
+  &:active {
+    outline: 0;
+  }
 }

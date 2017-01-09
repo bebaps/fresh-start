@@ -3,29 +3,31 @@
 ------------------------------------------------------------------------------------------------- */
 ul,
 ol {
-    margin: 0 0 1.6em 2em;
+  margin-bottom: rem(24);
+  margin-left: 1rem;
 }
 
 ul ul,
 ol ol,
 ul ol,
 ol ul {
-    margin: 0;
-    padding-left: 1.5em;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding-left: rem(24);
 }
 
 ul {
-    list-style: disc;
+  list-style: disc;
 }
 
 ol {
-    list-style: decimal;
+  list-style: decimal;
 }
 
 dt {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 dd {
-    margin: 0 1.5em 1.6em;
+  margin: 0 1rem rem(24);
 }
