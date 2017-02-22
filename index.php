@@ -12,38 +12,22 @@
  * @package Fresh_Start
  */
 
-get_header(); ?>
+get_header();
 
-  <main id="main" class="site_main">
+if (have_posts()) :
+  if (is_home() && !is_front_page()) : ?>
 
-    <?php
-    if (have_posts()) :
+    <h1 class="screen-reader-text"><?php single_post_title(); ?></h1>
 
-      if (is_home() && !is_front_page()) : ?>
+  <?php
+  endif;
+  while (have_posts()) : the_post();
+    get_template_part('templates/content', get_post_format());
+  endwhile;
+  the_posts_pagination(['mid_size' => 3]);
+else :
+  get_template_part('templates/content', 'none');
+endif;
 
-        <header>
-          <h1 class="page_title screen-reader-text"><?php single_post_title(); ?></h1>
-        </header>
-
-        <?php
-      endif;
-
-      while (have_posts()) : the_post();
-
-        get_template_part('templates/content/content', get_post_format());
-
-      endwhile;
-
-      the_posts_pagination(['mid_size' => 3]);
-
-    else :
-
-      get_template_part('templates/content/content', 'none');
-
-    endif; ?>
-
-  </main><!-- #main -->
-
-<?php
 get_sidebar();
 get_footer();

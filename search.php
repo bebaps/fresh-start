@@ -7,34 +7,22 @@
  * @package Fresh_Start
  */
 
-get_header(); ?>
+get_header();
 
-  <main id="main" class="site_main">
+if (have_posts()) : ?>
 
-    <?php
-    if (have_posts()) : ?>
+  <header class="header">
+    <h1 class="title"><?php printf(esc_html__('Search Results for: %s', 'fresh-start'), '<span>' . get_search_query() . '</span>'); ?></h1>
+  </header>
 
-      <header class="page_header">
-        <h1 class="page_title"><?php printf(esc_html__('Search Results for: %s', 'fresh-start'), '<span>' . get_search_query() . '</span>'); ?></h1>
-      </header>
+  <?php
+  while (have_posts()) : the_post();
+    get_template_part('templates/content', 'search');
+  endwhile;
+  the_posts_pagination(['mid_size' => 3]);
+else :
+  get_template_part('templates/content', 'none');
+endif;
 
-      <?php
-      while (have_posts()) : the_post();
-
-        get_template_part('templates/content/content', 'search');
-
-      endwhile;
-
-      the_posts_pagination(['mid_size' => 3]);
-
-    else :
-
-      get_template_part('templates/content/content', 'none');
-
-    endif; ?>
-
-  </main><!-- #main -->
-
-<?php
 get_sidebar();
 get_footer();

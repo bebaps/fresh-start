@@ -14,6 +14,7 @@ Components
   # Comments
   # Forms
   # Galleries
+  # Header
   # Lists
   # Media
   # Tables
@@ -25,7 +26,6 @@ Templates
   Pages
   Posts
     # Posts Base
-  Layouts
 --------------------------------------------------------- */
 // Load the variables, functions, mixins, etc.
 @import "abstracts/all";
@@ -37,5 +37,4 @@ Templates
 // Load theme styles
 @import "global/all";
 @import "components/all";
-@import "navigation/all";
 @import "templates/all";

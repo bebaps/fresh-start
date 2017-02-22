@@ -2,7 +2,7 @@
 
 // Define the local URL used for development
 // See https://browsersync.io/docs/options/#option-proxy
-const LOCALURL = 'freshstart:8888';
+const LOCALURL = 'wordpress.dev';
 
 // Give this project a name, used for the build folder
 const PROJECT = 'freshstart';
@@ -46,7 +46,9 @@ const SOURCES = {
     './node_modules/jquery/dist/jquery.js',
     `${PATHS.js}/vendor/*.js`,
     `${PATHS.js}/theme/skip-link-focus-fix.js`,
-    `${PATHS.js}/theme/custom.js`
+    `${PATHS.js}/theme/custom.js`,
+    `${PATHS.js}/theme/ajax-load-more.js`,
+    `${PATHS.js}/theme/ajax-get-posts.js`
   ]
 };
 

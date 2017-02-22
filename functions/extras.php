@@ -16,57 +16,12 @@
  */
 function fresh_start_body_classes($classes)
 {
-  $classes[] = 'site_body';
-
-  if (is_home()) {
-    $classes[] = 'is-home';
-  }
-
-  if (is_front_page()) {
-    $classes[] = 'is-homepage';
-  }
-
-  if (is_front_page() && is_home()) {
-    $classes[] = 'is-blogroll';
-  }
-
-  if (is_single()) {
-    $classes[] = 'is-single';
-  }
-
-  if (is_page()) {
-    $classes[] = 'is-page';
-  }
-
-  if (is_archive()) {
-    $classes[] = 'is-archive';
-  }
-
-  if (is_search()) {
-    $classes[] = 'is-search-results';
-  }
-
-  if (is_404()) {
-    $classes[] = 'is-404';
-  }
-
-  if (is_child_theme()) {
-    $classes[] = 'is-child';
-  }
+  $classes[] = 'site';
 
   return $classes;
 }
 
 add_filter('body_class', 'fresh_start_body_classes');
-
-// Remove all body classes except for those inside $whitelist
-// function wps_body_class($wp_classes, $extra_classes) {
-//     $whitelist = array('portfolio', 'home', 'error404', 'search');
-//     $wp_classes = array_intersect($wp_classes, $whitelist);
-
-//     return array_merge($wp_classes, (array) $extra_classes);
-// }
-// add_filter('body_class', 'wps_body_class', 10, 2);
 
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
@@ -105,7 +60,7 @@ add_filter('excerpt_length', 'custom_excerpt_length');
  */
 function custom_admin_footer()
 {
-  echo 'This theme was developed by Alexander Persky.';
+  echo 'Theme developed by <a href="https://alexanderpersky.com" rel="designer">Alexander Persky</a>';
 }
 
 add_filter('admin_footer_text', 'custom_admin_footer');

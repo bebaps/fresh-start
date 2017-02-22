@@ -8,16 +8,14 @@
  */
 ?>
 
-<article class="page_main-content">
-
-  <header class="post_header">
-    <?php the_title('<h1 class="post_title">', '</h1>'); ?>
+<article>
+  <header>
+    <?php the_title('<h1>', '</h1>'); ?>
   </header>
 
-  <div class="post_content">
+  <div class="content">
     <?php
     the_content();
-
     wp_link_pages([
       'before' => '<div class="page_links">' . esc_html__('Pages:', 'fresh-start'),
       'after'  => '</div>',
@@ -26,7 +24,7 @@
   </div>
 
   <?php if (get_edit_post_link()) : ?>
-    <footer class="post_footer">
+    <footer>
       <?php
       edit_post_link(sprintf( /* translators: %s: Name of current post */
         esc_html__('Edit %s', 'fresh-start'), the_title('<span class="screen-reader-text">"', '"</span>', false)),
@@ -34,5 +32,4 @@
       ?>
     </footer>
   <?php endif; ?>
-
-</article><!-- .page_main-content -->
+</article>

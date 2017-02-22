@@ -57,19 +57,19 @@ sub {
 
 // Site Layout
 // -----------------------------------------------------------------------------
-.site_body {
+.site {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-}
-
-.site_header,
-.site_footer,
-.site_sidebar {
-  position: relative;
-  background-color: $color_white;
 }
 
 .site_main {
   flex: 1 0 auto;
+}
+
+.site_header,
+.site_main,
+.site_footer,
+.site_sidebar {
+  position: relative;
+  // background-color: $color_white;
 }

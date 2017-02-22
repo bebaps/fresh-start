@@ -10,9 +10,9 @@ function fresh_start_widgets_init()
   register_sidebars(2, [
     'name'          => esc_html__('Sidebar %d', 'fresh-start'),
     'description'   => esc_html__('Add widgets here.', 'fresh-start'),
-    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'before_widget' => '<section class="widget">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h2 class="widget-title">',
+    'before_title'  => '<h2 class="widget_title">',
     'after_title'   => '</h2>'
   ]);
 }
