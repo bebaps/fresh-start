@@ -1,0 +1,19 @@
+/* -----------------------------------------------------------------------------
+  # Misc. Components
+----------------------------------------------------------------------------- */
+hr {
+  border: 0;
+  border-top: 1px solid $color_black;
+  height: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+// Extra wide images within figure tags don't overflow the content area.
+figure {
+  margin: 1rem 0;
+}

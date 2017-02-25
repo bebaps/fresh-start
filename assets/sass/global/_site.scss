@@ -1,62 +1,6 @@
 /* -------------------------------------------------------------------------------------------------
   # Site
 ------------------------------------------------------------------------------------------------- */
-blockquote,
-q {
-  quotes: "" "";
-  font-style: italic;
-
-  &::before,
-  &::after {
-    content: "";
-  }
-}
-
-hr {
-  background-color: rgba($color_black, 0.3);
-  border: 0;
-  height: 1px;
-  // margin: -1px 0;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: inline-block;
-}
-
-// Extra wide images within figure tags don't overflow the content area.
-figure {
-  margin: 1rem 0;
-}
-
-a,
-b,
-i,
-strong,
-em,
-small,
-code {
-  line-height: normal;
-}
-
-sub,
-sup {
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sup {
-  top: rem(-8);
-}
-
-sub {
-  bottom: rem(-4);
-}
-
-// Site Layout
-// -----------------------------------------------------------------------------
 .site {
   display: flex;
   flex-direction: column;
@@ -71,5 +15,4 @@ sub {
 .site_footer,
 .site_sidebar {
   position: relative;
-  // background-color: $color_white;
 }
