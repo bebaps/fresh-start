@@ -9,21 +9,16 @@
 
 get_header(); ?>
 
-  <main id="main" class="site_main">
+  <header>
+    <h1 class="title"><?php esc_html_e('Oops! That page can&rsquo;t be found...', 'fresh-start'); ?></h1>
+  </header>
 
-    <header class="page_header">
-      <h1 class="page_title"><?php esc_html_e('Oops! That page can&rsquo;t be found...', 'fresh-start'); ?></h1>
-    </header>
-
-    <section class="page_content">
-      <p><?php esc_html_e('Sorry, but what you are looking for is not here. Maybe try one of the links below or a search?', 'fresh-start'); ?></p>
-      <p>Return to the <a href="<?php echo esc_url(home_url('/')); ?>">homepage</a>.</p>
-    </section>
-
-    <?php get_search_form(); ?>
-
-  </main><!-- #main -->
+  <section class="content">
+    <p><?php esc_html_e('Sorry, but what you are looking for is not here. Maybe try one of the links below or a search?',
+        'fresh-start'); ?></p>
+    <p>Return to the <a href="<?php echo esc_url(home_url('/')); ?>">homepage</a>.</p>
+  </section>
 
 <?php
-get_sidebar();
+get_search_form();
 get_footer();

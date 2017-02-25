@@ -53,3 +53,60 @@
   @include center-block;
   clear: both;
 }
+
+// Captions
+// -----------------------------------------------------------------------------
+.wp-caption {
+  max-width: 100%;
+
+  img[class*="wp-image-"] {
+    @include center-block;
+  }
+
+  .wp-caption-text {
+    margin: rem(12) 0;
+  }
+}
+
+.wp-caption-text {
+  font-size: rem(12);
+  text-align: center;
+}
+
+// Posts
+// -----------------------------------------------------------------------------
+.sticky {
+  display: block;
+}
+
+.hentry {
+  margin-bottom: 1rem;
+}
+
+.byline,
+.updated:not(.published) {
+  display: none;
+}
+
+.single,
+.group-blog {
+  & .byline {
+    display: inline;
+  }
+}
+
+.content,
+.post-summary {
+  margin-top: 1rem;
+}
+
+.page-links {
+  clear: both;
+  margin-bottom: 1rem;
+}
+
+.category-links,
+.tag-links,
+.comment-link {
+  display: block;
+}

@@ -24,18 +24,18 @@
 function fresh_start_custom_header_setup()
 {
   add_theme_support('custom-header', apply_filters('fresh_start_custom_header_args', [
-    'default-image'      => '',
+    'default-image' => '',
     'default-text-color' => '000000',
-    'width'              => 1000,
-    'height'             => 250,
-    'flex-height'        => true,
-    'wp-head-callback'   => 'fresh_start_header_style',
+    'width' => 1000,
+    'height' => 250,
+    'flex-height' => true,
+    'wp-head-callback' => 'fresh_start_header_style',
   ]));
 }
 
 add_action('after_setup_theme', 'fresh_start_custom_header_setup');
 
-if ( !function_exists('fresh_start_header_style')) :
+if (!function_exists('fresh_start_header_style')) :
   /**
    * Styles the header image and text displayed on the blog.
    *
@@ -60,8 +60,8 @@ if ( !function_exists('fresh_start_header_style')) :
   // Has the text been hidden?
   if ( ! display_header_text() ) :
 ?>
-      .site_title,
-      .site_description {
+      .title,
+      .description {
         position: absolute;
         clip: rect(1px, 1px, 1px, 1px);
       }
@@ -70,8 +70,8 @@ if ( !function_exists('fresh_start_header_style')) :
   // If the user has set a custom color for the text use that.
   else :
 ?>
-      .site_title a,
-      .site_description {
+      .title a,
+      .description {
         color: #<?php echo esc_attr( $header_text_color ); ?>;
       }
 
