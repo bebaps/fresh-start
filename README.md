@@ -58,10 +58,10 @@ The [Editor Config](http://editorconfig.org/) is really just for portability. Be
 [Stylelint](http://stylelint.io/) is the same idea as ESLint, but for your CSS. Use my default settings found in `.stylelintrc` or create your own.
 
 ## Extras
-Take note of two files in the `functions/` directory: `custom-functions.php` and `theme-extras.php`. Be sure to review these files to understand what they are doing.
+Take note of two files in the `inc/` directory: `theme-functions.php` and `theme-extras.php`. Be sure to review these files to understand what they are doing.
 
-### Custom-functions.php
+### theme-functions.php
 This file holds a few custom functions I use frequently. Add your own to this file.
 
-### Theme-extras.php
+### theme-extras.php
 This file contains a small amount of tweaks I find useful for themes. As these are purely my opinion, modify this as you see fit or delete this file.
