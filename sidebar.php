@@ -10,7 +10,7 @@
 // Which sidebar do you want to grab?
 $sidebar = 1;
 
-if ( !is_active_sidebar($sidebar)) {
+if (!is_active_sidebar($sidebar)) {
   return;
 }
 ?>

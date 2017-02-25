@@ -17,19 +17,9 @@
     <?php
     the_content();
     wp_link_pages([
-      'before' => '<div class="page_links">' . esc_html__('Pages:', 'fresh-start'),
-      'after'  => '</div>',
+      'before' => '<div class="page-links">' . esc_html__('Pages:', 'fresh-start'),
+      'after' => '</div>',
     ]);
     ?>
   </div>
-
-  <?php if (get_edit_post_link()) : ?>
-    <footer>
-      <?php
-      edit_post_link(sprintf( /* translators: %s: Name of current post */
-        esc_html__('Edit %s', 'fresh-start'), the_title('<span class="screen-reader-text">"', '"</span>', false)),
-        '<span class="edit-link">', '</span>');
-      ?>
-    </footer>
-  <?php endif; ?>
 </article>

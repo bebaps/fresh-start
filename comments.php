@@ -36,7 +36,7 @@ if (post_password_required()) {
     </ol>
 
     <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : // Are there comments to navigate through? ?>
-      <nav class="comments_navigation">
+      <nav class="comments-navigation">
         <h2 class="screen-reader-text"><?php esc_html_e('Comments navigation', 'fresh-start'); ?></h2>
         <?php paginate_comments_links([
           'prev_text' => 'Older Comments',
@@ -47,7 +47,7 @@ if (post_password_required()) {
   <?php endif;
 
   // If comments are closed and there are comments, let's leave a little note, shall we?
-  if ( !comments_open() && get_comments_number() && post_type_supports(get_post_type(), 'comments')) : ?>
+  if (!comments_open() && get_comments_number() && post_type_supports(get_post_type(), 'comments')) : ?>
     <p><?php esc_html_e('Sorry, comments are closed.', 'fresh-start'); ?></p>
   <?php endif; ?>
 

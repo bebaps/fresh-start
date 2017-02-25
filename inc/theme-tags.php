@@ -7,7 +7,7 @@
  * @package Fresh_Start
  */
 
-if ( !function_exists('fresh_start_posted_on')) :
+if (!function_exists('fresh_start_posted_on')) :
 
   // Prints HTML with meta information for the current post-date/time and author.
   function fresh_start_posted_on()
@@ -31,7 +31,7 @@ if ( !function_exists('fresh_start_posted_on')) :
   }
 endif;
 
-if ( !function_exists('fresh_start_entry_footer')) :
+if (!function_exists('fresh_start_entry_footer')) :
 
   // Prints HTML with meta information for the categories, tags and comments.
   function fresh_start_entry_footer()
@@ -53,17 +53,13 @@ if ( !function_exists('fresh_start_entry_footer')) :
       }
     }
 
-    if ( !is_single() && !post_password_required() && (comments_open() || get_comments_number())) {
+    if (!is_single() && !post_password_required() && (comments_open() || get_comments_number())) {
       echo '<span class="comment-link">';
       /* translators: %s: post title */
       comments_popup_link(sprintf(wp_kses(__('Leave a Comment<span class="screen-reader-text"> on %s</span>',
         'fresh-start'), ['span' => ['class' => []]]), get_the_title()));
       echo '</span>';
     }
-
-    edit_post_link(sprintf( /* translators: %s: Name of current post */
-      esc_html__('Edit %s', 'fresh-start'), the_title('<span class="screen-reader-text">"', '"</span>', false)),
-      '<span class="edit-link">', '</span>');
   }
 endif;
 
@@ -77,10 +73,10 @@ function fresh_start_categorized_blog()
   if (false === ($all_the_cool_cats = get_transient('fresh_start_categories'))) {
     // Create an array of all the categories that are attached to posts.
     $all_the_cool_cats = get_categories([
-      'fields'     => 'ids',
+      'fields' => 'ids',
       'hide_empty' => 1,
       // We only need to know if there is more than one category.
-      'number'     => 2,
+      'number' => 2,
     ]);
 
     // Count the number of categories that are attached to the posts.

@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Layout - Sidebar/Content
- * Template Post Type: page, post
+ * Template Post Type: post, page
  *
  * The template for displaying the sidebar on the left, and the content on the right.
  *

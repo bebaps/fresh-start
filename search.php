@@ -11,8 +11,9 @@ get_header();
 
 if (have_posts()) : ?>
 
-  <header class="header">
-    <h1 class="title"><?php printf(esc_html__('Search Results for: %s', 'fresh-start'), '<span>' . get_search_query() . '</span>'); ?></h1>
+  <header>
+    <h1 class="title"><?php printf(esc_html__('Search Results for: %s', 'fresh-start'),
+        '<span>' . get_search_query() . '</span>'); ?></h1>
   </header>
 
   <?php

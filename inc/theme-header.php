@@ -24,18 +24,18 @@
 function fresh_start_custom_header_setup()
 {
   add_theme_support('custom-header', apply_filters('fresh_start_custom_header_args', [
-    'default-image'      => '',
+    'default-image' => '',
     'default-text-color' => '000000',
-    'width'              => 1000,
-    'height'             => 250,
-    'flex-height'        => true,
-    'wp-head-callback'   => 'fresh_start_header_style',
+    'width' => 1000,
+    'height' => 250,
+    'flex-height' => true,
+    'wp-head-callback' => 'fresh_start_header_style',
   ]));
 }
 
 add_action('after_setup_theme', 'fresh_start_custom_header_setup');
 
-if ( !function_exists('fresh_start_header_style')) :
+if (!function_exists('fresh_start_header_style')) :
   /**
    * Styles the header image and text displayed on the blog.
    *

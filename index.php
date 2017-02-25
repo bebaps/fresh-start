@@ -19,7 +19,7 @@ if (have_posts()) :
 
     <h1 class="screen-reader-text"><?php single_post_title(); ?></h1>
 
-  <?php
+    <?php
   endif;
   while (have_posts()) : the_post();
     get_template_part('templates/content', get_post_format());

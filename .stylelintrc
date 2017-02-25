@@ -5,16 +5,34 @@
   ],
   "rules": {
     "at-rule-empty-line-before": [
-      "always", {
-        except: ["blockless-group", "first-nested"],
-        ignore: ["after-comment"]
+      "always",
+      {
+        except: [
+          "blockless-group",
+          "first-nested"
+        ],
+        ignore: [
+          "after-comment"
+        ]
       }
     ],
     "at-rule-name-case": "lower",
     "at-rule-name-space-after": "always-single-line",
     "at-rule-no-unknown": [
-      true, {
-        ignoreAtRules: ["extend", "function", "if", "return", "warn", "mixin", "content", "else", "include", "at-root"]
+      true,
+      {
+        ignoreAtRules: [
+          "extend",
+          "function",
+          "if",
+          "return",
+          "warn",
+          "mixin",
+          "content",
+          "else",
+          "include",
+          "at-root"
+        ]
       }
     ],
     "at-rule-semicolon-newline-after": "always",
@@ -28,23 +46,32 @@
     "color-hex-case": "lower",
     "color-hex-length": "short",
     "color-no-hex": [
-      true, {
+      true,
+      {
         "severity": "warning"
       }
     ],
     "color-no-invalid-hex": true,
     "comment-empty-line-before": [
-      "always", {
-        except: ["first-nested"],
-        ignore: ["stylelint-commands"]
+      "always",
+      {
+        except: [
+          "first-nested"
+        ],
+        ignore: [
+          "stylelint-commands"
+        ]
       }
     ],
     "comment-whitespace-inside": "always",
     "declaration-bang-space-after": "never",
     "declaration-bang-space-before": "always",
     "declaration-block-no-duplicate-properties": [
-      true, {
-        ignore: ["consecutive-duplicates"]
+      true,
+      {
+        ignore: [
+          "consecutive-duplicates"
+        ]
       }
     ],
     "declaration-block-no-ignored-properties": true,
@@ -76,12 +103,14 @@
     "length-zero-no-unit": true,
     "max-empty-lines": 1,
     "max-line-length": [
-      120, {
+      120,
+      {
         "severity": "warning"
       }
     ],
     "max-nesting-depth": [
-      3, {
+      3,
+      {
         "severity": "warning"
       }
     ],
@@ -106,8 +135,11 @@
     "number-max-precision": 10,
     "property-case": "lower",
     "rule-non-nested-empty-line-before": [
-      "always-multi-line", {
-        ignore: ["after-comment"]
+      "always-multi-line",
+      {
+        ignore: [
+          "after-comment"
+        ]
       }
     ],
     "selector-attribute-brackets-space-inside": "never",
@@ -133,7 +165,13 @@
     "string-no-newline": true,
     "string-quotes": "double",
     "time-no-imperceptible": true,
-    "unit-blacklist": ["ch", "mm", "q", "cm", "in"],
+    "unit-blacklist": [
+      "ch",
+      "mm",
+      "q",
+      "cm",
+      "in"
+    ],
     "unit-case": "lower",
     "unit-no-unknown": true,
     "value-keyword-case": "lower",

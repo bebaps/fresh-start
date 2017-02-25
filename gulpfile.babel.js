@@ -8,14 +8,14 @@ const LOCALURL = 'wordpress.dev';
 const PROJECT = 'freshstart';
 
 // Define the paths to be used
-const PATHS = new function() {
+const PATHS = new function () {
   this.dist = './_dist/',
-  this.assets = './assets',
-  this.css = `${this.assets}/css`,
-  this.js = `${this.assets}/js`,
-  this.fonts = `${this.assets}/fonts`,
-  this.images = `${this.assets}/images`,
-  this.sass = `${this.assets}/sass`;
+    this.assets = './assets',
+    this.css = `${this.assets}/css`,
+    this.js = `${this.assets}/js`,
+    this.fonts = `${this.assets}/fonts`,
+    this.images = `${this.assets}/images`,
+    this.sass = `${this.assets}/sass`;
 };
 
 // Define the sources to be used
@@ -128,7 +128,7 @@ gulp.task('clean:css', () => {
   del([
     `${PATHS.css}/*.css`,
     `${PATHS.css}/sourcemaps`
-    ]);
+  ]);
 });
 
 // Delete compiled JS files and sourcemap(s)
@@ -171,7 +171,7 @@ gulp.task('sass', ['clean:css'], () => {
     .pipe($.plumber())
     .pipe($.sass()
       .on('error', $.sass.logError))
-      .on('error', $.notify.onError('Error compiling Sass!'))
+    .on('error', $.notify.onError('Error compiling Sass!'))
     .pipe($.autoprefixer(OPTIONS.autoprefixer))
     .pipe($.cssnano(OPTIONS.cssnano))
     .pipe($.rename({

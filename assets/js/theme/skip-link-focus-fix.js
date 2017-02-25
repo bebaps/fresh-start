@@ -7,7 +7,7 @@
  */
 'use strict';
 
-(function() {
+(function () {
   var isWebkit, isOpera, isIe;
 
   isWebkit = navigator.userAgent.toLowerCase().indexOf('webkit') > -1;
@@ -15,7 +15,7 @@
   isIe = navigator.userAgent.toLowerCase().indexOf('msie') > -1;
 
   if ((isWebkit || isOpera || isIe) && document.getElementById && window.addEventListener) {
-    window.addEventListener('hashchange', function() {
+    window.addEventListener('hashchange', function () {
       var id, element;
 
       id = location.hash.substring(1);

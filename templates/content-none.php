@@ -9,7 +9,7 @@
 ?>
 
 <article>
-  <header class="header">
+  <header>
     <h1 class="title"><?php esc_html_e('Nothing Found', 'fresh-start'); ?></h1>
   </header>
 
@@ -21,7 +21,8 @@
       <p><?php esc_html_e('Sorry, but nothing matched your search. Please try again.', 'fresh-start'); ?></p>
       <?php get_search_form(); ?>
     <?php else : ?>
-      <p><?php esc_html_e('It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'fresh-start'); ?></p>
+      <p><?php esc_html_e('It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.',
+          'fresh-start'); ?></p>
       <?php get_search_form(); ?>
     <?php endif; ?>
   </div>

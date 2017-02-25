@@ -13,20 +13,20 @@ function debug($code)
 /**
  * Grab the URL of the Featured Image for the current page/post.
  *
- * @param null   $post_id The ID of the page/post to check for a Featured Image.
- * @param string $size    The defined image size to return.
+ * @param null $post_id The ID of the page/post to check for a Featured Image.
+ * @param string $size The defined image size to return.
  *
  * @return bool | URL Return false if there is no Featured Image, or the URL if there is one.
  */
 function get_featured_image($size = 'full', $post_id = null)
 {
-  if ( !has_post_thumbnail($post_id)) {
+  if (!has_post_thumbnail($post_id)) {
     return false;
   }
 
   $image = wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $size);
 
-  return $image[ 0 ];
+  return $image[0];
 }
 
 /**
@@ -38,7 +38,7 @@ $under_maintenance = false;
 if ($under_maintenance) {
   function maintenance_mode()
   {
-    if ( !current_user_can('administrator')) {
+    if (!current_user_can('administrator')) {
       wp_die('The site is currently undergoing scheduled maintenance and will return shortly.',
         'We will be back soon!');
     }

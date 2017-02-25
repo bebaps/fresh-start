@@ -7,22 +7,22 @@
  */
 'use strict';
 
-(function($) {
+(function ($) {
   // Site title and description.
-  wp.customize('blogname', function(value) {
-    value.bind(function(to) {
+  wp.customize('blogname', function (value) {
+    value.bind(function (to) {
       $('.title a').text(to);
     });
   });
-  wp.customize('blogdescription', function(value) {
-    value.bind(function(to) {
+  wp.customize('blogdescription', function (value) {
+    value.bind(function (to) {
       $('.description').text(to);
     });
   });
 
   // Header text color.
-  wp.customize('header_textcolor', function(value) {
-    value.bind(function(to) {
+  wp.customize('header_textcolor', function (value) {
+    value.bind(function (to) {
       if (to === 'blank') {
         $('.title a, .description').css({
           'clip': 'rect(1px, 1px, 1px, 1px)',

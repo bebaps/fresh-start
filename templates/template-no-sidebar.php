@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Layout - No Sidebar
- * Template Post Type: page, post
+ * Template Post Type: post, page
  *
  * The template for displaying content with no sidebar.
  *
