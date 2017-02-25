@@ -1,6 +1,8 @@
 /* -------------------------------------------------------------------------------------------------
   # Typography
 ------------------------------------------------------------------------------------------------- */
+// Headings
+// -----------------------------------------------------------------------------
 h1,
 h2,
 h3,
@@ -37,6 +39,33 @@ h6 {
   font-size: rem(20);
 }
 
+// Anchors
+// -----------------------------------------------------------------------------
+a {
+  color: $color_blue;
+
+  &:visited {
+    color: $color_purple;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: lighten($color_blue, 5%);
+  }
+
+  &:focus {
+    outline: thin dotted;
+  }
+
+  &:hover,
+  &:active {
+    outline: 0;
+  }
+}
+
+// Misc.
+// -----------------------------------------------------------------------------
 p:empty {
   display: none;
 }
@@ -91,25 +120,38 @@ big {
   font-size: 125%;
 }
 
-a {
-  color: $color_blue;
+blockquote,
+q {
+  quotes: "" "";
+  font-style: italic;
 
-  &:visited {
-    color: $color_purple;
+  &::before,
+  &::after {
+    content: "";
   }
+}
 
-  &:hover,
-  &:focus,
-  &:active {
-    color: lighten($color_blue, 5%);
-  }
+a,
+b,
+i,
+strong,
+em,
+small,
+code {
+  line-height: normal;
+}
 
-  &:focus {
-    outline: thin dotted;
-  }
+sub,
+sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
 
-  &:hover,
-  &:active {
-    outline: 0;
-  }
+sup {
+  top: rem(-8);
+}
+
+sub {
+  bottom: rem(-4);
 }

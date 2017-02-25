@@ -9,37 +9,33 @@
 ?>
 
 <article <?php post_class(); ?>>
-
-  <header class="post_header">
+  <header>
     <?php
     if (is_single()) :
-      the_title('<h1 class="post_title">', '</h1>');
+      the_title('<h1>', '</h1>');
     else :
-      the_title('<h2 class="post_title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
+      the_title('<h2><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
     endif;
 
     if ('post' === get_post_type()) : ?>
-      <div class="post_meta">
-        <?php fresh_start_posted_on(); ?>
-      </div>
+      <?php fresh_start_posted_on(); ?>
     <?php endif; ?>
   </header>
 
-  <div class="post_content">
+  <div class="content">
     <?php
     the_content(sprintf( /* translators: %s: Name of current post. */
       wp_kses(__('Continue reading %s <span class="meta-nav">&rarr;</span>', 'fresh-start'),
         ['span' => ['class' => []]]), the_title('<span class="screen-reader-text">"', '"</span>', false)));
 
     wp_link_pages([
-      'before' => '<div class="page_links">' . esc_html__('Pages:', 'fresh-start'),
-      'after'  => '</div>',
+      'before' => '<div class="page-links">' . esc_html__('Pages:', 'fresh-start'),
+      'after' => '</div>',
     ]);
     ?>
   </div>
 
-  <footer class="post_footer">
+  <footer>
     <?php fresh_start_entry_footer(); ?>
   </footer>
-
-</article><!-- .post -->
+</article>

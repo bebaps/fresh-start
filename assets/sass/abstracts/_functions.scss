@@ -1,5 +1,7 @@
-// Custom functions
+// Custom Sass functions
 // -----------------------------------------------------------------------------
+$root-font-size: 16px;
+
 // Strip units from a given value
 @function strip-unit($number) {
   @if type-of($number) == "number" and not unitless($number) {
@@ -11,16 +13,12 @@
 
 // Convert pixels to rem
 @function rem($pixels) {
-  $root_font-size: 16px;
-  $rem: $pixels / strip-unit($root_font-size);
-
+  $rem: $pixels / strip-unit($root-font-size);
   @return #{$rem}rem;
 }
 
 // Convert pixels to em
 @function em($pixels) {
-  $root_font-size: 16px;
-  $em: $pixels / strip-unit($root_font-size);
-
+  $em: $pixels / strip-unit($root-font-size);
   @return #{$em}em;
 }
