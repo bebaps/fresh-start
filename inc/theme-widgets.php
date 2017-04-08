@@ -1,9 +1,10 @@
 <?php
 /**
- * Register widget area.
+ * Register widget(s).
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
+
 function fresh_start_widgets_init()
 {
   // Register 2 sidebars

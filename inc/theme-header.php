@@ -46,9 +46,9 @@ if (!function_exists('fresh_start_header_style')) :
     $header_text_color = get_header_textcolor();
 
     /*
- * If no custom options for text are set, let's bail.
- * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: HEADER_TEXTCOLOR.
- */
+     * If no custom options for text are set, let's bail.
+     * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: HEADER_TEXTCOLOR.
+     */
     if (HEADER_TEXTCOLOR === $header_text_color) {
       return;
     }

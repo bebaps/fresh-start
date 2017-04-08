@@ -37,9 +37,9 @@ if (!function_exists('fresh_start_setup')) :
 
     // Register the navigational menus.
     register_nav_menus([
-      'menu-1' => esc_html__('Primary Menu', 'fresh-start'),
-      'menu-2' => esc_html__('Footer Menu', 'fresh-start'),
-      'menu-3' => esc_html__('Social Menu', 'fresh-start')
+      'primary' => esc_html__('Primary Menu', 'fresh-start'),
+      'footer' => esc_html__('Footer Menu', 'fresh-start'),
+      'social' => esc_html__('Social Menu', 'fresh-start')
     ]);
 
     /*
@@ -103,6 +103,7 @@ add_filter('body_class', 'fresh_start_body_classes');
  */
 if (function_exists('add_image_size')) {
   add_image_size('extra-large', 2500, 9999, true);
+  add_image_size('hero', 1600, 600, true);
 }
 
 /**

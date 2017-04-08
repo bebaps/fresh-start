@@ -99,7 +99,7 @@ function fresh_start_category_transient_flusher()
   if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
     return;
   }
-  // Like, beat it. Dig?
+
   delete_transient('fresh_start_categories');
 }
 
