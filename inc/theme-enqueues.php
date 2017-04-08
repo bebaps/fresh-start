@@ -6,7 +6,7 @@ function fresh_start_scripts()
 {
   wp_enqueue_style('theme-styles', get_theme_file_uri('/assets/css/theme.min.css'), [], '1.0.0');
 
-  wp_enqueue_script('theme-scripts', get_theme_file_uri('/assets/js/theme.min.js'), [], '1.0.0', true);
+  wp_enqueue_script('theme-scripts', get_theme_file_uri('/assets/js/theme.min.js'), ['jquery'], '1.0.0', true);
 
   if (is_singular() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
