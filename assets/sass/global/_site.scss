@@ -6,13 +6,13 @@
   flex-direction: column;
 }
 
-.site_main {
+.site-main {
   flex: 1 0 auto;
 }
 
-.site_header,
-.site_main,
-.site_footer,
-.site_sidebar {
+.site-header,
+.site-main,
+.site-footer,
+.site-sidebar {
   position: relative;
 }
