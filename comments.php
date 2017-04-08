@@ -15,13 +15,11 @@
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
  */
-if (post_password_required()) {
-  return;
-}
-?>
+if (post_password_required()) return; ?>
 
 <section class="comments">
   <?php if (have_comments()) : ?>
+
     <h2>
       <?php
       printf(
@@ -36,6 +34,7 @@ if (post_password_required()) {
     </ol>
 
     <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : // Are there comments to navigate through? ?>
+
       <nav class="comments-navigation">
         <h2 class="screen-reader-text"><?php esc_html_e('Comments navigation', 'fresh-start'); ?></h2>
         <?php paginate_comments_links([
@@ -43,12 +42,15 @@ if (post_password_required()) {
           'next_text' => 'Newer Comments'
         ]); ?>
       </nav>
+
     <?php endif; ?>
   <?php endif;
 
   // If comments are closed and there are comments, let's leave a little note, shall we?
   if (!comments_open() && get_comments_number() && post_type_supports(get_post_type(), 'comments')) : ?>
+
     <p><?php esc_html_e('Sorry, comments are closed.', 'fresh-start'); ?></p>
+
   <?php endif; ?>
 
   <?php comment_form(); ?>

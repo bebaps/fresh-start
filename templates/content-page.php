@@ -16,6 +16,7 @@
   <div class="content">
     <?php
     the_content();
+
     wp_link_pages([
       'before' => '<div class="page-links">' . esc_html__('Pages:', 'fresh-start'),
       'after' => '</div>',

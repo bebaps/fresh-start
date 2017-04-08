@@ -15,19 +15,23 @@
 get_header();
 
 if (have_posts()) :
-  if (is_home() && !is_front_page()) : ?>
 
-    <h1 class="screen-reader-text"><?php single_post_title(); ?></h1>
+  get_template_part('templates/part', 'header');
 
-    <?php
-  endif;
   while (have_posts()) : the_post();
+
     get_template_part('templates/content', get_post_format());
+
   endwhile;
+
   the_posts_pagination(['mid_size' => 3]);
+
 else :
+
   get_template_part('templates/content', 'none');
+
 endif;
 
 get_sidebar();
+
 get_footer();

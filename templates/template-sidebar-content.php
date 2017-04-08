@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Layout - Sidebar/Content
- * Template Post Type: post, page
+ * Template Post Type: post
  *
  * The template for displaying the sidebar on the left, and the content on the right.
  *
@@ -9,14 +9,19 @@
  */
 
 get_header();
+
 get_sidebar();
 
 while (have_posts()) : the_post();
-  get_template_part('templates/content', 'page');
+
+  get_template_part('templates/content');
 
   if (comments_open() || get_comments_number()) :
+
     comments_template();
+
   endif;
+
 endwhile;
 
 get_footer();

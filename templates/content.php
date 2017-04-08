@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying posts.
+ * Template part for displaying single post content.
  *
  * @link    https://codex.wordpress.org/Template_Hierarchy
  *
@@ -9,17 +9,24 @@
 ?>
 
 <article <?php post_class(); ?>>
-  <header>
+  <header class="post-header">
     <?php
     if (is_single()) :
+
       the_title('<h1>', '</h1>');
+
     else :
+
       the_title('<h2><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
+
     endif;
 
-    if ('post' === get_post_type()) : ?>
-      <?php fresh_start_posted_on(); ?>
-    <?php endif; ?>
+    if ('post' === get_post_type()) :
+
+      fresh_start_posted_on();
+
+    endif;
+    ?>
   </header>
 
   <div class="content">
@@ -35,7 +42,7 @@
     ?>
   </div>
 
-  <footer>
+  <footer class="post-footer">
     <?php fresh_start_entry_footer(); ?>
   </footer>
 </article>
