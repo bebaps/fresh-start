@@ -1,6 +1,6 @@
-/* -------------------------------------------------------------------------------------------------
+/* -----------------------------------------------------------------------------
   # Typography
-------------------------------------------------------------------------------------------------- */
+----------------------------------------------------------------------------- */
 // Headings
 // -----------------------------------------------------------------------------
 h1,
@@ -11,7 +11,7 @@ h5,
 h6 {
   margin-top: 1rem;
   line-height: 1.25;
-  font-weight: $font_heading-weight;
+  font-weight: $heading-weight;
 }
 
 h1 {
@@ -42,16 +42,16 @@ h6 {
 // Anchors
 // -----------------------------------------------------------------------------
 a {
-  color: $color_blue;
+  color: $blue;
 
   &:visited {
-    color: $color_purple;
+    color: $purple;
   }
 
   &:hover,
   &:focus,
   &:active {
-    color: lighten($color_blue, 5%);
+    color: lighten($blue, 5%);
   }
 
   &:focus {
@@ -91,7 +91,7 @@ i {
 }
 
 pre {
-  background-color: $color_off-white;
+  background-color: $off-white;
   max-width: 100%;
   overflow: auto;
   padding: rem(20);
@@ -101,18 +101,18 @@ code,
 kbd,
 tt,
 var {
-  font-family: $font_code;
+  font-family: $font-code;
 }
 
 abbr,
 acronym {
-  border-bottom: 1px dotted rgba($color_gray, 0.5);
+  border-bottom: 1px dotted rgba($gray, 0.5);
   cursor: help;
 }
 
 mark,
 ins {
-  background-color: $color_yellow;
+  background-color: $yellow;
   text-decoration: none;
 }
 

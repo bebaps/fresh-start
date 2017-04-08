@@ -29,11 +29,9 @@ Views
 ----------------------------------------------------------------------------- */
 // Load the variables, functions, mixins, etc.
 @import "abstracts/all";
-
 // Load any 3rd party resources so they don't inherit theme styles
 // But after variables so their defaults may be overridden
 @import "vendor/all";
-
 // Load theme styles
 @import "global/all";
 @import "components/all";

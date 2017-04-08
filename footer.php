@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the footer.
+ * The theme footer.
  *
  * @link    https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
@@ -10,11 +10,7 @@
 
 </main><?php // Close #main ?>
 
-<footer class="site_footer">
-  <span><?php printf('Copyright &copy; %s %s.', date('Y'), get_bloginfo('name')); ?></span>
-  <span><?php printf(esc_html__('Site by %s.', 'fresh-start'),
-      '<a href="https://alexanderpersky.com" rel="designer">Alexander Persky</a>'); ?></span>
-</footer>
+<?php get_template_part('templates/content', 'footer'); ?>
 
 <?php wp_footer(); ?>
 </body>

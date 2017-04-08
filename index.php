@@ -1,6 +1,6 @@
 <?php
 /**
- * The main template file.
+ * The default template file.
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
@@ -14,20 +14,22 @@
 
 get_header();
 
-if (have_posts()) :
-  if (is_home() && !is_front_page()) : ?>
+if ( have_posts() ) :
 
-    <h1 class="screen-reader-text"><?php single_post_title(); ?></h1>
+  get_template_part( 'templates/part', 'header' );
 
-    <?php
-  endif;
-  while (have_posts()) : the_post();
-    get_template_part('templates/content', get_post_format());
+  while ( have_posts() ) : the_post();
+
+    get_template_part( 'templates/content', get_post_format() );
+
   endwhile;
-  the_posts_pagination(['mid_size' => 3]);
+
+  the_posts_pagination( [ 'mid_size' => 3 ] );
+
 else :
-  get_template_part('templates/content', 'none');
+
+  get_template_part( 'templates/content', 'none' );
+
 endif;
 
-get_sidebar();
 get_footer();
