@@ -5,6 +5,7 @@
  *
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
  */
+
 'use strict';
 
 (function( $ ) {
@@ -25,16 +26,16 @@
     value.bind( function( to ) {
       if ( to === 'blank' ) {
         $( '.title a, .description' ).css( {
-          'clip': 'rect(1px, 1px, 1px, 1px)',
-          'position': 'absolute'
+          clip: 'rect(1px, 1px, 1px, 1px)',
+          position: 'absolute'
         } );
       } else {
         $( '.title a, .description' ).css( {
-          'clip': 'auto',
-          'position': 'relative'
+          clip: 'auto',
+          position: 'relative'
         } );
         $( '.title a, .description' ).css( {
-          'color': to
+          color: to
         } );
       }
     } );

@@ -5,6 +5,7 @@
  *
  * Learn more: https://git.io/vWdr2
  */
+
 'use strict';
 
 (function() {

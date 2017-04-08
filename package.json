@@ -1,6 +1,6 @@
 {
   "name": "fresh-start",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Fresh start for a new WordPress theme",
   "main": "gulpfile.babel.js",
   "scripts": {
