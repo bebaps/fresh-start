@@ -37,10 +37,13 @@ if (post_password_required()) return; ?>
 
       <nav class="comments-navigation">
         <h2 class="screen-reader-text"><?php esc_html_e('Comments navigation', 'fresh-start'); ?></h2>
-        <?php paginate_comments_links([
+
+        <?php
+        paginate_comments_links([
           'prev_text' => 'Older Comments',
           'next_text' => 'Newer Comments'
-        ]); ?>
+        ]);
+        ?>
       </nav>
 
     <?php endif; ?>
@@ -51,7 +54,8 @@ if (post_password_required()) return; ?>
 
     <p><?php esc_html_e('Sorry, comments are closed.', 'fresh-start'); ?></p>
 
-  <?php endif; ?>
+  <?php
+  endif;
 
-  <?php comment_form(); ?>
+  comment_form(); ?>
 </section>

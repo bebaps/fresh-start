@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying page content in page.php.
+ * Template part for displaying page content.
  *
  * @link    https://codex.wordpress.org/Template_Hierarchy
  *
@@ -9,8 +9,8 @@
 ?>
 
 <article>
-  <header>
-    <?php the_title('<h1>', '</h1>'); ?>
+  <header class="page-header">
+    <?php the_title('<h1 class="title">', '</h1>'); ?>
   </header>
 
   <div class="content">

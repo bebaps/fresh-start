@@ -1,6 +1,6 @@
 <?php
 /**
- * The header for our theme.
+ * The theme header.
  *
  * @link    https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
@@ -27,9 +27,7 @@
 <header class="site-header">
   <?php if (has_custom_logo()) : ?>
 
-    <h1 class="title">
-      <?php the_custom_logo(); ?>
-    </h1>
+    <h1 class="title"><?php the_custom_logo(); ?></h1>
 
   <?php else : ?>
 
@@ -46,14 +44,16 @@
 
     <p class="description"><?php echo $description; ?></p>
 
-  <?php endif; ?>
+  <?php
+  endif;
 
-  <?php wp_nav_menu([
+  wp_nav_menu([
     'theme_location' => 'menu-1',
     'container' => 'nav',
     'container_class' => 'site-navigation',
     'menu_id' => 'menu-1'
-  ]); ?>
+  ]);
+  ?>
 </header>
 
 <main id="main" class="site-main">

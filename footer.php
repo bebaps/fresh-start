@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the footer.
+ * The theme footer.
  *
  * @link    https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *

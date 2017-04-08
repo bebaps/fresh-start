@@ -9,7 +9,7 @@
 ?>
 
 <article>
-  <header>
+  <header class="page-header">
     <h1 class="title"><?php esc_html_e('Oops! That page can&rsquo;t be found...', 'fresh-start'); ?></h1>
   </header>
 

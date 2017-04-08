@@ -14,7 +14,7 @@ get_sidebar();
 
 while (have_posts()) : the_post();
 
-  get_template_part('templates/content');
+  get_template_part('templates/content', get_post_format());
 
   if (comments_open() || get_comments_number()) :
 
