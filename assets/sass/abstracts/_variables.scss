@@ -1,18 +1,18 @@
 // Colors
 // -----------------------------------------------------------------------------
-$color_white: rgb(255, 255, 255);
-$color_off-white: rgb(241, 241, 241);
-$color_black: rgb(0, 0, 0);
-$color_off-black: rgb(17, 17, 17);
-$color_yellow: rgb(255, 249, 192);
-$color_blue: rgb(33, 117, 155);
-$color_gray: rgb(102, 102, 102);
-$color_purple: rgb(128, 0, 128);
+$white: rgb(255, 255, 255);
+$off-white: rgb(241, 241, 241);
+$black: rgb(0, 0, 0);
+$off-black: rgb(17, 17, 17);
+$yellow: rgb(255, 249, 192);
+$blue: rgb(33, 117, 155);
+$gray: rgb(102, 102, 102);
+$purple: rgb(128, 0, 128);
 
 // Typography
 // -----------------------------------------------------------------------------
-$font_code: monospace !default;
-$font_heading-weight: 700 !default;
+$font-code: monospace;
+$heading-weight: 700;
 
 // Breakpoints
 // -----------------------------------------------------------------------------
@@ -28,4 +28,4 @@ $medium: map-get($breakpoints, medium);
 $large: map-get($breakpoints, large);
 $xlarge: map-get($breakpoints, xlarge);
 
-$site_max-width: 75rem !default;
+$site-max-width: 75rem;

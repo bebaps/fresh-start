@@ -1,19 +1,19 @@
-/* -------------------------------------------------------------------------------------------------
+/* -----------------------------------------------------------------------------
   # Primary Menu
-------------------------------------------------------------------------------------------------- */
-.site_navigation {
+----------------------------------------------------------------------------- */
+.site-navigation {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.menu { // No mobile menu provided, so you can add the one you prefer
+.menu {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   list-style: none;
   margin: 0;
   padding: 0;
-  background-color: $color_white;
+  background-color: $white;
 
   li {
     flex: 0 1 auto;
@@ -22,7 +22,7 @@
     position: relative;
 
     &:hover > .sub-menu {
-      @include min-screen($large) {
+      @include min-screen($medium) {
         display: block;
       }
     }
@@ -43,7 +43,7 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: $color_white;
+  background-color: $white;
 
   a {
     display: block;

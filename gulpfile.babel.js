@@ -1,69 +1,53 @@
 'use strict';
 
 // Define the local URL used for development
-// See https://browsersync.io/docs/options/#option-proxy
-const LOCALURL = 'wordpress.dev';
+const localURL = 'wordpress.dev';
 
 // Give this project a name, used for the distribution folder
-const PROJECT = 'freshstart';
+const project = 'fresh-start';
 
 // Define the paths to be used
-const PATHS = new function () {
-  this.dist = './_dist/',
-    this.assets = './assets',
-    this.css = `${this.assets}/css`,
-    this.js = `${this.assets}/js`,
-    this.fonts = `${this.assets}/fonts`,
-    this.images = `${this.assets}/images`,
-    this.sass = `${this.assets}/sass`;
-};
-
-// Define the sources to be used
-const SOURCES = {
+const paths = {
+  temp: './.tmp/',
+  dist: './_dist',
+  css: {
+    dest: './assets/css',
+    scss: './assets/sass/**/*.scss',
+    css: [
+      './assets/css/**/*.css',
+      '!./assets/css/**/*.min.css'
+    ]
+  },
+  js: {
+    dest: './assets/js',
+    js: './assets/js/**/*.js',
+    concat: [
+      './node_modules/clear-menu/src/clearmenu.js',
+      './assets/js/vendor/*.js',
+      './assets/js/theme/skip-link-focus-fix.js',
+      './assets/js/theme/scripts.js'
+    ]
+  },
+  images: {
+    dest: './assets/images',
+    images: './assets/images/**/*.{jpg,png,gif,svg}'
+  },
   php: [
     './*.php',
     './**/*.php'
-  ],
-  css: [
-    `${PATHS.css}/*.css`,
-    `!${PATHS.css}/*.min.css`
-  ],
-  sass: [
-    `${PATHS.sass}/**/*.scss`
-  ],
-  js: [
-    `${PATHS.js}/**/*.js`
-  ],
-  images: [
-    `${PATHS.images}/**/*.{jpg,png,gif,svg}`
-  ],
-  concat: [ // Set the order for JS concatenation
-    // './node_modules/jquery/dist/jquery.js',
-    `${PATHS.js}/vendor/*.js`,
-    `${PATHS.js}/theme/skip-link-focus-fix.js`,
-    `${PATHS.js}/theme/scripts.js`
   ]
 };
 
 // Set options for the Gulp plugins
-const OPTIONS = {
+const options = {
   autoprefixer: {
-    browsers: [
-      '> 1%', 'last 3 versions', 'Safari > 7'
-    ]
+    browsers: [ 'last 2 versions' ],
+    cascade: false
   },
   browsersync: {
-    proxy: LOCALURL,
-    ghostMode: {
-      clicks: true,
-      forms: true,
-      scroll: false
-    },
-    browser: [
-      'google chrome'
-    ],
-    reloadOnRestart: true,
-    injectChanges: true
+    proxy: localURL,
+    ghostMode: false,
+    browser: 'google chrome'
   },
   cssnano: {
     autoprefixer: false,
@@ -85,193 +69,170 @@ const OPTIONS = {
     },
     zindex: false
   },
-  imagemin: {
-    interlaced: true,
-    progressive: true
-  },
   loadplugins: {
     lazy: true
   },
+  rename: {
+    css: {
+      suffix: '.min'
+    },
+    js: {
+      suffix: '.min'
+    }
+  },
+  sass: {
+    includePaths: [
+      './node_modules/sass-mediaqueries/',
+      './node_modules/clear-menu/src'
+    ],
+    outputStyle: 'expanded'
+  },
+  sourcemaps: {
+    write: '/'
+  },
   stylelint: {
-    reporters: [{
+    reporters: [ {
       formatter: 'string',
       console: true
-    }]
+    } ]
   }
 };
 
 // Include gulp and plugins not targeted by gulp-load-plugins
 import gulp from 'gulp';
 import del from 'del';
-import postscss from 'postcss-scss';
-import reporter from 'postcss-reporter';
-
-const BROWSERSYNC = require('browser-sync').create();
-const $ = require('gulp-load-plugins')(OPTIONS.loadplugins);
+const browsersync = require( 'browser-sync' ).create();
+const $ = require( 'gulp-load-plugins' )( options.loadplugins );
 
 // Utility Tasks
 // -----------------------------------------------------------------------------
 // Store a copy of the theme before any changes are made
-gulp.task('set-up', () => {
+gulp.task( 'set-up', () => {
   return gulp
-    .src([
+    .src( [
       './**/*',
       './**/.*',
       '!./node_modules',
       '!./node_modules/**/*'
-    ])
-    .pipe(gulp.dest('./.tmp'));
-});
-
-// Delete compiled CSS files and sourcemap(s)
-gulp.task('clean:css', () => {
-  del([
-    `${PATHS.css}/*.css`,
-    `${PATHS.css}/sourcemaps`
-  ]);
-});
-
-// Delete compiled JS files and sourcemap(s)
-gulp.task('clean:js', () => {
-  del([
-    `${PATHS.js}/*.js`,
-    `${PATHS.js}/sourcemaps`
-  ]);
+    ] )
+    .pipe( gulp.dest( paths.temp ) );
 });
 
 // Delete the distribution folder
-gulp.task('clean:dist', () => {
-  del(`${PATHS.dist}`);
+gulp.task( 'clean:dist', () => {
+  del( `${paths.dist}` );
 });
 
 // Server Tasks
 // -----------------------------------------------------------------------------
 // Launch a development server
-gulp.task('server', ['sass', 'js'], () => {
-  if (!BROWSERSYNC.active) {
-    BROWSERSYNC.init(OPTIONS.browsersync);
-  }
+gulp.task( 'server', [ 'sass', 'js' ], () => {
+  browsersync.init( options.browsersync );
+  gulp.watch( paths.php ).on( 'change', browsersync.reload );
+  gulp.watch( paths.css.scss, [ 'sass' ] );
+  gulp.watch( './assets/js/theme/*.js', [ 'js' ] );
 });
 
 // Sass Tasks
 // -----------------------------------------------------------------------------
 // Lint Sass via Stylelint
-gulp.task('sass:lint', () => {
+gulp.task( 'lint:sass', () => {
   return gulp
-    .src(SOURCES.sass)
-    .pipe($.plumber())
-    .pipe($.stylelint(OPTIONS.stylelint));
+    .src( paths.css.scss )
+    .pipe( $.plumber() )
+    .pipe( $.stylelint( options.stylelint ) );
 });
 
 // Compile and minify Sass, then create a sourcemap
-gulp.task('sass', ['clean:css'], () => {
+gulp.task( 'sass', () => {
   return gulp
-    .src(SOURCES.sass)
-    .pipe($.sourcemaps.init())
-    .pipe($.plumber())
-    .pipe($.sass()
-      .on('error', $.sass.logError))
-    .on('error', $.notify.onError('Error compiling Sass!'))
-    .pipe($.autoprefixer(OPTIONS.autoprefixer))
-    .pipe($.cssnano(OPTIONS.cssnano))
-    .pipe($.rename({
-      suffix: '.min'
-    }))
-    .pipe($.sourcemaps.write('/sourcemaps'))
-    .pipe($.plumber.stop())
-    .pipe(gulp.dest(PATHS.css))
-    .pipe(BROWSERSYNC.stream());
+    .src( paths.css.scss )
+    .pipe( $.sourcemaps.init() )
+    .pipe( $.plumber() )
+    .pipe( $.sass( options.sass )
+      .on( 'error', $.sass.logError ) )
+    .on( 'error', $.notify.onError( 'Error compiling Sass!' ) )
+    .pipe( $.cssnano( options.cssnano ) )
+    .pipe( $.rename( options.rename.css ) )
+    .pipe( $.sourcemaps.write( options.sourcemaps.write ) )
+    .pipe( gulp.dest( paths.css.dest ) )
+    .pipe( browsersync.stream() );
 });
 
 // JS Tasks
 // -----------------------------------------------------------------------------
 // Lint JS via ESLint
-gulp.task('js:lint', () => {
+gulp.task( 'lint:js', () => {
   return gulp
-    .src('./assets/js/theme/*.js')
-    .pipe($.plumber())
-    // .pipe($.babel())
-    .pipe($.eslint())
-    .pipe($.eslint.format())
-    .pipe($.eslint.failAfterError());
+    .src( './assets/js/theme/**/*.js' )
+    .pipe( $.plumber() )
+    .pipe( $.eslint() )
+    .pipe( $.eslint.format() );
 });
 
 // Concatenate and minify JS, then create a sourcemap
-gulp.task('js', ['clean:js'], () => {
+gulp.task( 'js', () => {
   return gulp
-    .src(SOURCES.concat)
-    .pipe($.sourcemaps.init())
-    .pipe($.plumber())
+    .src( paths.js.concat )
+    .pipe( $.sourcemaps.init() )
+    .pipe( $.plumber() )
     // .pipe($.babel())
-    .pipe($.print())
-    .pipe($.concat('theme.js'))
-    .pipe($.uglify())
-    .pipe($.rename({
-      suffix: '.min'
-    }))
-    .pipe($.sourcemaps.write('/sourcemaps'))
-    .pipe($.plumber.stop())
-    .pipe(gulp.dest(PATHS.js))
-    .pipe(BROWSERSYNC.stream());
+    .pipe( $.concat( 'theme.js' ) )
+    .pipe( $.uglify() )
+    .pipe( $.rename( options.rename.js ) )
+    .pipe( $.sourcemaps.write( options.sourcemaps.write ) )
+    .pipe( gulp.dest( paths.js.dest ) )
+    .pipe( browsersync.stream() );
 });
 
 // Image Tasks
 // -----------------------------------------------------------------------------
 // Optimize images via Imagemin, best to do this only once
-gulp.task('images', () => {
+gulp.task( 'images', () => {
   return gulp
-    .src(SOURCES.images)
-    .pipe($.plumber())
-    .pipe($.imagemin(OPTIONS.imagemin))
-    .pipe($.print())
-    .pipe(gulp.dest(PATHS.images));
+    .src( paths.images.images )
+    .pipe( $.plumber() )
+    .pipe( $.imagemin() )
+    .pipe( gulp.dest( paths.images.dest ) );
 });
 
 // Packaging Tasks
 // -----------------------------------------------------------------------------
 // Copy all files (except the development files) to a distribution folder
-gulp.task('package', ['clean:dist', 'sass', 'js', 'images'], () => {
+gulp.task( 'package', [ 'clean:dist', 'sass:minify', 'js', 'images' ], () => {
   return gulp
-    .src([
-      `./**/*`,
-      `!./.*`,
-      './node_modules',
-      './node_modules/**/*',
-      `!${PATHS.dist}`,
-      `!${PATHS.dist}/**/*`,
-      `!${PATHS.sass}`,
-      `!${PATHS.sass}/**/*`,
-      `!${PATHS.css}/sourcemaps`,
-      `!${PATHS.css}/sourcemaps/*`,
-      `!${PATHS.js}/sourcemaps`,
-      `!${PATHS.js}/sourcemaps/*`,
-      `!${PATHS.js}/theme`,
-      `!${PATHS.js}/theme/**/*`,
-      `!${PATHS.js}/vendor`,
-      `!${PATHS.js}/vendor/**/*`,
-      './gulpfile.babel.js',
-      './package.json',
-      './README.md'
-    ])
-    .pipe(gulp.dest(PATHS.dist + `${PROJECT}`));
+    .src( [
+      './**/*',
+      './.*',
+      '!./node_modules',
+      '!./node_modules/**/*',
+      `!${paths.temp}`,
+      `!${paths.temp}/**/*`,
+      `!${paths.dist}`,
+      `!${paths.dist}/**/*`,
+      `!${paths.css.dest}/*.map`,
+      '!./assets/sass',
+      '!./assets/sass/**/*',
+      `!${paths.js.dest}/*.map`,
+      `!${paths.js.dest}/theme`,
+      `!${paths.js.dest}/theme/**/*`,
+      `!${paths.js.dest}/vendor`,
+      `!${paths.js.dest}/vendor/**/*`,
+      '!./gulpfile.babel.js',
+      '!./package.json',
+      '!./README.md'
+    ] )
+    .pipe( gulp.dest( `${paths.dist}/${project}` ) );
 });
 
 // Zip up the distribution theme
-gulp.task('zip', () => {
+gulp.task( 'zip', () => {
   return gulp
-    .src(`${PATHS.dist}/${PROJECT}/**/*`)
-    .pipe($.zip(`${PROJECT}.zip`))
-    .pipe(gulp.dest(PATHS.dist));
+    .src( `${paths.dist}/${project}/**/*` )
+    .pipe( $.zip( `${project}.zip` ) )
+    .pipe( gulp.dest( paths.dist ) );
 });
 
 // Defaults
 // -----------------------------------------------------------------------------
-// Watch files for changes
-gulp.task('watch', () => {
-  gulp.watch(SOURCES.sass, ['sass']);
-  gulp.watch(SOURCES.js, ['js']);
-  gulp.watch(SOURCES.php, BROWSERSYNC.reload);
-});
-
-// Default task
-gulp.task('default', ['set-up', 'server', 'watch']);
+gulp.task( 'default', [ 'server' ] );

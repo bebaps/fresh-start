@@ -1,6 +1,6 @@
 <?php
 /**
- * The sidebar containing the main widget area.
+ * The main sidebar containing widget areas.
  *
  * @link    https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
@@ -10,11 +10,10 @@
 // Which sidebar do you want to grab?
 $sidebar = 1;
 
-if (!is_active_sidebar($sidebar)) {
+if ( !is_active_sidebar( $sidebar ) ) {
   return;
-}
-?>
+} ?>
 
-<aside class="site_sidebar">
-  <?php dynamic_sidebar($sidebar); ?>
+<aside class="site-sidebar">
+  <?php dynamic_sidebar( $sidebar ); ?>
 </aside>
