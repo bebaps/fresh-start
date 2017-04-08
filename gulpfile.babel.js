@@ -25,7 +25,6 @@ const paths = {
       './node_modules/clear-menu/src/clearmenu.js',
       './assets/js/vendor/*.js',
       './assets/js/theme/skip-link-focus-fix.js',
-      // './assets/js/theme/load-more.js',
       './assets/js/theme/scripts.js'
     ]
   },
