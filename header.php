@@ -6,6 +6,9 @@
  *
  * @package Fresh_Start
  */
+
+// Define a browsers toolbar color if supported
+$theme_color = '#000';
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <meta name="theme-color" content="#000">
+  <meta name="theme-color" content="<?php echo $theme_color; ?>">
   <link rel="profile" href="http://gmpg.org/xfn/11">
 
   <?php wp_head(); ?>
@@ -24,35 +27,6 @@
 
 <a class="screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fresh-start' ); ?></a>
 
-<header class="site-header">
-  <?php if ( has_custom_logo() ) : ?>
-
-    <h1 class="title"><?php the_custom_logo(); ?></h1>
-
-  <?php else : ?>
-
-    <h1 class="title">
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-    </h1>
-
-    <?php
-  endif;
-
-  $description = get_bloginfo( 'description', 'display' );
-
-  if ( $description || is_customize_preview() ) : ?>
-
-    <p class="description"><?php echo $description; ?></p>
-
-    <?php
-  endif;
-
-  wp_nav_menu( [
-    'theme_location' => 'primary',
-    'container' => 'nav',
-    'container_class' => 'site-navigation'
-  ] );
-  ?>
-</header>
+<?php get_template_part('templates/content', 'header'); ?>
 
 <main id="main" class="site-main">

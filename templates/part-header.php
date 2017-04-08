@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for archive, search, or index page headers.
+ * Template part for index, archive, or search page headers.
  *
  * @package Fresh_Start
  */
