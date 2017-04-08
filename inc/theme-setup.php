@@ -15,7 +15,7 @@ if ( !function_exists( 'fresh_start_setup' ) ) :
      * If you're building a theme based on Fresh Start, use a find and replace
      * to change 'fresh-start' to the name of your theme in all the template files.
      */
-    load_theme_textdomain( 'fresh-start', get_template_directory() . '/languages' );
+    // load_theme_textdomain( 'fresh-start', get_template_directory() . '/languages' );
 
     // Add default posts and comments RSS feed links to head.
     add_theme_support( 'automatic-feed-links' );
