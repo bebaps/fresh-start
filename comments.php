@@ -15,34 +15,37 @@
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
  */
-if (post_password_required()) return; ?>
+if ( post_password_required() ) {
+  return;
+} ?>
 
 <section class="comments">
-  <?php if (have_comments()) : ?>
+  <?php if ( have_comments() ) : ?>
 
     <h2>
       <?php
       printf(
-        esc_html(_nx('One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(),
-          'comments title', 'fresh-start')), number_format_i18n(get_comments_number()),
-        '<span>' . get_the_title() . '</span>');
+        esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;',
+          get_comments_number(),
+          'comments title', 'fresh-start' ) ), number_format_i18n( get_comments_number() ),
+        '<span>' . get_the_title() . '</span>' );
       ?>
     </h2>
 
     <ol>
-      <?php wp_list_comments(['style' => 'ol', 'type' => 'comment']); ?>
+      <?php wp_list_comments( [ 'style' => 'ol', 'type' => 'comment' ] ); ?>
     </ol>
 
-    <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : // Are there comments to navigate through? ?>
+    <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 
       <nav class="comments-navigation">
-        <h2 class="screen-reader-text"><?php esc_html_e('Comments navigation', 'fresh-start'); ?></h2>
+        <h2 class="screen-reader-text"><?php esc_html_e( 'Comments navigation', 'fresh-start' ); ?></h2>
 
         <?php
-        paginate_comments_links([
+        paginate_comments_links( [
           'prev_text' => 'Older Comments',
           'next_text' => 'Newer Comments'
-        ]);
+        ] );
         ?>
       </nav>
 
@@ -50,11 +53,11 @@ if (post_password_required()) return; ?>
   <?php endif;
 
   // If comments are closed and there are comments, let's leave a little note, shall we?
-  if (!comments_open() && get_comments_number() && post_type_supports(get_post_type(), 'comments')) : ?>
+  if ( !comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 
-    <p><?php esc_html_e('Sorry, comments are closed.', 'fresh-start'); ?></p>
+    <p><?php esc_html_e( 'Sorry, comments are closed.', 'fresh-start' ); ?></p>
 
-  <?php
+    <?php
   endif;
 
   comment_form(); ?>

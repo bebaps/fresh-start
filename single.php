@@ -9,13 +9,13 @@
 
 get_header();
 
-while (have_posts()) : the_post();
+while ( have_posts() ) : the_post();
 
-  get_template_part('templates/content', get_post_format());
+  get_template_part( 'templates/content', get_post_format() );
 
   the_post_navigation();
 
-  if (comments_open() || get_comments_number()) :
+  if ( comments_open() || get_comments_number() ) :
 
     comments_template();
 

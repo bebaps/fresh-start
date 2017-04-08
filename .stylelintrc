@@ -6,13 +6,18 @@
   ],
   "extends": "stylelint-config-standard",
   "rules": {
-    "at-rule-empty-line-before": ["always", {
-      except: [
-        "after-same-name",
-        "blockless-after-same-name-blockless",
-        "first-nested"
-      ],
-      ignore: ["after-comment"]
-    }]
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        except: [
+          "after-same-name",
+          "blockless-after-same-name-blockless",
+          "first-nested"
+        ],
+        ignore: [
+          "after-comment"
+        ]
+      }
+    ]
   }
 }

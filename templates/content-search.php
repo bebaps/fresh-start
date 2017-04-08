@@ -10,9 +10,9 @@
 
 <article class="search-result">
   <header class="search-result-header">
-    <?php the_title(sprintf('<h2><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>'); ?>
+    <?php the_title( sprintf( '<h2><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
-    <?php if ('post' === get_post_type()) : ?>
+    <?php if ( 'post' === get_post_type() ) : ?>
 
       <div class="search-result-meta">
         <?php fresh_start_posted_on(); ?>

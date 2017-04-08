@@ -9,21 +9,21 @@
 
 get_header();
 
-if (have_posts()) :
+if ( have_posts() ) :
 
-  get_template_part('templates/part', 'header');
+  get_template_part( 'templates/part', 'header' );
 
-  while (have_posts()) : the_post();
+  while ( have_posts() ) : the_post();
 
-    get_template_part('templates/content', 'search');
+    get_template_part( 'templates/content', 'search' );
 
   endwhile;
 
-  the_posts_pagination(['mid_size' => 3]);
+  the_posts_pagination( [ 'mid_size' => 3 ] );
 
 else :
 
-  get_template_part('templates/content', 'none');
+  get_template_part( 'templates/content', 'none' );
 
 endif;
 
