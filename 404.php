@@ -1,14 +1,13 @@
 <?php
 /**
- * The template for displaying the 404 page.
+ * The template for displaying 404 pages (Not Found)
  *
- * @link    https://codex.wordpress.org/Creating_an_Error_404_Page
+ * Methods for TimberHelper can be found in the /functions sub-directory
  *
- * @package Fresh_Start
+ * @package  WordPress
+ * @subpackage  Timber
+ * @since    Timber 0.1
  */
 
-get_header();
-
-get_template_part( 'templates/content', '404' );
-
-get_footer();
+$context = Timber::context();
+Timber::render( '404.twig', $context );
