@@ -86,6 +86,7 @@ function js() {
     .pipe(browsersync.stream());
 }
 
+// TODO: verify this is actually working
 function optimizeJs() {
   return src('dist/js/**/*.js')
     .pipe(plumber())
