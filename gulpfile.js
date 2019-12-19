@@ -1,11 +1,4 @@
-const localURL = 'sandbox.test';
-const sourceFiles = {
-  images: './src/images/**/*',
-  php: './**/*.php'
-};
-const dist = {
-  images: './dist/images'
-};
+const localUrl = 'https://sandbox.test';
 const options = {
   cssnano: {
     discardComments: {
@@ -14,7 +7,7 @@ const options = {
   }
 };
 
-const { src, dest, parallel, series, watch } = require('gulp');
+const { src, dest, series, watch } = require('gulp');
 const autoprefixer = require('autoprefixer');
 const browsersync = require('browser-sync').create();
 const cssnano = require('cssnano');
@@ -37,13 +30,12 @@ sass.compiler = require('node-sass');
 // BrowserSync
 function server() {
   browsersync.init({
-    proxy: localURL
+    proxy: localUrl
   });
-}
-
-// BrowserSync Reload
-function serverReload() {
-  browsersync.reload();
+  watch('src/css/**/*.scss', css);
+  watch('src/js/**/*.js', js);
+  watch('src/images/**/*', images);
+  watch(['./**/*.php', './**/*.twig']).on('change', browsersync.reload);
 }
 
 // -----------------------------------------------------------------------------
@@ -71,6 +63,12 @@ function optimizeCss() {
     .pipe(browsersync.stream());
 }
 
+// Delete all CSS files
+function cleanCss(cb) {
+  del(['dist/css/**/*.css']);
+  cb();
+}
+
 // -----------------------------------------------------------------------------
 // JS Tasks
 // -----------------------------------------------------------------------------
@@ -86,7 +84,7 @@ function js() {
     .pipe(browsersync.stream());
 }
 
-// TODO: verify this is actually working
+// Optimize JS
 function optimizeJs() {
   return src('dist/js/**/*.js')
     .pipe(plumber())
@@ -96,30 +94,50 @@ function optimizeJs() {
     .pipe(browsersync.stream());
 }
 
+// Delete all JS files
+function cleanJs(cb) {
+  del(['dist/js/**/*.js']);
+  cb();
+}
+
 // -----------------------------------------------------------------------------
 // Image Tasks
 // -----------------------------------------------------------------------------
 
-// Optimize images via Imagemin, best to do this only once
+// Optimize images
 function images() {
-  return src(paths.images.images)
+  return src('src/images/**/*')
     .pipe(plumber())
     .pipe(imagemin())
-    .pipe(gulp.dest(paths.images.dest));
+    .pipe(dest('dist/images'));
 }
 
 // -----------------------------------------------------------------------------
-// Defaults
+// Misc.
 // -----------------------------------------------------------------------------
 
+// Watch files for changes
 function watchFiles() {
-  watch(sourceFiles.css, css)
+  watch('src/css/**/*.scss', css);
+  watch('src/js/**/*.js', js);
+  watch('src/images/**/*', images);
+  watch(['./**/*.php', './**/*.twig']).on('change', browsersync.reload);
 }
 
+// -----------------------------------------------------------------------------
+// Exports
+// -----------------------------------------------------------------------------
+
+exports.server = server;
 exports.css = css;
 exports.optimizeCss = optimizeCss;
+exports.cleanCss = cleanCss;
+exports.buildCss = series(cleanCss, css, optimizeCss);
 exports.js = js;
 exports.optimizeJs = optimizeJs;
-exports.server = server;
+exports.cleanJs = cleanJs;
+exports.buildJs = series(cleanJs, js, optimizeJs);
+exports.images = images;
 exports.watchFiles = watchFiles;
-exports.default = series(css, server, watchFiles);
+
+exports.default = series(css, js, images, server);
