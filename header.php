@@ -1,32 +1,15 @@
 <?php
 /**
- * The theme header.
+ * Third party plugins that hijack the theme will call wp_head() to get the header template.
+ * We use this to start our output buffer and render into the view/page-plugin.twig template in footer.php
  *
- * @link    https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ * If you're not using a plugin that requries this behavior (ones that do include Events Calendar Pro and
+ * WooCommerce) you can delete this file and footer.php
  *
- * @package Fresh_Start
+ * @package  WordPress
+ * @subpackage  Timber
+ * @since   Timber 0.1
  */
 
-// Define a browsers toolbar color if supported
-$theme_color = '#000';
-?>
-
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-<head>
-  <meta charset="<?php bloginfo( 'charset' ); ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-  <meta name="theme-color" content="<?php echo $theme_color; ?>">
-  <link rel="profile" href="http://gmpg.org/xfn/11">
-
-  <?php wp_head(); ?>
-</head>
-<body <?php body_class(); ?>>
-
-<a class="screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fresh-start' ); ?></a>
-
-<?php get_template_part('templates/content', 'header'); ?>
-
-<main id="main" class="site-main">
+$GLOBALS['timberContext'] = Timber::context();
+ob_start();

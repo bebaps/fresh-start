@@ -1,30 +1,18 @@
 <?php
 /**
- * The template for displaying search results.
+ * Search results page
  *
- * @link    https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ * Methods for TimberHelper can be found in the /lib sub-directory
  *
- * @package Fresh_Start
+ * @package  WordPress
+ * @subpackage  Timber
+ * @since   Timber 0.1
  */
 
-get_header();
+$templates = array( 'search.twig', 'archive.twig', 'index.twig' );
 
-if ( have_posts() ) :
+$context          = Timber::context();
+$context['title'] = 'Search results for ' . get_search_query();
+$context['posts'] = new Timber\PostQuery();
 
-  get_template_part( 'templates/part', 'header' );
-
-  while ( have_posts() ) : the_post();
-
-    get_template_part( 'templates/content', 'search' );
-
-  endwhile;
-
-  the_posts_pagination( [ 'mid_size' => 3 ] );
-
-else :
-
-  get_template_part( 'templates/content', 'none' );
-
-endif;
-
-get_footer();
+Timber::render( $templates, $context );

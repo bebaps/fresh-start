@@ -1,23 +1,28 @@
 <?php
 /**
- * The template for displaying a single page.
+ * The template for displaying all pages.
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
+ * and that other 'pages' on your WordPress site will use a
  * different template.
  *
- * @link    https://codex.wordpress.org/Template_Hierarchy
+ * To generate specific templates for your pages you can use:
+ * /mytheme/templates/page-mypage.twig
+ * (which will still route through this PHP file)
+ * OR
+ * /mytheme/page-mypage.php
+ * (in which case you'll want to duplicate this file and save to the above path)
  *
- * @package Fresh_Start
+ * Methods for TimberHelper can be found in the /lib sub-directory
+ *
+ * @package  WordPress
+ * @subpackage  Timber
+ * @since    Timber 0.1
  */
 
-get_header();
+$context = Timber::context();
 
-while ( have_posts() ) : the_post();
-
-  get_template_part( 'templates/content', 'page' );
-
-endwhile;
-
-get_footer();
+$timber_post     = new Timber\Post();
+$context['post'] = $timber_post;
+Timber::render( array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' ), $context );
