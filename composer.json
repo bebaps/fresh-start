@@ -1,8 +1,8 @@
 {
   "name": "bebaps/fresh-start",
   "description": "A fresh start for developing custom WordPress themes.",
-  "type":"wordpress-theme",
-  "minimum-stability" : "stable",
+  "type": "wordpress-theme",
+  "minimum-stability": "stable",
   "authors": [
     {
       "email": "info@alexanderpersky.com",
@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-	  "timber/timber": "1.*"
+    "timber/timber": "1.*"
   },
   "require-dev": {
     "phpunit/phpunit": "5.7.16|6.*"

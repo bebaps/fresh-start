@@ -2,8 +2,8 @@
 /**
  * The Template for the sidebar containing the main widget area
  *
- * @package  WordPress
+ * @package     WordPress
  * @subpackage  Timber
  */
 
-Timber::render( array( 'sidebar.twig' ), $data );
+Timber::render(['sidebar.twig'], $data);

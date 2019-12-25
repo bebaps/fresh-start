@@ -6,16 +6,16 @@
  * If you're not using a plugin that requries this behavior (ones that do include Events Calendar Pro and
  * WooCommerce) you can delete this file and header.php
  *
- * @package  WordPress
+ * @package     WordPress
  * @subpackage  Timber
- * @since   Timber 0.1
+ * @since       Timber 0.1
  */
 
 $timberContext = $GLOBALS['timberContext']; // @codingStandardsIgnoreFile
-if ( ! isset( $timberContext ) ) {
-	throw new \Exception( 'Timber context not set in footer.' );
+if (!isset($timberContext)) {
+  throw new Exception('Timber context not set in footer.');
 }
 $timberContext['content'] = ob_get_contents();
 ob_end_clean();
-$templates = array( 'page-plugin.twig' );
-Timber::render( $templates, $timberContext );
+$templates = ['page-plugin.twig'];
+Timber::render($templates, $timberContext);

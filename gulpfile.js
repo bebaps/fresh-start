@@ -24,7 +24,7 @@ const uglify = require('gulp-uglify');
 sass.compiler = require('node-sass');
 
 // -----------------------------------------------------------------------------
-// Server Tasks
+// Server
 // -----------------------------------------------------------------------------
 
 // BrowserSync
@@ -39,8 +39,15 @@ function server() {
 }
 
 // -----------------------------------------------------------------------------
-// Sass Tasks
+// Css
 // -----------------------------------------------------------------------------
+
+// Copy CSS files... for instance from node_modules
+function copyCss() {
+  return src([
+    //
+  ]).pipe(dest('dist/css/vendor'));
+}
 
 // Compile Sass to CSS
 function css() {
@@ -65,13 +72,20 @@ function optimizeCss() {
 
 // Delete all CSS files
 function cleanCss(cb) {
-  del(['dist/css/**/*.css']);
+  del(['dist/css']);
   cb();
 }
 
 // -----------------------------------------------------------------------------
-// JS Tasks
+// JS
 // -----------------------------------------------------------------------------
+
+// Copy JS files... for instance from node_modules
+function copyJs() {
+  return src([
+    //
+  ]).pipe(dest('dist/js/vendor'));
+}
 
 // Transpile ES6
 function js() {
@@ -96,12 +110,12 @@ function optimizeJs() {
 
 // Delete all JS files
 function cleanJs(cb) {
-  del(['dist/js/**/*.js']);
+  del(['dist/js']);
   cb();
 }
 
 // -----------------------------------------------------------------------------
-// Image Tasks
+// Images
 // -----------------------------------------------------------------------------
 
 // Optimize images
@@ -110,6 +124,29 @@ function images() {
     .pipe(plumber())
     .pipe(imagemin())
     .pipe(dest('dist/images'));
+}
+
+// Delete all images
+function cleanImages(cb) {
+  del(['dist/images']);
+  cb();
+}
+
+// -----------------------------------------------------------------------------
+// Fonts
+// -----------------------------------------------------------------------------
+
+// Copy font files... for instance from node_modules
+function copyFonts() {
+  return src([
+    //
+  ]).pipe(dest('dist/fonts'));
+}
+
+// Delete all fonts
+function cleanFonts(cb) {
+  del(['dist/fonts']);
+  cb();
 }
 
 // -----------------------------------------------------------------------------
@@ -124,20 +161,32 @@ function watchFiles() {
   watch(['./**/*.php', './**/*.twig']).on('change', browsersync.reload);
 }
 
+// Delete all assets
+function clean(cb) {
+  del(['dist']);
+  cb();
+}
+
 // -----------------------------------------------------------------------------
 // Exports
 // -----------------------------------------------------------------------------
 
 exports.server = server;
+exports.copyCss = copyCss;
 exports.css = css;
 exports.optimizeCss = optimizeCss;
 exports.cleanCss = cleanCss;
-exports.buildCss = series(cleanCss, css, optimizeCss);
+exports.buildCss = series(cleanCss, copyCss, css, optimizeCss);
+exports.copyJs = copyJs;
 exports.js = js;
 exports.optimizeJs = optimizeJs;
 exports.cleanJs = cleanJs;
-exports.buildJs = series(cleanJs, js, optimizeJs);
+exports.buildJs = series(cleanJs, copyJs, js, optimizeJs);
 exports.images = images;
+exports.cleanImages = cleanImages;
+exports.copyFonts = copyFonts;
+exports.cleanFonts = cleanFonts;
+exports.clean = clean;
 exports.watchFiles = watchFiles;
 
-exports.default = series(css, js, images, server);
+exports.default = series(parallel(copyCss, copyJs, copyImages, copyFonts), css, js, images, server);
