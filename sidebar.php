@@ -1,8 +1,8 @@
 <?php
 /**
- * The Template for the sidebar containing the main widget area
+ * The Template for the sidebar containing the main widget area.
  *
- * @package     WordPress
+ * @package     Fresh Start
  * @subpackage  Timber
  */
 
