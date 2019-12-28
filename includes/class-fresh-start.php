@@ -17,6 +17,8 @@ class FreshStart extends Site
     add_filter('timber/twig', [$this, 'add_to_twig']);
     add_action('init', [$this, 'register_post_types']);
     add_action('init', [$this, 'register_taxonomies']);
+    add_action('theme_styles', [$this, 'theme_styles']);
+    add_action('theme_scripts', [$this, 'theme_scripts']);
 
     parent::__construct();
   }
@@ -58,9 +60,35 @@ class FreshStart extends Site
   }
 
   /**
-   * Enqueue CSS/JS.
+   * Enqueue CSS/JS the WordPress way.
+   *
+   * Good for interacting for assets loaded by 3rd party plugins.
    */
   public function theme_enqueue_assets()
+  {
+    //
+  }
+
+  /**
+   * Load CSS in your own way.
+   *
+   * Useful if you want to utilize things like critical CSS, async loading of CSS, etc.
+   * WordPress does not handle any of this, and it is easier to add your CSS here instead of having
+   * to write some verbose custom hook.
+   */
+  public function theme_styles()
+  {
+    //
+  }
+
+  /**
+   * Load JS in your own way.
+   *
+   * Useful if you want to utilize things like async or deferred JS, custom crossorigins, etc.
+   * WordPress does not handle any of this, and it is easier to add your JS here instead of having
+   * to write some verbose custom hook.
+   */
+  public function theme_scripts()
   {
     //
   }
@@ -80,18 +108,6 @@ class FreshStart extends Site
         'comment-list',
         'gallery',
         'caption',
-      ]
-    );
-    add_theme_support(
-      'post-formats',
-      [
-        'aside',
-        'image',
-        'video',
-        'quote',
-        'link',
-        'gallery',
-        'audio',
       ]
     );
     add_theme_support('menus');
