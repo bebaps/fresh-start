@@ -13,7 +13,7 @@ if (file_exists($composer_autoload)) {
 
 /**
  * This ensures that Timber is loaded and available as a PHP class.
- * If not, it gives an error message to help direct developers on where to activate
+ * If not, it gives an error message to help direct developers on where to activate.
  */
 if (!class_exists('Timber')) {
   add_action(
@@ -33,13 +33,13 @@ if (!class_exists('Timber')) {
 }
 
 /**
- * Sets the directories (inside your theme) to find .twig files
+ * Sets the directories (inside your theme) to find .twig files.
  */
 Timber::$dirname = ['templates', 'views'];
 
 /**
  * By default, Timber does NOT autoescape values. Want to enable Twig's autoescape?
- * No prob! Just set this value to true
+ * No prob! Just set this value to true.
  */
 Timber::$autoescape = false;
 

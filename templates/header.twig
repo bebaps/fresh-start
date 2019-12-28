@@ -1,0 +1,8 @@
+<header class="header">
+  <h1 role="banner">
+    <a href="{{ site.url }}" rel="home">{{ site.name }}</a>
+  </h1>
+  <nav>
+    {% include "menu.twig" with {'items': menu.get_items} %}
+  </nav>
+</header>

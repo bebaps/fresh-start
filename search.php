@@ -1,12 +1,11 @@
 <?php
 /**
- * Search results page
+ * Search results page.
  *
- * Methods for TimberHelper can be found in the /lib sub-directory
+ * Methods for TimberHelper can be found in the /lib sub-directory.
  *
- * @package     WordPress
+ * @package     Fresh Start
  * @subpackage  Timber
- * @since       Timber 0.1
  */
 
 $templates = ['search.twig', 'archive.twig', 'index.twig'];
