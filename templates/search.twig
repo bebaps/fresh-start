@@ -3,7 +3,7 @@
 
 {% block content %}
   {# see `base.twig:27` for where this block's content will be inserted #}
-  <div class="content-wrapper">
+  <div>
     {% for post in posts %}
       {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
     {% endfor %}
