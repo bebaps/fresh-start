@@ -4,9 +4,6 @@ use Timber\Site;
 
 class FreshStart extends Site
 {
-  /**
-   * FreshStart constructor.
-   */
   public function __construct()
   {
     add_action('after_setup_theme', [$this, 'theme_supports']);
@@ -62,7 +59,7 @@ class FreshStart extends Site
   /**
    * Enqueue CSS/JS the WordPress way.
    *
-   * Good for interacting for assets loaded by 3rd party plugins.
+   * Good for interacting with assets loaded by 3rd party plugins.
    */
   public function theme_enqueue_assets()
   {
