@@ -1,13 +1,4 @@
-const localUrl = 'https://sandbox.test';
-const options = {
-  cssnano: {
-    discardComments: {
-      removeAll: true
-    }
-  }
-};
-
-const { src, dest, series, watch } = require('gulp');
+const { src, dest, series, parallel, watch } = require('gulp');
 const autoprefixer = require('autoprefixer');
 const browsersync = require('browser-sync').create();
 const cssnano = require('cssnano');
@@ -23,6 +14,15 @@ const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 sass.compiler = require('node-sass');
 
+const localUrl = 'https://sandbox.test';
+const options = {
+  cssnano: {
+    discardComments: {
+      removeAll: true
+    }
+  }
+};
+
 // -----------------------------------------------------------------------------
 // Server
 // -----------------------------------------------------------------------------
@@ -32,7 +32,7 @@ function server() {
   browsersync.init({
     proxy: localUrl
   });
-  watch('src/css/**/*.scss', css);
+  watch('src/scss/**/*.scss', css);
   watch('src/js/**/*.js', js);
   watch('src/images/**/*', images);
   watch(['./**/*.php', './**/*.twig']).on('change', browsersync.reload);
@@ -51,7 +51,7 @@ function copyCss() {
 
 // Compile Sass to CSS
 function css() {
-  return src('src/css/**/*.scss')
+  return src('src/scss/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError)).on('error', notify.onError('Error compiling Sass!'))
@@ -64,7 +64,6 @@ function css() {
 function optimizeCss() {
   return src('dist/css/**/*.css')
     .pipe(plumber())
-    .pipe(rename({suffix: '.min'}))
     .pipe(postcss([autoprefixer(), cssnano(options.cssnano)]))
     .pipe(dest('dist/css'))
     .pipe(browsersync.stream());
@@ -102,7 +101,6 @@ function js() {
 function optimizeJs() {
   return src('dist/js/**/*.js')
     .pipe(plumber())
-    .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
     .pipe(dest('dist/js'))
     .pipe(browsersync.stream());
@@ -133,29 +131,12 @@ function cleanImages(cb) {
 }
 
 // -----------------------------------------------------------------------------
-// Fonts
-// -----------------------------------------------------------------------------
-
-// Copy font files... for instance from node_modules
-function copyFonts() {
-  return src([
-    //
-  ]).pipe(dest('dist/fonts'));
-}
-
-// Delete all fonts
-function cleanFonts(cb) {
-  del(['dist/fonts']);
-  cb();
-}
-
-// -----------------------------------------------------------------------------
 // Misc.
 // -----------------------------------------------------------------------------
 
 // Watch files for changes
 function watchFiles() {
-  watch('src/css/**/*.scss', css);
+  watch('src/scss/**/*.scss', css);
   watch('src/js/**/*.js', js);
   watch('src/images/**/*', images);
   watch(['./**/*.php', './**/*.twig']).on('change', browsersync.reload);
@@ -176,17 +157,15 @@ exports.copyCss = copyCss;
 exports.css = css;
 exports.optimizeCss = optimizeCss;
 exports.cleanCss = cleanCss;
-exports.buildCss = series(cleanCss, copyCss, css, optimizeCss);
+exports.buildCss = series(cleanCss, css, optimizeCss);
 exports.copyJs = copyJs;
 exports.js = js;
 exports.optimizeJs = optimizeJs;
 exports.cleanJs = cleanJs;
-exports.buildJs = series(cleanJs, copyJs, js, optimizeJs);
+exports.buildJs = series(cleanJs, js, optimizeJs);
 exports.images = images;
 exports.cleanImages = cleanImages;
-exports.copyFonts = copyFonts;
-exports.cleanFonts = cleanFonts;
 exports.clean = clean;
 exports.watchFiles = watchFiles;
 
-exports.default = series(parallel(copyCss, copyJs, copyImages, copyFonts), css, js, images, server);
+exports.default = series(css, js, images, server);
