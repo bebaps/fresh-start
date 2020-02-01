@@ -16,9 +16,11 @@
     }
   ],
   "require": {
-    "timber/timber": "1.*"
+    "timber/timber": "1.*",
+    "twig/intl-extra": "^3.0"
   },
   "require-dev": {
+    "hellonico/timber-dump-extension": "^1.0",
     "phpunit/phpunit": "5.7.16|6.*"
   }
 }
