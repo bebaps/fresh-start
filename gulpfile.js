@@ -13,6 +13,8 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 sass.compiler = require('node-sass');
+const purgecss = require('gulp-purgecss');
+const purgecssWordPress = require('purgecss-with-wordpress');
 
 const localUrl = 'https://sandbox.test';
 const options = {
@@ -20,6 +22,29 @@ const options = {
     discardComments: {
       removeAll: true
     }
+  },
+  autoprefixer: {
+    grid: true
+  },
+  purgecss: {
+    content: [
+      './**/*.php',
+      './templates/**/*.twig',
+      './templates/**/*.php',
+      './dist/js/**/*.js'
+    ],
+    css: [
+      './dist/css/**/*.css',
+      './*.css'
+    ],
+    whitelist: [
+      ...purgecssWordPress.whitelist
+    ],
+    whitelistPatterns: [
+      ...purgecssWordPress.whitelistPatterns
+    ],
+    fontface: true,
+    keyframes: true
   }
 };
 
@@ -60,6 +85,14 @@ function css() {
     .pipe(browsersync.stream());
 }
 
+// Purge unused CSS
+function purgeCss() {
+  return src('dist/css/**/*.css')
+    .pipe(purgecss(options.purgecss))
+    .pipe(rename('purged.css'))
+    .pipe(dest('dist/css'));
+}
+
 // Minify CSS
 function optimizeCss() {
   return src('dist/css/**/*.css')
@@ -72,7 +105,7 @@ function optimizeCss() {
 // Delete all CSS files
 function cleanCss(cb) {
   del(['dist/css']);
-  cb();
+  cb(console.log('-----> All CSS files have been deleted!'));
 }
 
 // -----------------------------------------------------------------------------
@@ -109,7 +142,7 @@ function optimizeJs() {
 // Delete all JS files
 function cleanJs(cb) {
   del(['dist/js']);
-  cb();
+  cb(console.log('-----> All JS files have been deleted!'));
 }
 
 // -----------------------------------------------------------------------------
@@ -127,7 +160,7 @@ function images() {
 // Delete all images
 function cleanImages(cb) {
   del(['dist/images']);
-  cb();
+  cb(console.log('-----> All image files have been deleted!'));
 }
 
 // -----------------------------------------------------------------------------
@@ -145,7 +178,7 @@ function watchFiles() {
 // Delete all assets
 function clean(cb) {
   del(['dist']);
-  cb();
+  cb(console.log('-----> All distribution CSS, JS, and images have been deleted!'));
 }
 
 // -----------------------------------------------------------------------------
@@ -155,9 +188,10 @@ function clean(cb) {
 exports.server = server;
 exports.copyCss = copyCss;
 exports.css = css;
+exports.purgeCss = purgeCss;
 exports.optimizeCss = optimizeCss;
 exports.cleanCss = cleanCss;
-exports.buildCss = series(cleanCss, css, optimizeCss);
+exports.buildCss = series(cleanCss, css, purgeCss, optimizeCss);
 exports.copyJs = copyJs;
 exports.js = js;
 exports.optimizeJs = optimizeJs;
